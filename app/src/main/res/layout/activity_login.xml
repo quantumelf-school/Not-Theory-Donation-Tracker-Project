@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <EditText
+        android:id="@+id/login_unentry"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="61dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="38dp"
+        android:ems="10"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/login_pwentry"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/login_pwentry"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="165dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/login_loginbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_unentry" />
+
+    <Button
+        android:id="@+id/login_loginbutton"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="107dp"
+        android:text="Login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_pwentry" />
+
+    <Button
+        android:id="@+id/login_cancelbutton"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="17dp"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_loginbutton" />
+
+    <TextView
+        android:id="@+id/login_invalidlogintext"
+        android:layout_width="wrap_content"
+        android:layout_height="39dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="7dp"
+        android:text="Invalid Login Credentials"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="30sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/login_tryagaintext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_pwentry" />
+
+    <TextView
+        android:id="@+id/login_tryagaintext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="115dp"
+        android:text="Try Again"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="30sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/login_loginbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_invalidlogintext" />
+</android.support.constraint.ConstraintLayout>
