@@ -1,4 +1,4 @@
-package nottheory.donationtracker;
+package nottheory.donationtracker.Controllers;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,9 @@ import android.widget.EditText;
 import android.widget.Button;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+
+import nottheory.donationtracker.Model.LoginManager;
+import nottheory.donationtracker.R;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -33,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
                 String pw = pwEntry.getText().toString();
 
                 //TODO: ADD ACTUAL AUTHENTICATION (VIA EXTERNAL CLASS) HERE
-                if (un.equals("user") && pw.equals("pass")) {
+                if (LoginManager.checkCredentials(un, pw)) {
                     startActivity(new Intent(LoginActivity.this, SuccessfulLoginActivity.class));
                 } else {
                     invalidLoginText.setVisibility(View.VISIBLE);

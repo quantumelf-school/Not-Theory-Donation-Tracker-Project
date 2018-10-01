@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RegistrationActivity">
+    tools:context=".Controllers.RegistrationActivity">
 
     <EditText
         android:id="@+id/register_unentry"
@@ -65,4 +65,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_loginbutton" />
+
+    <Spinner
+        android:id="@+id/registration_accttypespinner"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="152dp"
+        app:layout_constraintBottom_toTopOf="@+id/register_loginbutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_accttypetext" />
+
+    <TextView
+        android:id="@+id/register_accttypetext"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="230dp"
+        android:text="Account Type"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_pwentry" />
 </android.support.constraint.ConstraintLayout>
