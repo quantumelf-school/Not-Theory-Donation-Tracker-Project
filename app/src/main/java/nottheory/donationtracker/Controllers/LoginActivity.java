@@ -35,7 +35,6 @@ public class LoginActivity extends AppCompatActivity {
                 String un = unEntry.getText().toString();
                 String pw = pwEntry.getText().toString();
 
-                //TODO: ADD ACTUAL AUTHENTICATION (VIA EXTERNAL CLASS) HERE
                 if (LoginManager.checkCredentials(un, pw)) {
                     startActivity(new Intent(LoginActivity.this, SuccessfulLoginActivity.class));
                 } else {

@@ -17,7 +17,7 @@ import nottheory.donationtracker.R;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private EditText unEntry, pwEntry;
+    private EditText nameEntry, emailEntry, unEntry, pwEntry;
     private Button loginButton, cancelButton;
     private Spinner acctTypeSpinner;
 
@@ -25,6 +25,8 @@ public class RegistrationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        nameEntry = findViewById(R.id.register_nameentry);
+        emailEntry = findViewById(R.id.register_emailentry);
         unEntry = findViewById(R.id.register_unentry);
         pwEntry = findViewById(R.id.register_pwentry);
         loginButton = findViewById(R.id.register_loginbutton);
@@ -36,12 +38,20 @@ public class RegistrationActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-               String un = unEntry.getText().toString();
-               String pw = pwEntry.getText().toString();
-               AccountType acctType = (AccountType) acctTypeSpinner.getSelectedItem();
+                String name = nameEntry.getText().toString();
+                String email = emailEntry.getText().toString();
+                String un = unEntry.getText().toString();
+                String pw = pwEntry.getText().toString();
+                AccountType acctType = (AccountType) acctTypeSpinner.getSelectedItem();
 
-                LoginManager.addCredentials(un, new Account(un, pw, acctType));
-                startActivity(new Intent(RegistrationActivity.this, WelcomeActivity.class));
+                //TODO: Implement this logic through try, catch and exception in login class
+                //TODO: Add a message for invalid credentials
+                if (!name.equals("") && !email.equals("") && !un.equals("") && !pw.equals("")) {
+
+                    LoginManager.addCredentials(un, new Account(name, email, un, pw, acctType));
+                    startActivity(new Intent(RegistrationActivity.this, WelcomeActivity.class));
+
+                }
             }
         });
 
