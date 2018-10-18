@@ -37,6 +37,6 @@ public class CSVReader {
     }
 
     public int cols() {
-        return 0;
+        return data.get(0).length;
     }
 }
