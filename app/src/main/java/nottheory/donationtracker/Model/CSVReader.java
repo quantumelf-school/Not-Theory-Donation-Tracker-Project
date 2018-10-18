@@ -5,8 +5,6 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-import nottheory.donationtracker.R;
-
 public class CSVReader {
     private ArrayList<String[]> data;
     
