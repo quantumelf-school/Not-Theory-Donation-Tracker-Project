@@ -7,13 +7,13 @@ import nottheory.donationtracker.R;
 public class CSVReader {
     private ArrayList<String[]> data;
     
-    public CSVReader() throws IOException {
+    public CSVReader(InputStream is) throws IOException {
         data = new ArrayList<String[]>();
-        readFile();
+        readFile(is);
     }
     
-    public void readFile() throws IOException {
-        InputStream inputStream = getResources().openRawResource(R.raw.sample);
+    public void readFile(InputStream is) throws IOException {
+        InputStream inputStream = is;
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
         
         String line;
