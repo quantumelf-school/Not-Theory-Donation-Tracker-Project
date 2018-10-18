@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.view.View;
 import android.view.LayoutInflater;
 import android.widget.TextView;
+import android.support.v7.widget.LinearLayoutManager;
 
 import nottheory.donationtracker.R;
 
@@ -33,6 +34,7 @@ public class LocationListActivity extends AppCompatActivity {
                 locationArray[i - 1] = reader.getData(i, 1);
             }
             locationList.setAdapter(new LocationAdapter(this, locationArray));
+            locationList.setLayoutManager(new LinearLayoutManager(this));
         } catch(IOException e) {
             System.out.println("IOException, csv file cannot be read");
             return;
