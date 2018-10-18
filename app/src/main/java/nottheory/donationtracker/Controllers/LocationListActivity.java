@@ -1,4 +1,7 @@
 package nottheory.donationtracker.Controllers;
+package nottheory.donationtracker.Model.CSVReader.*;
+import java.io.InputStream;
+import nottheory.donationtracker.R;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,5 +13,18 @@ public class LocationListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_list);
+    }
+
+    protected void pushData() {
+        InputStream inputStream = getResources().openRawResource(R.raw.sample);
+        try {
+            CSVReader acsvreader = new CSVReader(inputStream);
+            while () {
+
+            }
+        } catch {
+            return;
+        }
+
     }
 }
