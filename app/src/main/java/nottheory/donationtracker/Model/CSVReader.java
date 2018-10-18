@@ -1,23 +1,22 @@
-import java.io.*;
+package nottheory.donationtracker.Model;
+
 import java.util.ArrayList;
 import java.io.InputStream;
 import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-
-import nottheory.donationtracker.R;
 
 public class CSVReader {
     private ArrayList<String[]> data;
     
-    public CSVReader() throws IOException {
+    public CSVReader(InputStream is) throws IOException {
         data = new ArrayList<String[]>();
-        readFile();
+        readFile(is);
     }
     
-    public void readFile() throws IOException {
-        InputStream inputStream = getResources().openRawResource(R.raw.sample);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+    public void readFile(InputStream is) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
         
         String line;
         while ((line = reader.readLine()) != null) {
