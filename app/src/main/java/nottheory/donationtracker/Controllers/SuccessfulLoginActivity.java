@@ -17,7 +17,7 @@ public class SuccessfulLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_successful_login);
-        logoutButton = findViewById(R.id.sucessfullogin_button);
+        logoutButton = findViewById(R.id.sucessfullogin_logout_button);
 
         logoutButton.setOnClickListener(new OnClickListener() {
             @Override
