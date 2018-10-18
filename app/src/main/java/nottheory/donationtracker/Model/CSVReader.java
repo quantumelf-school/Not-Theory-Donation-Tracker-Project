@@ -35,4 +35,8 @@ public class CSVReader {
     public int size() {
         return data.size() - 1;
     }
+
+    public int cols() {
+        return data.get(0).length;
+    }
 }
