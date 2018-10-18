@@ -1,9 +1,10 @@
 package nottheory.donationtracker.Model;
 import java.util.ArrayList;
+import nottheory.donationtracker.Model.Donation;
 
 public class Location {
     private String name, address, city, state, type, phone, website, zipcode, latitude, longitude;
-    private ArrayList<Donation> inventory = new ArrayList();
+    private ArrayList<Donation> inventory = new ArrayList<>();
 
     public Location(String name, String latitude, String longitude, String address, String city, String state, String zipcode, String type, String phone, String website) {
         this.name = name;
@@ -21,6 +22,27 @@ public class Location {
         this(reader.getData(row,1), reader.getData(row,2), reader.getData(row,3), reader.getData(row,4)
                 , reader.getData(row,5), reader.getData(row,6), reader.getData(row,7), reader.getData(row,8), reader.getData(row,9), reader.getData(row,10));
     }
+    public void addDonation(Donation d) {
+        inventory.add(d);
+    }
+    public void removeDonation(Donation d) {
+        inventory.remove(d);
+    }
+    public String getName(){
+        return name;
+    }
+    public ArrayList<String> getNames() {
+        ArrayList<String> ret = new ArrayList<>();
+        for(Donation d : inventory){
+            ret.add(d.getName());
+        }
+        return ret;
+    }
+
+    public ArrayList<Donation> getDonations() {
+        return inventory;
+    }
+
     public String toString() {
         String text = "";
         text += "Name: " + name + "\n";
