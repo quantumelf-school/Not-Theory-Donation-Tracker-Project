@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.view.View;
 import android.view.LayoutInflater;
+import android.widget.TextView;
 
 import nottheory.donationtracker.R;
 
@@ -42,9 +43,9 @@ public class LocationListActivity extends AppCompatActivity {
         private String[] locations;
         private Context context;
         public class LocationViewHolder extends RecyclerView.ViewHolder {
-            private Button location;
+            public TextView location;
 
-            public LocationViewHolder(Button location) {
+            public LocationViewHolder(TextView location) {
                 super(location);
                 this.location = location;
             }
@@ -56,8 +57,8 @@ public class LocationListActivity extends AppCompatActivity {
         }
 
         public LocationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            Button button =(Button) LayoutInflater.from(context).inflate(R.layout.location_recyclerview_row, parent, false);
-            return new LocationViewHolder(button);
+            TextView view = (TextView) LayoutInflater.from(context).inflate(R.layout.location_recyclerview_row, parent, false);
+            return new LocationViewHolder(view);
         }
 
         public void onBindViewHolder(LocationViewHolder viewHolder, int position) {
