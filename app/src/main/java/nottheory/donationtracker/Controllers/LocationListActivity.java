@@ -16,7 +16,7 @@ public class LocationListActivity extends AppCompatActivity {
     }
 
     protected void pushData() {
-        InputStream inputStream = getResources().openRawResource(R.raw.sample);
+        InputStream inputStream = getResources().openRawResource(R.raw.locationdata);
         try {
             CSVReader acsvreader = new CSVReader(inputStream);
             while () {

@@ -21,21 +21,26 @@ public class LocationInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_info);
         locationText = findViewById(R.id.locationInfoDisplay);
-        CSVReader reader = new CSVReader(getResources().openRawResource(R.raw.LocationData.csv));
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        CSVReader reader;
+        try {
+            reader = new CSVReader(getResources().openRawResource(R.raw.locationdata));
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
 
-        String text = "";//append to txt
-        int i = 1; //use the row number given by the recycler view
-        for(int j = 1; j < reader.cols(); j++) { //iterate cols
-            text += reader.getData(i,j);
-            text += " ";
+            String text = "";//append to txt
+            int i = 1; //use the row number given by the recycler view
+            for(int j = 1; j < reader.cols(); j++) { //iterate cols
+                text += reader.getData(i,j);
+                text += " ";
+            }
+            text += "\n";
+
+
+            locationText.setText(text);
+            locationText.setVisibility(View.VISIBLE);
+        } catch(IOException e) {
+            System.out.println("IOException. The .csv file could not be read");
         }
-        text += "\n";
-
-
-        locationText.setText(text);
-        locationText.setVisibility(View.VISIBLE);
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
