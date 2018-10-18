@@ -24,8 +24,8 @@ public class LocationInfoActivity extends AppCompatActivity {
         CSVReader reader = new CSVReader(getResources().openRawResource(R.raw.LocationData.csv));
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        String text = "";//append to txt
 
+        String text = "";//append to txt
         int i = 1; //use the row number given by the recycler view
         for(int j = 1; j < reader.cols() + 1; j++) { //iterate cols
             text += reader.getData(i,j);
@@ -36,14 +36,14 @@ public class LocationInfoActivity extends AppCompatActivity {
 
         locationText.setText(text);
         locationText.setVisibility(View.VISIBLE);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
     }
 
