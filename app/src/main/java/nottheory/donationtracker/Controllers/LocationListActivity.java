@@ -27,8 +27,8 @@ public class LocationListActivity extends AppCompatActivity {
         try{
             CSVReader reader = new CSVReader(getResources().openRawResource(R.raw.locationdata));
             locationList = findViewById(R.id.locationList);
-            String[] locationArray = new String[reader.size() - 1];
-            for (int i = 1; i < reader.size() + 1; i++) {
+            String[] locationArray = new String[reader.size()];
+            for (int i = 1; i <= reader.size(); i++) {
                 locationArray[i - 1] = reader.getData(i, 1);
             }
             locationList.setAdapter(new LocationAdapter(this, locationArray));
