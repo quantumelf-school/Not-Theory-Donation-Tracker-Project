@@ -1,3 +1,4 @@
+package nottheory.donationtracker.Model;
 import java.io.*;
 import java.util.ArrayList;
 import java.nio.charset.StandardCharsets;
