@@ -1,5 +1,5 @@
 package nottheory.donationtracker.Controllers;
-package nottheory.donationtracker.Model.CSVReader.*;
+import nottheory.donationtracker.Model.CSVReader;
 import java.io.InputStream;
 import nottheory.donationtracker.R;
 
