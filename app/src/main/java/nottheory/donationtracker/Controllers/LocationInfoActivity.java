@@ -27,7 +27,7 @@ public class LocationInfoActivity extends AppCompatActivity {
 
         String text = "";//append to txt
         int i = 1; //use the row number given by the recycler view
-        for(int j = 1; j < reader.cols() + 1; j++) { //iterate cols
+        for(int j = 1; j < reader.cols(); j++) { //iterate cols
             text += reader.getData(i,j);
             text += " ";
         }
