@@ -6,6 +6,7 @@ import java.io.InputStream;
 import nottheory.donationtracker.R;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.view.View;
 import android.view.LayoutInflater;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
 import android.support.v7.widget.LinearLayoutManager;
 
 import nottheory.donationtracker.R;
@@ -21,11 +22,21 @@ import nottheory.donationtracker.R;
 public class LocationListActivity extends AppCompatActivity {
 
     private RecyclerView locationList;
+    private Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_list);
+
+        backButton = findViewById(R.id.locationlist_back_button);
+        backButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LocationListActivity.this, SuccessfulLoginActivity.class));
+            }
+        });
+
         try{
             CSVReader reader = new CSVReader(getResources().openRawResource(R.raw.locationdata));
             locationList = findViewById(R.id.locationList);
@@ -63,8 +74,16 @@ public class LocationListActivity extends AppCompatActivity {
             return new LocationViewHolder(view);
         }
 
-        public void onBindViewHolder(LocationViewHolder viewHolder, int position) {
+        public void onBindViewHolder(LocationViewHolder viewHolder, final int position) {
             viewHolder.location.setText(locations[position]);
+            viewHolder.location.setOnClickListener(new OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   Intent intent = new Intent(LocationListActivity.this, LocationInfoActivity.class);
+                   intent.putExtra("pos", position + 1);//+1 b/c array has position 0 is the first non key row
+                   startActivity(intent);
+                }
+            });
         }
 
         public int getItemCount() {

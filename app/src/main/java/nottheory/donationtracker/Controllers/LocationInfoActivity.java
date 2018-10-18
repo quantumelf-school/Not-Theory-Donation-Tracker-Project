@@ -1,12 +1,13 @@
 package nottheory.donationtracker.Controllers;
 
 import java.io.*;
+
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.view.View.OnClickListener;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import nottheory.donationtracker.Model.CSVReader;
 
@@ -15,25 +16,34 @@ import nottheory.donationtracker.R;
 public class LocationInfoActivity extends AppCompatActivity {
 
     private TextView locationText;
+    private Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_info);
-        locationText = findViewById(R.id.locationInfoDisplay);
+
+        backButton = findViewById(R.id.locationinfo_back_button);
+        backButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LocationInfoActivity.this, LocationListActivity.class));
+            }
+        });
+
+        locationText = findViewById(R.id.locationinfo_info_text);
         CSVReader reader;
         try {
             reader = new CSVReader(getResources().openRawResource(R.raw.locationdata));
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
 
             String text = "";//append to txt
-            int i = 1; //use the row number given by the recycler view
+            int i = getIntent().getIntExtra("pos", 1); //use the row number given by the recycler view
             for(int j = 1; j < reader.cols(); j++) { //iterate cols
+                text += reader.getData(0, j);
+                text += ": ";
                 text += reader.getData(i,j);
-                text += " ";
+                text += "\n";
             }
-            text += "\n";
 
 
             locationText.setText(text);
