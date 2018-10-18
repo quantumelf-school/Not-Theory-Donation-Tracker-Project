@@ -1,5 +1,7 @@
 package nottheory.donationtracker.Controllers;
 import nottheory.donationtracker.Model.CSVReader;
+
+import java.io.IOException;
 import java.io.InputStream;
 import nottheory.donationtracker.R;
 
@@ -22,8 +24,8 @@ public class LocationListActivity extends AppCompatActivity {
             while () {
 
             }
-        } catch {
-            return;
+        } catch(IOException e){
+            System.out.println("IOException. .csv file could not be read");
         }
 
     }
