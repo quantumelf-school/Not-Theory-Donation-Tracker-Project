@@ -25,13 +25,14 @@ public class LocationInfoActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         String text = "";//append to txt
-        for(int i = 1; i < reader.size() + 1; i++) { //iterate rows
-            for(int j = 1; j < reader.cols() + 1; j++) { //iterate cols
-                text += reader.getData(i,j);
-                text += " ";
-            }
-            text += "\n";
+
+        int i = 1; //use the row number given by the recycler view
+        for(int j = 1; j < reader.cols() + 1; j++) { //iterate cols
+            text += reader.getData(i,j);
+            text += " ";
         }
+        text += "\n";
+
 
         locationText.setText(text);
         locationText.setVisibility(View.VISIBLE);
