@@ -12,17 +12,26 @@ import nottheory.donationtracker.R;
 public class SuccessfulLoginActivity extends AppCompatActivity {
 
     Button logoutButton;
+    Button importButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_successful_login);
         logoutButton = findViewById(R.id.sucessfullogin_logout_button);
+        importButton = findViewById(R.id.successfullogin_import_button);
 
         logoutButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(SuccessfulLoginActivity.this, WelcomeActivity.class));
+            }
+        });
+
+        importButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(SuccessfulLoginActivity.this, LocationListActivity.class));
             }
         });
     }
