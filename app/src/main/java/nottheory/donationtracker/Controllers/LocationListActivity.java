@@ -45,11 +45,11 @@ public class LocationListActivity extends AppCompatActivity {
         private String[] locations;
         private Context context;
         public class LocationViewHolder extends RecyclerView.ViewHolder {
-            public TextView location;
+            public Button location;
 
-            public LocationViewHolder(TextView location) {
-                super(location);
-                this.location = location;
+            public LocationViewHolder(View view) {
+                super(view);
+                location = view.findViewById(R.id.location_row_button);
             }
         }
 
@@ -59,7 +59,7 @@ public class LocationListActivity extends AppCompatActivity {
         }
 
         public LocationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            TextView view = (TextView) LayoutInflater.from(context).inflate(R.layout.location_recyclerview_row, parent, false);
+            View view = LayoutInflater.from(context).inflate(R.layout.location_recyclerview_row, parent, false);
             return new LocationViewHolder(view);
         }
 
