@@ -1,9 +1,9 @@
 package nottheory.donationtracker.Model;
-
-
+import java.util.ArrayList;
 
 public class Location {
     private String name, address, city, state, type, phone, website, zipcode, latitude, longitude;
+    private ArrayList<Donation> inventory = new ArrayList();
 
     public Location(String name, String latitude, String longitude, String address, String city, String state, String zipcode, String type, String phone, String website) {
         this.name = name;
