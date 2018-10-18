@@ -1,3 +1,5 @@
+package nottheory.donationtracker.Model;
+
 import java.util.ArrayList;
 import java.io.InputStream;
 import java.io.BufferedReader;
