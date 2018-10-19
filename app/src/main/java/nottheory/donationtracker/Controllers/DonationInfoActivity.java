@@ -4,6 +4,7 @@ import nottheory.donationtracker.R;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+
 public class DonationInfoActivity extends AppCompatActivity {
 
     @Override
