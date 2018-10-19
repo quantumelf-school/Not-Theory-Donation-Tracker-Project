@@ -12,7 +12,7 @@ public class LocationCollection {
             locations.add(new Location(reader, i));
         }
     }
-    
+
     public void addLocation(Location l) {
         locations.add(l);
     }
@@ -27,6 +27,11 @@ public class LocationCollection {
         }
         return ret;
     }
+
+    public int getNumLocations() {
+        return locations.size();
+    }
+
 
     public ArrayList<Location> getLocations() {
         return locations;

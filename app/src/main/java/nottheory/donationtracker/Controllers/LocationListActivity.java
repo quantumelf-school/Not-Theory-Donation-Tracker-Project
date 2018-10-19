@@ -3,6 +3,8 @@ import nottheory.donationtracker.Model.CSVReader;
 
 import java.io.IOException;
 import java.io.InputStream;
+
+import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.R;
 
 import android.content.Context;
@@ -39,11 +41,9 @@ public class LocationListActivity extends AppCompatActivity {
 
         try{
             CSVReader reader = new CSVReader(getResources().openRawResource(R.raw.locationdata));
+            LocationCollection locations = new LocationCollection(reader);
             locationList = findViewById(R.id.locationList);
-            String[] locationArray = new String[reader.size()];
-            for (int i = 1; i <= reader.size(); i++) {
-                locationArray[i - 1] = reader.getData(i, 1);
-            }
+            String[] locationArray = locations.getLocationNames().toArray(new String[locations.getNumLocations()]);
             locationList.setAdapter(new LocationAdapter(this, locationArray));
             locationList.setLayoutManager(new LinearLayoutManager(this));
         } catch(IOException e) {
