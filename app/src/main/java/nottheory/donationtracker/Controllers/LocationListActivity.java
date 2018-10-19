@@ -19,7 +19,6 @@ import android.view.LayoutInflater;
 import android.view.View.OnClickListener;
 import android.support.v7.widget.LinearLayoutManager;
 
-import nottheory.donationtracker.R;
 
 public class LocationListActivity extends AppCompatActivity {
 
