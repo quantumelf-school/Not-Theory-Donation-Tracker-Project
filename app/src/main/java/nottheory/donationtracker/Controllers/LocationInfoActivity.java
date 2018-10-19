@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import nottheory.donationtracker.Model.CSVReader;
 
+import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.R;
 
 public class LocationInfoActivity extends AppCompatActivity {
@@ -35,16 +36,8 @@ public class LocationInfoActivity extends AppCompatActivity {
         CSVReader reader;
         try {
             reader = new CSVReader(getResources().openRawResource(R.raw.locationdata));
-
-            String text = "";//append to txt
-            int i = getIntent().getIntExtra("pos", 1); //use the row number given by the recycler view
-            for(int j = 1; j < reader.cols(); j++) { //iterate cols
-                text += reader.getData(0, j);
-                text += ": ";
-                text += reader.getData(i,j);
-                text += "\n";
-            }
-
+            LocationCollection locations = new LocationCollection(reader);
+            String text = locations.getLocationFromRow(getIntent().getIntExtra("pos", 1)).toString();
 
             locationText.setText(text);
             locationText.setVisibility(View.VISIBLE);
