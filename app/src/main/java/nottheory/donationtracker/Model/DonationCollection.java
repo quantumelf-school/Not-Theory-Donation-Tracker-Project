@@ -40,6 +40,26 @@ public class DonationCollection {
         return ret;
     }
 
+    public ArrayList<Donation> getDonationsByCategory(String category) { //replace string with enum
+        ArrayList<Donation> ret = new ArrayList<>();
+        for(Donation d : donations){
+            if(d.getCategory().equals(category)) {
+                ret.add(d);
+            }
+        }
+        return ret;
+    }
+
+    public ArrayList<Donation> getDonationsByName(String name) { //replace string with enum
+        ArrayList<Donation> ret = new ArrayList<>();
+        for(Donation d : donations){
+            if(d.getName().equals(name)) {
+                ret.add(d);
+            }
+        }
+        return ret;
+    }
+
     public int getNumDonations() {
         return donations.size();
     }

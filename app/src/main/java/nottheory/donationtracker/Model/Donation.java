@@ -18,7 +18,8 @@ public class Donation {
     public String getName(){
         return shortDescript;
     }
-    public String toString(){
+    public String getCategory() { return category;}
+    public String toString() {
         String text = "";
         text += "Name: " + shortDescript + "\n";
         text += "Location: " + location.getName() + "\n";
@@ -29,6 +30,5 @@ public class Donation {
         text += "Comments (Optional): " + comments + "\n";
         return text;
     }
-
 
 }
