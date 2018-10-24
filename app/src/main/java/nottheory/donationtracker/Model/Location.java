@@ -4,7 +4,8 @@ import nottheory.donationtracker.Model.Donation;
 
 public class Location {
     private String name, address, city, state, type, phone, website, zipcode, latitude, longitude;
-    private ArrayList<Donation> inventory = new ArrayList<>();
+    private DonationCollection inventory = new DonationCollection();
+    //private ArrayList<Donation> inventory = new ArrayList<>();
     private int row = 0;
 
     public Location(String name, String latitude, String longitude, String address, String city, String state, String zipcode, String type, String phone, String website) {
@@ -25,10 +26,10 @@ public class Location {
         this.row = row;
     }
     public void addDonation(Donation d) {
-        inventory.add(d);
+        inventory.addDonation(d);
     }
     public void removeDonation(Donation d) {
-        inventory.remove(d);
+        inventory.removeDonation(d);
     }
     public String getName(){
         return name;
@@ -37,16 +38,16 @@ public class Location {
         this.row = row;
     }
     public ArrayList<String> getNames() {
-        ArrayList<String> ret = new ArrayList<>();
-        for(Donation d : inventory){
-            ret.add(d.getName());
-        }
+        ArrayList<String> ret = inventory.getDonationNames();
         return ret;
     }
     public int getRow(){
         return row;
     }
     public ArrayList<Donation> getDonations() {
+        return inventory.getDonations();
+    }
+    public DonationCollection getDonationCollection() {
         return inventory;
     }
 

@@ -5,9 +5,11 @@ public class LocationCollection {
     private ArrayList<Location> locations = new ArrayList<>();
     private static int nextRow; //the id of a location is defined by its row in the .csv file or the order in which it was added
 
+
     public LocationCollection() {
         //default method instantiates empty locations list
     }
+
     public LocationCollection(CSVReader reader){
         for(int i = 1; i <= reader.size(); i++) {
             locations.add(new Location(reader, i));
@@ -43,7 +45,13 @@ public class LocationCollection {
     public int getNumLocations() {
         return locations.size();
     }
-
+    public DonationCollection getAllDonations() {
+        DonationCollection ret = new DonationCollection();
+        for(Location l: locations) {
+            ret.addDonations(l.getDonationCollection());
+        }
+        return ret;
+    }
 
     public ArrayList<Location> getLocations() {
         return locations;
