@@ -7,7 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.view.View.OnClickListener;
 
+import java.io.IOException;
+
+import nottheory.donationtracker.Model.CSVReader;
+import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.R;
+import nottheory.donationtracker.Model.LoginManager;
 
 public class WelcomeActivity extends AppCompatActivity {
     private Button loginButton, registerButton;
@@ -18,6 +23,13 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
         loginButton = findViewById(R.id.welcome_loginbutton);
         registerButton = findViewById(R.id.welcome_registerbutton);
+        try {
+            CSVReader reader = new CSVReader(getResources().openRawResource(R.raw.locationdata));
+            LoginManager.locations = new LocationCollection(reader);
+        } catch(IOException e) {
+            System.out.println("IOException, csv file cannot be read");
+            return;
+        }
 
         loginButton.setOnClickListener(new OnClickListener() {
             @Override

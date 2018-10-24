@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.view.View.OnClickListener;
 
+import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.R;
 
 public class SuccessfulLoginActivity extends AppCompatActivity {
@@ -24,6 +25,7 @@ public class SuccessfulLoginActivity extends AppCompatActivity {
         logoutButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                LoginManager.logoutAccount();
                 startActivity(new Intent(SuccessfulLoginActivity.this, WelcomeActivity.class));
             }
         });

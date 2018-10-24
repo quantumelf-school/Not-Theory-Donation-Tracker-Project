@@ -42,10 +42,10 @@
         android:id="@+id/additem_time"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="180dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="253dp"
         android:ems="10"
         android:hint="Date/Time"
         android:inputType="datetime"
@@ -98,34 +98,31 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/register_loginbutton" />
 
-    <EditText
-        android:id="@+id/additem_cattext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="42dp"
-        android:layout_marginTop="18dp"
-        android:layout_marginBottom="18dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Category"
-        app:layout_constraintBottom_toTopOf="@+id/additem_value"
-        app:layout_constraintEnd_toStartOf="@+id/additem_catspinner"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/additem_time"
-        app:layout_constraintVertical_bias="1.0" />
-
     <Spinner
         android:id="@+id/additem_catspinner"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="14dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/additem_value"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/additem_time"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/additem_time" />
+        app:layout_constraintTop_toBottomOf="@+id/adddonation_category" />
+
+    <EditText
+        android:id="@+id/adddonation_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="127dp"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:text="Category"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/additem_fulldesc" />
 
 </android.support.constraint.ConstraintLayout>

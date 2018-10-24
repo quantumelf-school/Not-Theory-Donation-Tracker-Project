@@ -6,6 +6,8 @@ import java.io.InputStream;
 
 import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.R;
+import nottheory.donationtracker.Controllers.WelcomeActivity;
+import nottheory.donationtracker.Model.LoginManager;
 
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +20,7 @@ import android.view.View;
 import android.view.LayoutInflater;
 import android.view.View.OnClickListener;
 import android.support.v7.widget.LinearLayoutManager;
+
 
 
 public class LocationListActivity extends AppCompatActivity {
@@ -38,17 +41,10 @@ public class LocationListActivity extends AppCompatActivity {
             }
         });
 
-        try{
-            CSVReader reader = new CSVReader(getResources().openRawResource(R.raw.locationdata));
-            LocationCollection locations = new LocationCollection(reader);
-            locationList = findViewById(R.id.locationList);
-            String[] locationArray = locations.getLocationNames().toArray(new String[locations.getNumLocations()]);
-            locationList.setAdapter(new LocationAdapter(this, locationArray));
-            locationList.setLayoutManager(new LinearLayoutManager(this));
-        } catch(IOException e) {
-            System.out.println("IOException, csv file cannot be read");
-            return;
-        }
+        locationList = findViewById(R.id.locationList);
+        String[] locationArray = LoginManager.locations.getLocationNames().toArray(new String[LoginManager.locations.getNumLocations()]);
+        locationList.setAdapter(new LocationAdapter(this, locationArray));
+        locationList.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.LocationViewHolder> {

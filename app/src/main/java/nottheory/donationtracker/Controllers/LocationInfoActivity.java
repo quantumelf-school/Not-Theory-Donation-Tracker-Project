@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import nottheory.donationtracker.Model.CSVReader;
 
+import nottheory.donationtracker.Model.AccountType;
+import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.R;
 
@@ -18,6 +20,7 @@ public class LocationInfoActivity extends AppCompatActivity {
 
     private TextView locationText;
     private Button backButton;
+    private Button donationButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,25 +28,28 @@ public class LocationInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_location_info);
 
         backButton = findViewById(R.id.locationinfo_back_button);
-        backButton.setOnClickListener(new OnClickListener() {
-            @Override
+        backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(LocationInfoActivity.this, LocationListActivity.class));
             }
         });
 
-        locationText = findViewById(R.id.locationinfo_info_text);
-        CSVReader reader;
-        try {
-            reader = new CSVReader(getResources().openRawResource(R.raw.locationdata));
-            LocationCollection locations = new LocationCollection(reader);
-            String text = locations.getLocationFromRow(getIntent().getIntExtra("pos", 1)).toString();
+        donationButton = findViewById(R.id.locationinfo_donation_button);
+        donationButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(LocationInfoActivity.this, DonationListActivity.class));
+            }
+        });
 
-            locationText.setText(text);
-            locationText.setVisibility(View.VISIBLE);
-        } catch(IOException e) {
-            System.out.println("IOException. The .csv file could not be read");
+        if (LoginManager.getCurrAccount().getAcctType().equals(AccountType.values()[1])) {
+            donationButton.setVisibility(View.VISIBLE);
         }
+
+        locationText = findViewById(R.id.locationinfo_info_text);
+        String text = LoginManager.locations.getLocationFromRow(getIntent().getIntExtra("pos", 1)).toString();
+
+        locationText.setText(text);
+        locationText.setVisibility(View.VISIBLE);
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override

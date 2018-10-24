@@ -1,10 +1,8 @@
 package nottheory.donationtracker.Model;
 
 public class Donation {
-    private Location location;
     private String timestamp, shortDescript, longDescript, value, category, comments;
-    public Donation(Location location, String timestamp, String shortDescript, String longDescript, String value, String category, String comments) {
-        this.location = location;
+    public Donation(String timestamp, String shortDescript, String longDescript, String value, String category, String comments) {
         this.timestamp = timestamp;
         this.shortDescript = shortDescript;
         this.longDescript = longDescript;
@@ -12,8 +10,8 @@ public class Donation {
         this.category = category;
         this.comments = comments;
     }
-    public Donation(Location location, String timestamp, String shortDescript, String longDescript, String value, String category) { //optional no comment
-        this(location, timestamp, shortDescript, longDescript, value, category, "");
+    public Donation(String timestamp, String shortDescript, String longDescript, String value, String category) { //optional no comment
+        this(timestamp, shortDescript, longDescript, value, category, "");
     }
     public String getName(){
         return shortDescript;
@@ -21,7 +19,6 @@ public class Donation {
     public String toString(){
         String text = "";
         text += "Name: " + shortDescript + "\n";
-        text += "Location: " + location.getName() + "\n";
         text += "Time Stamp: " + timestamp + "\n";
         text += "Description: " + longDescript + "\n";
         text += "Value: " + value + "\n";
