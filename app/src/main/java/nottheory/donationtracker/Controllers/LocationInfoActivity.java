@@ -41,9 +41,10 @@ public class LocationInfoActivity extends AppCompatActivity {
             }
         });
 
-        if (LoginManager.getCurrAccount().getAcctType().equals(AccountType.values()[1])) {
-            donationButton.setVisibility(View.VISIBLE);
-        }
+        donationButton.setVisibility(View.VISIBLE);
+//        if (LoginManager.getCurrAccount().getAcctType().equals(AccountType.values()[1])) {
+//            donationButton.setVisibility(View.VISIBLE);
+//        }
 
         locationText = findViewById(R.id.locationinfo_info_text);
         String text = LoginManager.locations.getLocationFromRow(getIntent().getIntExtra("pos", 1)).toString();

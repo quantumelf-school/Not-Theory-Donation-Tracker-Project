@@ -1,4 +1,5 @@
 package nottheory.donationtracker.Controllers;
+import nottheory.donationtracker.Model.AccountType;
 import nottheory.donationtracker.Model.CSVReader;
 import nottheory.donationtracker.Model.Donation;
 import nottheory.donationtracker.Model.LocationCollection;
@@ -7,6 +8,7 @@ import nottheory.donationtracker.Model.LoginManager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,13 +26,23 @@ public class DonationListActivity extends AppCompatActivity {
 
 
     private RecyclerView donationList;
+    private EditText searchBar;
+    private Button searchButton;
     private Button backButton;
     private Button addButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donation_list);
-
+        searchBar = findViewById(R.id.donationlist_searchbar);
+        searchButton = findViewById(R.id.donationlist_search_button);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String search = searchBar.getText().toString();
+                //Tyler this is where the code to put the stuff into the recycler view is
+            }
+        });
         backButton = findViewById(R.id.donationlist_back_button);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -38,13 +51,14 @@ public class DonationListActivity extends AppCompatActivity {
             }
         });
         addButton = findViewById(R.id.donationlist_add_button);
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(DonationListActivity.this, AddDonationActivity.class));
-            }
-        });
-
+        if(LoginManager.getCurrAccount().getAcctType().equals(AccountType.values()[1])) {
+            addButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(DonationListActivity.this, AddDonationActivity.class));
+                }
+            });
+        }
         donationList = findViewById(R.id.donationList);
         ArrayList<Donation> donationArray = LoginManager.locations.getLocationFromRow(getIntent().getIntExtra("pos", 1)).getDonations();
         donationList.setAdapter(new DonationListActivity.DonationAdapter(this, donationArray.toArray()));
