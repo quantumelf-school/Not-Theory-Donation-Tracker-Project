@@ -16,8 +16,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -30,11 +32,13 @@ public class DonationListActivity extends AppCompatActivity {
     private Button searchButton;
     private Button backButton;
     private Button addButton;
+    private Spinner searchCriteria;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donation_list);
-        searchBar = findViewById(R.id.donationlist_searchbar);
+        searchBar = findViewById(R.id.donationlist_searchbar_input);
         searchButton = findViewById(R.id.donationlist_search_button);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +47,11 @@ public class DonationListActivity extends AppCompatActivity {
                 //Tyler this is where the code to put the stuff into the recycler view is
             }
         });
+        searchCriteria = findViewById(R.id.donationlist_search_criteria);
+        String[] searchCrits = {"Name", "Category"};
+
+        searchCriteria.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, searchCrits));
+
         backButton = findViewById(R.id.donationlist_back_button);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override

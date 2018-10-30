@@ -15,12 +15,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.view.View;
 import android.view.LayoutInflater;
 import android.view.View.OnClickListener;
 import android.support.v7.widget.LinearLayoutManager;
-
+import android.widget.Spinner;
 
 
 public class LocationListActivity extends AppCompatActivity {
@@ -28,6 +29,7 @@ public class LocationListActivity extends AppCompatActivity {
     private RecyclerView locationList;
     private Button backButton;
     private Button searchButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +48,11 @@ public class LocationListActivity extends AppCompatActivity {
         searchButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LocationListActivity.this, DonationSearchActivity.class));
+                startActivity(new Intent(LocationListActivity.this, DonationListActivity.class));
             }
         });
+
+
 
         locationList = findViewById(R.id.locationList);
         String[] locationArray = LoginManager.locations.getLocationNames().toArray(new String[LoginManager.locations.getNumLocations()]);

@@ -35,13 +35,14 @@ public class LocationInfoActivity extends AppCompatActivity {
         });
 
         donationButton = findViewById(R.id.locationinfo_donation_button);
+        donationButton.setVisibility(View.VISIBLE);
         donationButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 startActivity(new Intent(LocationInfoActivity.this, DonationListActivity.class));
             }
         });
 
-        donationButton.setVisibility(View.VISIBLE);
+
 //        if (LoginManager.getCurrAccount().getAcctType().equals(AccountType.values()[1])) {
 //            donationButton.setVisibility(View.VISIBLE);
 //        }

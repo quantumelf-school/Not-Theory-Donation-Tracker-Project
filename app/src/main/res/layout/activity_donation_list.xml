@@ -7,23 +7,38 @@
     tools:context=".Controllers.DonationListActivity"
     tools:layout_editor_absoluteY="81dp">
 
+    <Spinner
+        android:id="@+id/donationlist_search_criteria"
+        android:layout_width="326dp"
+        android:layout_height="20dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/donationlist_search_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/donationlist_searchbar" />
+
     <Button
         android:id="@+id/donationlist_search_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="44dp"
         android:layout_weight="1"
         android:text="Search"
         app:layout_constraintTop_toBottomOf="@+id/donationlist_searchbar"
-        tools:layout_editor_absoluteX="8dp" />
+        tools:layout_editor_absoluteX="0dp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/donationList"
-        android:layout_width="338dp"
-        android:layout_height="267dp"
+        android:layout_width="332dp"
+        android:layout_height="220dp"
+        android:layout_marginBottom="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/donationlist_add_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/donationlist_search_button" />
@@ -67,6 +82,7 @@
         tools:layout_editor_absoluteX="8dp">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/donationlist_searchbar_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="search" />
