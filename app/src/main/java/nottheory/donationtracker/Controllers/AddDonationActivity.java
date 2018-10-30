@@ -37,6 +37,7 @@ public class AddDonationActivity extends AppCompatActivity {
         category = findViewById(R.id.additem_catspinner);
         value = findViewById(R.id.additem_value);
 
+//        TODO: remove this hardcoded garbage cat. list
         ArrayList<String> categoryList = new ArrayList<String>();
         categoryList.add("monetary");
         categoryList.add("non-monetary");
