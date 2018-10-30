@@ -27,6 +27,7 @@ public class LocationListActivity extends AppCompatActivity {
 
     private RecyclerView locationList;
     private Button backButton;
+    private Button searchButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,14 @@ public class LocationListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LocationListActivity.this, SuccessfulLoginActivity.class));
+            }
+        });
+
+        searchButton = findViewById(R.id.locationlist_search_button);
+        searchButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LocationListActivity.this, DonationSearchActivity.class));
             }
         });
 
