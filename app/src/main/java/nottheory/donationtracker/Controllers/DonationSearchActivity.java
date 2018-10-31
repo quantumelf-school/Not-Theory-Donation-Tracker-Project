@@ -145,7 +145,7 @@ public class DonationSearchActivity extends AppCompatActivity {
         } else {
             String locationString = locSpinner.getSelectedItem().toString();
             LocationCollection locationCol = new LocationCollection(locationList);
-            Location location = locationCol.getLocationFromName(locationString);
+            Location location = locationCol.getLocationByName(locationString);
             if (location != null) {
                 donationList.addAll(location.getDonations());
             }

@@ -41,7 +41,7 @@ public class LocationCollection {
         return null;
     }
 
-    public Location getLocationFromName(String name) {
+    public Location getLocationByName(String name) {
         for (Location l : locations) {
             if (l.getName().equals(name)) {
                 return l;
