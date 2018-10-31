@@ -19,6 +19,8 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import nottheory.donationtracker.Model.Donation;
+import nottheory.donationtracker.Model.DonationCollection;
+import nottheory.donationtracker.Model.Location;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.R;
 
@@ -58,6 +60,7 @@ public class DonationSearchActivity extends AppCompatActivity {
         locSpinner = findViewById(R.id.search_location_spinner);
         ArrayList<String> locationList = new ArrayList<>();
         locationList.add("All");
+//        add all locations
         locSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, locationList));
 
         catSpinner = findViewById(R.id.search_cat_spinner);
@@ -132,6 +135,24 @@ public class DonationSearchActivity extends AppCompatActivity {
     }
 
     private void doSearch() {
-//        some stuff involving setting the recyclerview
+        ArrayList<Location> locationList  = new ArrayList<>();
+//        get all locations
+        ArrayList<Donation> donationList = new ArrayList<>();
+        if ((locSpinner.getSelectedItem().toString() == "All") || (locSpinner.getSelectedItem().toString() == "")) {
+            for (Location l : locationList) {
+                donationList.addAll(l.getDonations());
+            }
+        } else {
+            Location location = null;
+//            get location from dropdown
+            donationList.addAll(location.getDonations());
+        }
+        DonationCollection donations = new DonationCollection(donationList);
+        if (searchByCat.isChecked()) {
+            donationList = donations.getDonationsByCategory(catSpinner.getSelectedItem().toString());
+        } else {
+            donationList = donations.getDonationsByName(searchBox.getText().toString());
+        }
+        donationSearchList.setAdapter(new DonationSearchActivity.DonationAdapter(this, donationList.toArray()));
     }
 }
