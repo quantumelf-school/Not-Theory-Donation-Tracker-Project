@@ -154,7 +154,7 @@ public class DonationSearchActivity extends AppCompatActivity {
         if (searchByCat.isChecked()) {
             donationList = donations.getDonationsByCategory(catSpinner.getSelectedItem().toString());
         } else {
-            donationList = donations.getDonationsByName(searchBox.getText().toString());
+            donationList = donations.getDonationsBySimilarName(searchBox.getText().toString());
         }
         donationSearchList.setAdapter(new DonationSearchActivity.DonationAdapter(this, donationList.toArray()));
     }

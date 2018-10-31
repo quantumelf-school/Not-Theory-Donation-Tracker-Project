@@ -50,10 +50,26 @@ public class DonationCollection {
         return ret;
     }
 
+//    returns list of donations by name (NOT case-sensitive)
     public ArrayList<Donation> getDonationsByName(String name) { //replace string with enum
         ArrayList<Donation> ret = new ArrayList<>();
+        name = name.toUpperCase();
         for(Donation d : donations){
-            if(d.getName().equals(name)) {
+            String checkName = d.getName().toUpperCase();
+            if(checkName.equals(name)) {
+                ret.add(d);
+            }
+        }
+        return ret;
+    }
+
+//    returns list of donations where the name contains given string
+    public ArrayList<Donation> getDonationsBySimilarName(String name) { //replace string with enum
+        ArrayList<Donation> ret = new ArrayList<>();
+        name = name.toUpperCase();
+        for(Donation d : donations){
+            String checkName = d.getName().toUpperCase();
+            if(name.contains(checkName)) {
                 ret.add(d);
             }
         }
