@@ -27,14 +27,38 @@ public class DonationSearchActivity extends AppCompatActivity {
     private TextView searchBox;
     private RecyclerView donationSearchList;
     private Spinner catSpinner;
+    private Spinner locSpinner;
+    private Button searchButton;
+    private Button backButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donation_search);
 
+        searchButton = findViewById(R.id.search_button);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doSearch();
+            }
+        });
+
+        backButton = findViewById(R.id.search_back_button);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         searchBox = findViewById(R.id.search_entry);
         searchBox.setVisibility(View.VISIBLE);
+
+        locSpinner = findViewById(R.id.search_location_spinner);
+        ArrayList<String> locationList = new ArrayList<>();
+        locationList.add("All");
+        locSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, locationList));
 
         catSpinner = findViewById(R.id.search_cat_spinner);
 //        TODO: remove this hardcoded cat. list
@@ -105,5 +129,9 @@ public class DonationSearchActivity extends AppCompatActivity {
         public int getItemCount() {
             return donations.length;
         }
+    }
+
+    private void doSearch() {
+//        some stuff involving setting the recyclerview
     }
 }
