@@ -17,6 +17,12 @@ public class LocationCollection {
         }
     }
 
+    public LocationCollection(ArrayList<Location> list) {
+        for (Location l : list) {
+            locations.add(l);
+        }
+    }
+
     public void addLocation(Location l) {
         locations.add(l);
         l.setRow(nextRow);
@@ -34,6 +40,16 @@ public class LocationCollection {
         }
         return null;
     }
+
+    public Location getLocationFromName(String name) {
+        for (Location l : locations) {
+            if (l.getName().equals(name)) {
+                return l;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<String> getLocationNames() {
         ArrayList<String> ret = new ArrayList<>();
         for(Location l : locations){
