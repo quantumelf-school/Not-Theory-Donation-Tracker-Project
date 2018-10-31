@@ -10,26 +10,26 @@
         android:id="@+id/search_switch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="150dp"
+        android:layout_marginStart="111dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="152dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="111dp"
+        android:layout_marginBottom="16dp"
         android:text="Search By Category"
         app:layout_constraintBottom_toTopOf="@+id/search_entry"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/search_location_spinner" />
 
     <AutoCompleteTextView
         android:id="@+id/search_entry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="93dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="94dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginBottom="12dp"
         android:text="Item Name"
-        app:layout_constraintBottom_toTopOf="@+id/donationSearchList"
+        app:layout_constraintBottom_toTopOf="@+id/search_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_switch" />
@@ -37,27 +37,68 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/donationSearchList"
         android:layout_width="368dp"
-        android:layout_height="384dp"
+        android:layout_height="267dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="7dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="9dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_entry" />
+        app:layout_constraintTop_toBottomOf="@+id/search_button" />
 
     <Spinner
         android:id="@+id/search_cat_spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="93dp"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="94dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="146dp"
+        android:layout_height="34dp"
         android:text="AutoCompleteTextView"
-        app:layout_constraintBottom_toTopOf="@+id/donationSearchList"
+        tools:layout_editor_absoluteX="119dp"
+        tools:layout_editor_absoluteY="109dp"
+        app:layout_constraintBottom_toTopOf="@+id/search_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_switch" />
+
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Search"
+        app:layout_constraintBottom_toTopOf="@+id/donationSearchList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/search_back_button"
+        app:layout_constraintTop_toBottomOf="@+id/search_entry" />
+
+    <Spinner
+        android:id="@+id/search_location_spinner"
+        android:layout_width="182dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/search_switch"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/search_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Back"
+        app:layout_constraintBottom_toTopOf="@+id/donationSearchList"
+        app:layout_constraintEnd_toStartOf="@+id/search_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_entry" />
+
 </android.support.constraint.ConstraintLayout>
