@@ -8,6 +8,7 @@ import nottheory.donationtracker.Model.LoginManager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -33,6 +35,7 @@ public class DonationListActivity extends AppCompatActivity {
     private Button backButton;
     private Button addButton;
     private Spinner searchCriteria;
+    private TextView errorText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,18 +59,31 @@ public class DonationListActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DonationListActivity.this, LocationInfoActivity.class));
+                finish();
+                //startActivity(new Intent(DonationListActivity.this, LocationInfoActivity.class));
             }
         });
         addButton = findViewById(R.id.donationlist_add_button);
-        if(LoginManager.getCurrAccount().getAcctType().equals(AccountType.values()[1])) {
-            addButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+        errorText = findViewById(R.id.donationlist_error_text);
+        errorText.setVisibility(View.INVISIBLE);
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(LoginManager.getCurrAccount().getAcctType().equals(AccountType.values()[1])) {
                     startActivity(new Intent(DonationListActivity.this, AddDonationActivity.class));
+                } else {
+                    errorText.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            errorText.setVisibility(View.INVISIBLE);
+                        }
+                    }, 3000);
                 }
-            });
-        }
+            }
+        });
+
         donationList = findViewById(R.id.donationList);
         ArrayList<Donation> donationArray = LoginManager.locations.getLocationFromRow(getIntent().getIntExtra("pos", 1)).getDonations();
         donationList.setAdapter(new DonationListActivity.DonationAdapter(this, donationArray.toArray()));
