@@ -26,6 +26,7 @@
             android:label="@string/title_activity_location_info"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Controllers.DonationListActivity" />
+        <activity android:name=".Controllers.DonationSearchActivity" />
         <activity android:name=".Controllers.DonationInfoActivity"></activity>
     </application>
 

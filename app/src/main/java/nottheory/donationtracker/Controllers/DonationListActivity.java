@@ -30,30 +30,30 @@ public class DonationListActivity extends AppCompatActivity {
 
 
     private RecyclerView donationList;
-    private EditText searchBar;
-    private Button searchButton;
+//    private EditText searchBar;
+//    private Button searchButton;
     private Button backButton;
     private Button addButton;
-    private Spinner searchCriteria;
+//    private Spinner searchCriteria;
     private TextView errorText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donation_list);
-        searchBar = findViewById(R.id.donationlist_searchbar_input);
-        searchButton = findViewById(R.id.donationlist_search_button);
-        searchButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String search = searchBar.getText().toString();
-                //Tyler this is where the code to put the stuff into the recycler view is
-            }
-        });
-        searchCriteria = findViewById(R.id.donationlist_search_criteria);
-        String[] searchCrits = {"Name", "Category"};
-
-        searchCriteria.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, searchCrits));
+//        searchBar = findViewById(R.id.donationlist_searchbar_input);
+//        searchButton = findViewById(R.id.donationlist_search_button);
+//        searchButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String search = searchBar.getText().toString();
+//                //Tyler this is where the code to put the stuff into the recycler view is
+//            }
+//        });
+//        searchCriteria = findViewById(R.id.donationlist_search_criteria);
+//        String[] searchCrits = {"Name", "Category"};
+//
+//        searchCriteria.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, searchCrits));
 
         backButton = findViewById(R.id.donationlist_back_button);
         backButton.setOnClickListener(new View.OnClickListener() {

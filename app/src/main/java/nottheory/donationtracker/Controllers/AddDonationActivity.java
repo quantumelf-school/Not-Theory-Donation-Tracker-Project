@@ -39,8 +39,12 @@ public class AddDonationActivity extends AppCompatActivity {
 
 //        TODO: remove this hardcoded garbage cat. list
         ArrayList<String> categoryList = new ArrayList<String>();
-        categoryList.add("monetary");
-        categoryList.add("non-monetary");
+        categoryList.add("Clothing");
+        categoryList.add("Hat");
+        categoryList.add("Kitchen");
+        categoryList.add("Electronics");
+        categoryList.add("Household");
+        categoryList.add("Other");
         category.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categoryList));
 
 
