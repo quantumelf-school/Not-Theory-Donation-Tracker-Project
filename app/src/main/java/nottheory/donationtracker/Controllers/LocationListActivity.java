@@ -92,9 +92,9 @@ public class LocationListActivity extends AppCompatActivity {
             viewHolder.location.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Location l = LoginManager.locations.getLocationFromRow(position+1);
+                    Location l = LoginManager.locations.getLocationFromRow(position);
                    Intent intent = new Intent(LocationListActivity.this, LocationInfoActivity.class);
-                   intent.putExtra("pos", position + 1);//+1 b/c array has position 0 is the first non key row
+                   intent.putExtra("pos", position);//+1 b/c array has position 0 is the first non key row
                     intent.putExtra("location", l.getName());
                    startActivity(intent);
                 }

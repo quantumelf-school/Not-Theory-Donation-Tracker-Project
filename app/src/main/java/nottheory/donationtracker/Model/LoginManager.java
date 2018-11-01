@@ -50,8 +50,6 @@ public abstract class LoginManager {
         try {
             this_user = DatabaseConnection.sendRawSQL("SELECT name, username, password, email, accttype FROM Users WHERE username = '" + un + "';");
             String[] user_parts = this_user.substring(2, this_user.length() - 2).split("\', \'");
-            System.out.println(user_parts[4]);
-            System.out.println("--------------------------------------------------------");
             Account this_account = new Account(user_parts[0], user_parts[1], user_parts[2], user_parts[3], AccountType.valueOf(user_parts[4]));
             currUsers.add(this_account);
         } catch (Exception e) {

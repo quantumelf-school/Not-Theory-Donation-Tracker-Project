@@ -22,15 +22,21 @@ public class Location {
         this.longitude = longitude;
         try {
             DatabaseConnection.sendRawSQL("CREATE TABLE IF NOT EXISTS `" + name + " INV` (donation_id INT AUTO_INCREMENT, timestamp TEXT, shortDescript TEXT, longDescript TEXT, value TEXT, category TEXT, comments TEXT, PRIMARY KEY (donation_id))  ENGINE=INNODB;");
-            String locationinventory = DatabaseConnection.sendRawSQL("SELECT timestamp, shortDescript, longDescript, value, category, comments from `" + name + " Inv`");
+            String locationinventory = DatabaseConnection.sendRawSQL("SELECT timestamp, shortDescript, longDescript, value, category, comments FROM `" + name + " INV`");
             if (!locationinventory.equals("")) {
                 String delimiter = "\\),\\(";
                 String[] donation_list = (locationinventory.substring(1, locationinventory.length() - 1)).split(delimiter);
                 for (int i = 0; i < donation_list.length; i++) {
                     String[] donation_parts = donation_list[i].substring(1, donation_list[i].length() - 1).split("', '");
-                    Donation this_donation = new Donation(donation_parts[0], donation_parts[1], donation_parts[2], donation_parts[3],
-                            donation_parts[4], donation_parts[5]);
-                    inventory.addDonation(this_donation);
+                    if (donation_parts.length == 5) {
+                        Donation this_donation = new Donation(donation_parts[0], donation_parts[1], donation_parts[2], donation_parts[3],
+                                donation_parts[4]);
+                        inventory.addDonation(this_donation);
+                    } else {
+                        Donation this_donation = new Donation(donation_parts[0], donation_parts[1], donation_parts[2], donation_parts[3],
+                                donation_parts[4], donation_parts[5]);
+                        inventory.addDonation(this_donation);
+                    }
                 }
             }
         } catch (Exception e) {
@@ -40,7 +46,7 @@ public class Location {
     public void addDonation(Donation d) {
         try {
             DatabaseConnection.sendRawSQL("INSERT INTO `" + name + " INV` (timestamp, shortDescript, longDescript, value, category, comments) " +
-            "VALUES('" + d.dataBaseString() + ");");
+            "VALUES(" + d.dataBaseString() + ");");
         } catch (Exception e) {
             e.printStackTrace();
         }

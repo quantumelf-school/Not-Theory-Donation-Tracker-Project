@@ -21,7 +21,6 @@ public class CSVReader {
         String line;
         line = reader.readLine();
         while ((line = reader.readLine()) != null) {
-            System.out.println(line);
             String[] items = line.split(",");
             if (items.length == 11) {
                 try {
@@ -38,7 +37,7 @@ public class CSVReader {
         }
         reader.close();
         try {
-            String get_locations = DatabaseConnection.sendRawSQL("SELECT * FROM Locations;");
+            String get_locations = DatabaseConnection.sendRawSQL("SELECT name, address, city, state, type, phone, website, zipcode, latitude, longitude FROM Locations;");
             String delimiter = "\\),\\(";
             String[] location_list = (get_locations.substring(1, get_locations.length() - 1)).split(delimiter);
             for (int i = 0; i < location_list.length; i++) {
