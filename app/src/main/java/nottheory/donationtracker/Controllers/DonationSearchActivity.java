@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import nottheory.donationtracker.Model.Donation;
 import nottheory.donationtracker.Model.DonationCollection;
 import nottheory.donationtracker.Model.Location;
+import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.R;
 
@@ -60,7 +61,7 @@ public class DonationSearchActivity extends AppCompatActivity {
         locSpinner = findViewById(R.id.search_location_spinner);
         ArrayList<String> locationList = new ArrayList<>();
         locationList.add("All");
-//        add all locations
+        locationList.addAll(LoginManager.locations.getLocationNames());
         locSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, locationList));
 
         catSpinner = findViewById(R.id.search_cat_spinner);
@@ -135,23 +136,25 @@ public class DonationSearchActivity extends AppCompatActivity {
     }
 
     private void doSearch() {
-        ArrayList<Location> locationList  = new ArrayList<>();
-//        get all locations
+        ArrayList<Location> locationList  = LoginManager.locations.getLocations();
         ArrayList<Donation> donationList = new ArrayList<>();
         if ((locSpinner.getSelectedItem().toString() == "All") || (locSpinner.getSelectedItem().toString() == "")) {
             for (Location l : locationList) {
                 donationList.addAll(l.getDonations());
             }
         } else {
-            Location location = null;
-//            get location from dropdown
-            donationList.addAll(location.getDonations());
+            String locationString = locSpinner.getSelectedItem().toString();
+            LocationCollection locationCol = new LocationCollection(locationList);
+            Location location = locationCol.getLocationByName(locationString);
+            if (location != null) {
+                donationList.addAll(location.getDonations());
+            }
         }
         DonationCollection donations = new DonationCollection(donationList);
         if (searchByCat.isChecked()) {
             donationList = donations.getDonationsByCategory(catSpinner.getSelectedItem().toString());
         } else {
-            donationList = donations.getDonationsByName(searchBox.getText().toString());
+            donationList = donations.getDonationsBySimilarName(searchBox.getText().toString());
         }
         donationSearchList.setAdapter(new DonationSearchActivity.DonationAdapter(this, donationList.toArray()));
     }
