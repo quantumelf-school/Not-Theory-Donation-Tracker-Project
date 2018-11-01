@@ -21,6 +21,7 @@ public class CSVReader {
         String line;
         line = reader.readLine();
         while ((line = reader.readLine()) != null) {
+            System.out.println(line);
             String[] items = line.split(",");
             if (items.length == 11) {
                 try {

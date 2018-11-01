@@ -61,5 +61,15 @@ public class Donation implements Parcelable{
         text += "Comments (Optional): " + comments + "\n";
         return text;
     }
+    public String dataBaseString() {
+        String text = "";
+        text += "'" + timestamp + "', '";
+        text += shortDescript + "', '";
+        text += longDescript + "', '";
+        text += value + "', '";
+        text += category + "', '";
+        text += comments + "'";
+        return text;
+    }
 
 }
