@@ -23,7 +23,7 @@ public class DonationInfoActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DonationInfoActivity.this, DonationListActivity.class));
+                finish();
             }
         });
 
