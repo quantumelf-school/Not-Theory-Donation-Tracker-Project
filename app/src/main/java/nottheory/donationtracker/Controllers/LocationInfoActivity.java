@@ -46,6 +46,7 @@ public class LocationInfoActivity extends AppCompatActivity {
                 locationIntent = new Intent(LocationInfoActivity.this, DonationListActivity.class);
                 String key = "location";
                 locationIntent.putExtra(key, location.getName());
+                locationIntent.putExtra("pos", getIntent().getIntExtra("pos", 0));
                 startActivity(locationIntent);
             }
         });

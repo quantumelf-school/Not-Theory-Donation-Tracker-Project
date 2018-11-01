@@ -50,7 +50,7 @@ public class DonationListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(DonationListActivity.this, LocationInfoActivity.class);
-                i.putExtra("location", fromLocation);
+                i.putExtra("pos", getIntent().getIntExtra("pos", 0));
                 startActivity(i);
             }
         });

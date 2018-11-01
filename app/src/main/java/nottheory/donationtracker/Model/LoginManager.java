@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public abstract class LoginManager {
     private static ArrayList<Account> currUsers = new ArrayList<Account>();
     public static LocationCollection locations;
+    public static Location currLocation;
 
     private LoginManager() {}
 
