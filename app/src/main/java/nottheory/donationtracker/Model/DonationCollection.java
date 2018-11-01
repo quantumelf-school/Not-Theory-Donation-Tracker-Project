@@ -69,7 +69,7 @@ public class DonationCollection {
         name = name.toUpperCase();
         for(Donation d : donations){
             String checkName = d.getName().toUpperCase();
-            if(name.contains(checkName)) {
+            if(checkName.contains(name)) {
                 ret.add(d);
             }
         }
