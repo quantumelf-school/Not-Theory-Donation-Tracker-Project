@@ -68,6 +68,15 @@ public class LocationCollection {
         }
         return ret;
     }
+    public ArrayList<Donation> getAllDonationsAL() {
+       ArrayList<Donation> ret = new ArrayList<>();
+        for(Location l: locations) {
+            for(Donation d: l.getDonations()) {
+                ret.add(d);
+            }
+        }
+        return ret;
+    }
 
     public ArrayList<Location> getLocations() {
         return locations;

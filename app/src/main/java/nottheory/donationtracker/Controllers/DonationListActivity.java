@@ -54,6 +54,7 @@ public class DonationListActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        final Location location = LoginManager.locations.getLocationByName(fromLocation);
         addButton = findViewById(R.id.donationlist_add_button);
         errorText = findViewById(R.id.donationlist_error_text);
         errorText.setVisibility(View.INVISIBLE);
@@ -62,7 +63,9 @@ public class DonationListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(LoginManager.getCurrAccount().getAcctType().equals(AccountType.values()[1])) {
-                    startActivity(new Intent(DonationListActivity.this, AddDonationActivity.class));
+                    Intent i = new Intent(DonationListActivity.this, AddDonationActivity.class);
+                    i.putExtra("location", location.getName());
+                    startActivity(i);
                 } else {
                     errorText.setVisibility(View.VISIBLE);
                     Handler handler = new Handler();
@@ -79,8 +82,6 @@ public class DonationListActivity extends AppCompatActivity {
         //ArrayList<Donation> donationArray =
         //ArrayList<Donation> donationArray = LoginManager.locations.getLocationFromRow(getIntent().getIntExtra("pos", 1)).getDonations();
         //donationList.setAdapter(new DonationListActivity.DonationAdapter(this, donationArray.toArray()
-        System.out.println("TEST location: " + fromLocation);
-        Location location = LoginManager.locations.getLocationByName(fromLocation);
         ArrayList<Donation> donations = location.getDonations();
         Object donationArray[] = null;
         if(donations == null) {

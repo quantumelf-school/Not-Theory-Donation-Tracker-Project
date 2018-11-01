@@ -73,8 +73,7 @@ public class AddDonationActivity extends AppCompatActivity {
                 String dcategory = (String) category.getSelectedItem();
                 String dvalue = value.getText().toString();
 
-                Location l = LoginManager.locations.getLocationFromRow(getIntent().getIntExtra("pos", 1));
-                Boolean cont = Boolean.TRUE;
+                Location l = LoginManager.locations.getLocationByName(getIntent().getStringExtra("location"));
 
                 if (!shortDesc.equals("") && !fullDesc.equals("") && !time.equals("") && !dcategory.equals("") && !dvalue.equals("")) {
                     Donation newDonation = new Donation(time, shortDesc, fullDesc, dvalue, dcategory);
@@ -83,7 +82,6 @@ public class AddDonationActivity extends AppCompatActivity {
                     Intent i = new Intent(AddDonationActivity.this, DonationListActivity.class);
                     i.putExtra("location", l.getName());
                     startActivity(i);
-                    cont = Boolean.FALSE;
                 } else {
                     //show error message
                     errorMess.setVisibility(View.VISIBLE);

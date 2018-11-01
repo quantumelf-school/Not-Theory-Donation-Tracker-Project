@@ -91,7 +91,7 @@ public class DonationSearchActivity extends AppCompatActivity {
         });
 
         donationSearchList = findViewById(R.id.donationSearchList);
-        ArrayList<Donation> donationArray = LoginManager.locations.getLocationFromRow(getIntent().getIntExtra("pos", 1)).getDonations();
+        ArrayList<Donation> donationArray = LoginManager.locations.getAllDonationsAL();
         donationSearchList.setAdapter(new DonationSearchActivity.DonationAdapter(this, donationArray.toArray()));
         donationSearchList.setLayoutManager(new LinearLayoutManager(this));
     }

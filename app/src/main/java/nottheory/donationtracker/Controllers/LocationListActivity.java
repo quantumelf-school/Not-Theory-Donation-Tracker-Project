@@ -51,7 +51,9 @@ public class LocationListActivity extends AppCompatActivity {
         searchButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LocationListActivity.this, DonationSearchActivity.class));
+                Intent i = new Intent(LocationListActivity.this, DonationSearchActivity.class);
+
+                startActivity(i);
             }
         });
 
