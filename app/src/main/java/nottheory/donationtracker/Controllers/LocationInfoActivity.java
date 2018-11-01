@@ -12,6 +12,7 @@ import android.widget.TextView;
 import nottheory.donationtracker.Model.CSVReader;
 
 import nottheory.donationtracker.Model.AccountType;
+import nottheory.donationtracker.Model.Location;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.R;
@@ -21,12 +22,16 @@ public class LocationInfoActivity extends AppCompatActivity {
     private TextView locationText;
     private Button backButton;
     private Button donationButton;
+    private Intent locationIntent;
+    private Location location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_info);
 
+
+        location = LoginManager.locations.getLocationByName(getIntent().getStringExtra("location"));
         backButton = findViewById(R.id.locationinfo_back_button);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -35,15 +40,20 @@ public class LocationInfoActivity extends AppCompatActivity {
         });
 
         donationButton = findViewById(R.id.locationinfo_donation_button);
+        donationButton.setVisibility(View.VISIBLE);
         donationButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                startActivity(new Intent(LocationInfoActivity.this, DonationListActivity.class));
+                locationIntent = new Intent(LocationInfoActivity.this, DonationListActivity.class);
+                String key = "location";
+                locationIntent.putExtra(key, location.getName());
+                startActivity(locationIntent);
             }
         });
 
-        if (LoginManager.getCurrAccount().getAcctType().equals(AccountType.values()[1])) {
-            donationButton.setVisibility(View.VISIBLE);
-        }
+
+//        if (LoginManager.getCurrAccount().getAcctType().equals(AccountType.values()[1])) {
+//            donationButton.setVisibility(View.VISIBLE);
+//        }
 
         locationText = findViewById(R.id.locationinfo_info_text);
         String text = LoginManager.locations.getLocationFromRow(getIntent().getIntExtra("pos", 1)).toString();

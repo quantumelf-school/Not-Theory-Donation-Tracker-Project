@@ -1,6 +1,9 @@
 package nottheory.donationtracker.Model;
 
-public class Donation {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Donation implements Parcelable{
     private String timestamp, shortDescript, longDescript, value, category, comments;
     public Donation(String timestamp, String shortDescript, String longDescript, String value, String category, String comments) {
         this.timestamp = timestamp;
@@ -17,6 +20,37 @@ public class Donation {
         return shortDescript;
     }
     public String getCategory() { return category;}
+
+    //Parcelable stuff
+    public Donation(Parcel in){
+        String[] data = new String[6];
+        in.readStringArray(data);
+
+        this.timestamp = data[0];
+        this.shortDescript = data[1];
+        this.longDescript = data[2];
+        this.value = data[3];
+        this.category = data[4];
+        this.comments = data[5];
+    }
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+    @Override
+    public void writeToParcel(Parcel out, int flags) {
+        String[] output = {this.timestamp, this.shortDescript, this.longDescript, this.value, this.category, this.comments};
+        out.writeStringArray(output);
+    }
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public Donation createFromParcel(Parcel in) {
+            return new Donation(in);
+        }
+
+        public Donation[] newArray(int size) {
+            return new Donation[size];
+        }
+    };
     public String toString() {
         String text = "";
         text += "Name: " + shortDescript + "\n";

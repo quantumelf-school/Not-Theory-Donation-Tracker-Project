@@ -1,12 +1,16 @@
 package nottheory.donationtracker.Controllers;
+import nottheory.donationtracker.Model.AccountType;
 import nottheory.donationtracker.Model.CSVReader;
 import nottheory.donationtracker.Model.Donation;
+import nottheory.donationtracker.Model.Location;
 import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.R;
 import nottheory.donationtracker.Model.LoginManager;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,40 +18,81 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
 public class DonationListActivity extends AppCompatActivity {
 
-
+    private String fromLocation;
     private RecyclerView donationList;
+//    private EditText searchBar;
+//    private Button searchButton;
     private Button backButton;
     private Button addButton;
+//    private Spinner searchCriteria;
+    private TextView errorText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donation_list);
 
+        String str = "location";
+        fromLocation = getIntent().getStringExtra(str); //fix so that this pushes the name of the location picked
         backButton = findViewById(R.id.donationlist_back_button);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DonationListActivity.this, LocationInfoActivity.class));
+                Intent i = new Intent(DonationListActivity.this, LocationInfoActivity.class);
+                i.putExtra("location", fromLocation);
+                startActivity(i);
             }
         });
+        final Location location = LoginManager.locations.getLocationByName(fromLocation);
         addButton = findViewById(R.id.donationlist_add_button);
+        errorText = findViewById(R.id.donationlist_error_text);
+        errorText.setVisibility(View.INVISIBLE);
+
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(DonationListActivity.this, AddDonationActivity.class));
+                if(LoginManager.getCurrAccount().getAcctType().equals(AccountType.values()[1])) {
+                    Intent i = new Intent(DonationListActivity.this, AddDonationActivity.class);
+                    i.putExtra("location", location.getName());
+                    startActivity(i);
+                } else {
+                    errorText.setVisibility(View.VISIBLE);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        public void run() {
+                            errorText.setVisibility(View.INVISIBLE);
+                        }
+                    }, 3000);
+                }
             }
         });
 
         donationList = findViewById(R.id.donationList);
-        ArrayList<Donation> donationArray = LoginManager.locations.getLocationFromRow(getIntent().getIntExtra("pos", 1)).getDonations();
-        donationList.setAdapter(new DonationListActivity.DonationAdapter(this, donationArray.toArray()));
+        //ArrayList<Donation> donationArray =
+        //ArrayList<Donation> donationArray = LoginManager.locations.getLocationFromRow(getIntent().getIntExtra("pos", 1)).getDonations();
+        //donationList.setAdapter(new DonationListActivity.DonationAdapter(this, donationArray.toArray()
+        ArrayList<Donation> donations = location.getDonations();
+        Object donationArray[] = null;
+        if(donations == null) {
+            donationArray = new Object[0];
+            donationList.setAdapter(new DonationListActivity.DonationAdapter(this, donationArray));
+        } else {
+            donationArray = new Object[donations.size()];
+            donationList.setAdapter(new DonationListActivity.DonationAdapter(this, donations.toArray(donationArray)));
+        }
+
+
         donationList.setLayoutManager(new LinearLayoutManager(this));
     }
 
@@ -80,6 +125,8 @@ public class DonationListActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(DonationListActivity.this, DonationInfoActivity.class);
                     intent.putExtra("dpos", position);
+                    intent.putExtra("donation", ((Donation) donations[position]).getName());
+                    intent.putExtra("location", getIntent().getStringExtra("location"));
                     startActivity(intent);
                 }
             });
