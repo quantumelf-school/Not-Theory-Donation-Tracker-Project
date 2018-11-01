@@ -125,6 +125,8 @@ public class DonationListActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(DonationListActivity.this, DonationInfoActivity.class);
                     intent.putExtra("dpos", position);
+                    intent.putExtra("donation", ((Donation) donations[position]).getName());
+                    intent.putExtra("location", getIntent().getStringExtra("location"));
                     startActivity(intent);
                 }
             });

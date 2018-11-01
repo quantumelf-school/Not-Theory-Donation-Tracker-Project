@@ -62,6 +62,20 @@ public class DonationCollection {
         }
         return ret;
     }
+    public Donation getDonationByName(String name) {
+        Donation ret = null;
+        name = name.toUpperCase();
+        for(Donation d : donations){
+            String checkName = d.getName().toUpperCase();
+            if(checkName.equals(name)) {
+                ret = d;
+            }
+        }
+        if (ret == null) {
+            return null;
+        }
+        return ret;
+    }
 
 //    returns list of donations where the name contains given string
     public ArrayList<Donation> getDonationsBySimilarName(String name) { //replace string with enum

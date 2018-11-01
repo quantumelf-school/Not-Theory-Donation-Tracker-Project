@@ -1,5 +1,6 @@
 package nottheory.donationtracker.Controllers;
 
+import nottheory.donationtracker.Model.Location;
 import nottheory.donationtracker.R;
 import nottheory.donationtracker.Model.LoginManager;
 
@@ -28,8 +29,13 @@ public class DonationInfoActivity extends AppCompatActivity {
         });
 
         donationText = findViewById(R.id.donationinfo_info_text);
-        String text = LoginManager.locations.getLocationFromRow(getIntent().getIntExtra("pos", 1)).getDonations().get(getIntent().getIntExtra("dpos", 0)).toString();
-
+        String text = "";
+//        if(getIntent().getStringExtra("is master").equals("t")) {
+//            text = LoginManager.donations.getDonations().get(getIntent().getIntExtra("dpos", 0)).toString();
+//        } else {
+        Location l = LoginManager.locations.getLocationByName(getIntent().getStringExtra("location"));
+        text = l.getDonationCollection().getDonationByName(getIntent().getStringExtra("donation")).toString();
+        //text = l.getDonations().get(getIntent().getIntExtra("dpos", 0)).toString();
         donationText.setText(text);
         donationText.setVisibility(View.VISIBLE);
     }
