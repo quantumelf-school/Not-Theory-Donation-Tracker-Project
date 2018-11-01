@@ -47,6 +47,7 @@ public class CSVReader {
                         location_parts[9]);
                 data.addLocation(this_location);
             }
+            LoginManager.locations = data;
 
         } catch (Exception e) {
             e.printStackTrace();

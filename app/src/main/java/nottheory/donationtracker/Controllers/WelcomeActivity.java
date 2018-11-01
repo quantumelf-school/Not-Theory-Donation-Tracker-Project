@@ -28,7 +28,6 @@ public class WelcomeActivity extends AppCompatActivity {
         registerButton = findViewById(R.id.welcome_registerbutton);
         try {
             CSVReader reader = new CSVReader(getResources().openRawResource(R.raw.locationdata));
-            LoginManager.locations = reader.getLC();
         } catch(IOException e) {
             System.out.println("IOException, csv file cannot be read");
             return;
