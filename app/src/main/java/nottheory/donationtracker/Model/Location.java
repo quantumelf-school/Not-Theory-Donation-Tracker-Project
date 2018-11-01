@@ -20,11 +20,6 @@ public class Location {
         this.latitude = latitude;
         this.longitude = longitude;
     }
-    public Location(CSVReader reader, int row){
-        this(reader.getData(row,1), reader.getData(row,2), reader.getData(row,3), reader.getData(row,4)
-                , reader.getData(row,5), reader.getData(row,6), reader.getData(row,7), reader.getData(row,8), reader.getData(row,9), reader.getData(row,10));
-        this.row = row;
-    }
     public void addDonation(Donation d) {
         inventory.addDonation(d);
     }

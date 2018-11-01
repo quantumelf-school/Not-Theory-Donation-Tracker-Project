@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.view.View.OnClickListener;
 import android.widget.Spinner;
 
+//import com.google.firebase.firestore.FirebaseFirestore;
+
 import nottheory.donationtracker.Model.Account;
 import nottheory.donationtracker.Model.AccountType;
 import nottheory.donationtracker.Model.LoginManager;

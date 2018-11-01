@@ -7,7 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.view.View.OnClickListener;
 
+import java.io.IOException;
+
 import nottheory.donationtracker.Model.LoginManager;
+import nottheory.donationtracker.Model.CSVReader;
 import nottheory.donationtracker.R;
 
 public class SuccessfulLoginActivity extends AppCompatActivity {

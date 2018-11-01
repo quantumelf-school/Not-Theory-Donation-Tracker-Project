@@ -10,12 +10,6 @@ public class LocationCollection {
         //default method instantiates empty locations list
     }
 
-    public LocationCollection(CSVReader reader){
-        for(int i = 1; i <= reader.size(); i++) {
-            locations.add(new Location(reader, i));
-            nextRow = i+1;
-        }
-    }
 
     public void addLocation(Location l) {
         locations.add(l);

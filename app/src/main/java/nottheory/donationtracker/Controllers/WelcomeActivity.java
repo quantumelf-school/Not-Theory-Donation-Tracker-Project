@@ -1,6 +1,7 @@
 package nottheory.donationtracker.Controllers;
 
 import android.content.Intent;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,11 +22,13 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
         loginButton = findViewById(R.id.welcome_loginbutton);
         registerButton = findViewById(R.id.welcome_registerbutton);
         try {
             CSVReader reader = new CSVReader(getResources().openRawResource(R.raw.locationdata));
-            LoginManager.locations = new LocationCollection(reader);
+            LoginManager.locations = reader.getLC();
         } catch(IOException e) {
             System.out.println("IOException, csv file cannot be read");
             return;
@@ -37,6 +40,8 @@ public class WelcomeActivity extends AppCompatActivity {
                 startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
             }
         });
+
+        LoginManager.initialize_tables();
 
         registerButton.setOnClickListener(new OnClickListener() {
             @Override
