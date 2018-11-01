@@ -1,4 +1,5 @@
 package nottheory.donationtracker.Model;
+import java.io.Serializable;
 import java.util.ArrayList;
 import nottheory.donationtracker.Model.Donation;
 

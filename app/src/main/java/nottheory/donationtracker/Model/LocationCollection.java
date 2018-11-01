@@ -34,6 +34,14 @@ public class LocationCollection {
         }
         return null;
     }
+    public Location getLocationByName(String name) {
+        for(Location l: locations) {
+            if(l.getName().equals(name)) {
+                return l;
+            }
+        }
+        return null;
+    }
     public ArrayList<String> getLocationNames() {
         ArrayList<String> ret = new ArrayList<>();
         for(Location l : locations){

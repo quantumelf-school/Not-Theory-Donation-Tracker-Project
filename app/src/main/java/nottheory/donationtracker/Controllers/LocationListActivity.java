@@ -8,9 +8,11 @@ import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.R;
 import nottheory.donationtracker.Controllers.WelcomeActivity;
 import nottheory.donationtracker.Model.LoginManager;
+import nottheory.donationtracker.Model.Location;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -29,6 +31,7 @@ public class LocationListActivity extends AppCompatActivity {
     private RecyclerView locationList;
     private Button backButton;
     private Button searchButton;
+
 
 
     @Override
@@ -87,8 +90,10 @@ public class LocationListActivity extends AppCompatActivity {
             viewHolder.location.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Location l = LoginManager.locations.getLocationFromRow(position+1);
                    Intent intent = new Intent(LocationListActivity.this, LocationInfoActivity.class);
                    intent.putExtra("pos", position + 1);//+1 b/c array has position 0 is the first non key row
+                    intent.putExtra("location", l.getName());
                    startActivity(intent);
                 }
             });
