@@ -75,6 +75,14 @@ public class Location {
         return inventory;
     }
 
+    public double getLat() {
+        return Double.valueOf(this.latitude);
+    }
+
+    public double getLong() {
+        return Double.valueOf(this.longitude);
+    }
+
     public String toString() {
         String text = "";
         text += "Name: " + name + "\n";
