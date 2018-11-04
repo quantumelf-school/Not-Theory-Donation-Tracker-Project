@@ -51,6 +51,8 @@ public class Donation implements Parcelable{
             return new Donation[size];
         }
     };
+
+    public String getTimestamp() {return this.timestamp;}
     public String toString() {
         String text = "";
         text += "Name: " + shortDescript + "\n";
