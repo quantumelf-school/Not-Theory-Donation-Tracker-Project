@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String un = unEntry.getText().toString();
                 String pw = pwEntry.getText().toString();
-
+                //System.out.println("TEST credentials work: " + LoginManager.checkCredentials(un, pw));
                 if (LoginManager.checkCredentials(un, pw)) {
                     LoginManager.logAccount(un);
                     startActivity(new Intent(LoginActivity.this, SuccessfulLoginActivity.class));
