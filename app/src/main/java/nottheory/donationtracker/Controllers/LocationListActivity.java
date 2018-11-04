@@ -30,7 +30,7 @@ public class LocationListActivity extends AppCompatActivity {
 
     private RecyclerView locationList;
     private Button backButton;
-    private Button searchButton;
+    private Button searchButton, mapButton;
 
 
 
@@ -46,6 +46,14 @@ public class LocationListActivity extends AppCompatActivity {
                 startActivity(new Intent(LocationListActivity.this, SuccessfulLoginActivity.class));
             }
         });
+        mapButton = findViewById(R.id.locationlist_map_button);
+        mapButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LocationListActivity.this, MapActivity.class));
+            }
+        });
+
 
         searchButton = findViewById(R.id.locationlist_search_button);
         searchButton.setOnClickListener(new OnClickListener() {
