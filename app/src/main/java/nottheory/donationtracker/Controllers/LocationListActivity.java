@@ -51,7 +51,7 @@ public class LocationListActivity extends AppCompatActivity {
         mapButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LocationListActivity.this, MapActivity.class));
+                startActivity(new Intent(LocationListActivity.this, MapsActivity.class));
             }
         });
 
