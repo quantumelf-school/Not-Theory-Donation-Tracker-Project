@@ -1,7 +1,11 @@
 package nottheory.donationtracker.Controllers;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -15,7 +19,7 @@ import nottheory.donationtracker.Model.Location;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.R;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWindowClickListener, OnMapReadyCallback {
 
     private GoogleMap mMap;
 
@@ -49,9 +53,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
         for(Location l: LoginManager.locations.getLocations()) {
-            mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLong())).title(l.toString()));
+            mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLong())).title(l.getName()).snippet(l.getSnippet()));
         }
-        
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(33.7490, -84.3880), 10.0f));
+        mMap.setOnInfoWindowClickListener(this);
+
+
 
     }
+    public void onInfoWindowClick(Marker marker) {
+        marker.getTitle();
+        Intent i = new Intent(MapsActivity.this, LocationInfoActivity.class);
+        i.putExtra("location", marker.getTitle());
+        startActivity(i);
+    }
+
 }

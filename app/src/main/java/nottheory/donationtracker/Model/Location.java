@@ -83,6 +83,13 @@ public class Location {
         return Double.valueOf(this.longitude);
     }
 
+    public String getSnippet() {
+        String text = "";
+        text += "Phone: " + phone + "\n";
+        text += "Website: " + website;
+        return text;
+    }
+
     public String toString() {
         String text = "";
         text += "Name: " + name + "\n";
