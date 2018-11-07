@@ -82,6 +82,7 @@ public class AddDonationActivity extends AppCompatActivity {
                     Intent i = new Intent(AddDonationActivity.this, DonationListActivity.class);
                     i.putExtra("location", l.getName());
                     startActivity(i);
+                    finish();
                 } else {
                     //show error message
                     errorMess.setVisibility(View.VISIBLE);
