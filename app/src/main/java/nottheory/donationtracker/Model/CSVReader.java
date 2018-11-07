@@ -31,6 +31,7 @@ public class CSVReader {
                         DatabaseConnection.sendRawSQL("INSERT INTO Locations (name, address, city, state, type, phone, website, zipcode, latitude, longitude) VALUES" +
                         "('" + items[1] + "', '" + items[2] + "', '" + items[3] + "', '" + items[4] + "', '" + items[5] +
                                 "', '" + items[6] + "', '" + items[7] + "', '" + items[8] + "', '" + items[9] + "', '" + items[10] + "');");
+                        Log.d("@JT LOCATION INSERTED","Location Name: " + items[1]);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

@@ -20,9 +20,11 @@ public class LocationCollection {
     }
 
     public void addLocation(Location l) {
+
         locations.add(l);
         l.setRow(nextRow);
         nextRow++;
+        Log.d("@JT LOCATION ADDED", "Location Name: " + l.getName() + " LocationNumber: " + l.getRow());
     }
     public void removeLocation(Location l) {
         locations.remove(l);
