@@ -93,10 +93,10 @@ public class LocationListActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Location l = LoginManager.locations.getLocationFromRow(position);
-                   Intent intent = new Intent(LocationListActivity.this, LocationInfoActivity.class);
-                   intent.putExtra("pos", position);//+1 b/c array has position 0 is the first non key row
+                    Intent intent = new Intent(LocationListActivity.this, LocationInfoActivity.class);
+                    intent.putExtra("pos", position);//+1 b/c array has position 0 is the first non key row
                     intent.putExtra("location", l.getName());
-                   startActivity(intent);
+                    startActivity(intent);
                 }
             });
         }
