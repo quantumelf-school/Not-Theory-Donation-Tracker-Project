@@ -1,9 +1,11 @@
 package nottheory.donationtracker.Model;
+import android.util.Log;
+
 import java.util.ArrayList;
 
 public class LocationCollection {
     private ArrayList<Location> locations = new ArrayList<>();
-    private static int nextRow; //the id of a location is defined by its row in the .csv file or the order in which it was added
+    private /*static*/ int nextRow; //the id of a location is defined by its row in the .csv file or the order in which it was added
 
 
     public LocationCollection() {
@@ -18,9 +20,11 @@ public class LocationCollection {
     }
 
     public void addLocation(Location l) {
+
         locations.add(l);
         l.setRow(nextRow);
         nextRow++;
+        Log.d("@JT LOCATION ADDED", "Location Name: " + l.getName() + " LocationNumber: " + l.getRow());
     }
     public void removeLocation(Location l) {
         locations.remove(l);
@@ -28,10 +32,12 @@ public class LocationCollection {
 
     public Location getLocationFromRow(int row) {
         for(Location l: locations) {
-            if(l.getRow() == row) {
+            Log.d("@JT LOCATION SEARCHED", "Location: " + l.getName() + " RowNumber: " + l.getRow());
+            if (l.getRow() == row) {
                 return l;
             }
         }
+        Log.d("@JT LOCATION NOT FOUND", "ROW NUMBER ATTEMPTED" + row);
         return null;
     }
 

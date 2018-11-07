@@ -1,5 +1,7 @@
 package nottheory.donationtracker.Model;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.io.InputStream;
 import java.io.BufferedReader;
@@ -29,6 +31,7 @@ public class CSVReader {
                         DatabaseConnection.sendRawSQL("INSERT INTO Locations (name, address, city, state, type, phone, website, zipcode, latitude, longitude) VALUES" +
                         "('" + items[1] + "', '" + items[2] + "', '" + items[3] + "', '" + items[4] + "', '" + items[5] +
                                 "', '" + items[6] + "', '" + items[7] + "', '" + items[8] + "', '" + items[9] + "', '" + items[10] + "');");
+                        Log.d("@JT LOCATION INSERTED","Location Name: " + items[1] + "; get_name was: " + get_name);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -39,6 +42,7 @@ public class CSVReader {
         try {
             String get_locations = DatabaseConnection.sendRawSQL("SELECT name, address, city, state, type, phone, website, zipcode, latitude, longitude FROM Locations;");
             String delimiter = "\\),\\(";
+            Log.d("myApp", "DB QUERY RESULT: " + get_locations);
             String[] location_list = (get_locations.substring(1, get_locations.length() - 1)).split(delimiter);
             for (int i = 0; i < location_list.length; i++) {
                 String[] location_parts = location_list[i].substring(1, location_list[i].length() - 1).split("', '");
@@ -51,6 +55,7 @@ public class CSVReader {
 
         } catch (Exception e) {
             e.printStackTrace();
+            assert true : e.getStackTrace();
         }
     }
 
