@@ -49,9 +49,10 @@ public class DonationListActivity extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(DonationListActivity.this, LocationInfoActivity.class);
-                i.putExtra("pos", getIntent().getIntExtra("pos", 0));
-                startActivity(i);
+                //Intent i = new Intent(DonationListActivity.this, LocationInfoActivity.class);
+                //i.putExtra("pos", getIntent().getIntExtra("pos", 0));
+                //startActivity(i);
+                finish();
             }
         });
         final Location location = LoginManager.locations.getLocationByName(fromLocation);

@@ -4,6 +4,7 @@ import java.io.*;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View.OnClickListener;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -32,6 +33,10 @@ public class LocationInfoActivity extends AppCompatActivity {
 
 
         location = LoginManager.locations.getLocationByName(getIntent().getStringExtra("location"));
+        if (location == null) {
+            Log.d("@JT CHECK LOCATION", "--LOCATION IS NULL");
+        }
+        Log.d("@JT CHECK LOCATION", "LocationName: " + location);
         backButton = findViewById(R.id.locationinfo_back_button);
         backButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
