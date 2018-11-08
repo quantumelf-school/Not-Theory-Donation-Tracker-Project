@@ -17,6 +17,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import nottheory.donationtracker.Model.Donation;
 import nottheory.donationtracker.Model.DonationCollection;
@@ -91,7 +92,7 @@ public class DonationSearchActivity extends AppCompatActivity {
         });
 
         donationSearchList = findViewById(R.id.donationSearchList);
-        ArrayList<Donation> donationArray = LoginManager.locations.getAllDonationsAL();
+        List<Donation> donationArray = LoginManager.locations.getAllDonationsAL();
         donationSearchList.setAdapter(new DonationSearchActivity.DonationAdapter(this, donationArray.toArray()));
         donationSearchList.setLayoutManager(new LinearLayoutManager(this));
     }

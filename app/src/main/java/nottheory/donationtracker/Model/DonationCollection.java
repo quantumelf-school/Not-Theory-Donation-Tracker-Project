@@ -62,7 +62,7 @@ public class DonationCollection {
         }
         return ret;
     }
-    public Donation getDonationByName(String name) {
+    public Donation getDonationByName(String name) { //Joey Test
         Donation ret = null;
         name = name.toUpperCase();
         for(Donation d : donations){

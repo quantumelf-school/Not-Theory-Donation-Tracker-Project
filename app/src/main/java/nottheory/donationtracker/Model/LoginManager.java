@@ -5,11 +5,12 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
 
 public abstract class LoginManager {
-    private static ArrayList<Account> currUsers = new ArrayList<Account>();
+    private static List<Account> currUsers = new ArrayList<Account>();
     public static LocationCollection locations;
     public static Location currLocation;
 
