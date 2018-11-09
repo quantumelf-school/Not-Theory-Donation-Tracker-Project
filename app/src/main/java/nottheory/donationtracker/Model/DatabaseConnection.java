@@ -1,7 +1,5 @@
 package nottheory.donationtracker.Model;
 
-import android.os.AsyncTask;
-
 import java.io.*;
 import java.net.*;
 import java.util.*;
