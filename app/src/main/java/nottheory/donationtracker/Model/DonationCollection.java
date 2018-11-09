@@ -1,13 +1,14 @@
 package nottheory.donationtracker.Model;
+import java.util.List;
 import java.util.ArrayList;
 
 public class DonationCollection {
-    private ArrayList<Donation> donations = new ArrayList<>();
+    private List<Donation> donations = new ArrayList<>();
 
     public DonationCollection() {
         //default method instantiates empty donation list
     }
-    public DonationCollection(ArrayList<Donation> d){
+    public DonationCollection(Iterable<Donation> d){
         for(Donation i: d) {
             donations.add(i);
         }
@@ -16,13 +17,13 @@ public class DonationCollection {
     public void addDonation(Donation d) {
         donations.add(d);
     }
-    public void addDonations(ArrayList<Donation> d) {
+    public void addDonations(Iterable<Donation> d) {
         for(Donation i: d) {
             donations.add(i);
         }
     }
     public void addDonations(DonationCollection d) {
-        ArrayList<Donation> list = d.getDonations();
+        List<Donation> list = d.getDonations();
         for(Donation i: list) {
             donations.add(i);
         }
@@ -94,7 +95,7 @@ public class DonationCollection {
         return donations.size();
     }
 
-    public ArrayList<Donation> getDonations() {
+    public List<Donation> getDonations() {
         return donations;
     }
 }

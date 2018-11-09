@@ -1,7 +1,6 @@
 package nottheory.donationtracker.Model;
-import java.io.Serializable;
 import java.util.ArrayList;
-import nottheory.donationtracker.Model.Donation;
+import java.util.List;
 
 public class Location {
     private String name, address, city, state, type, phone, website, zipcode, latitude, longitude;
@@ -68,7 +67,7 @@ public class Location {
     public int getRow(){
         return row;
     }
-    public ArrayList<Donation> getDonations() {
+    public List<Donation> getDonations() {
         return inventory.getDonations();
     }
     public DonationCollection getDonationCollection() {
