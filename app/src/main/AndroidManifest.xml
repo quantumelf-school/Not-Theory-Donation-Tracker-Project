@@ -37,7 +37,7 @@
         <activity android:name=".Controllers.DonationListActivity" />
         <activity android:name=".Controllers.DonationSearchActivity" />
         <activity android:name=".Controllers.DonationInfoActivity" />
-        <activity android:name=".Controllers.MapActivity" />
+        <activity android:name=".Controllers.MapsActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
