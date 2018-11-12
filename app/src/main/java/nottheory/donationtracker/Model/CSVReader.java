@@ -18,7 +18,8 @@ public class CSVReader {
     }
     
     public void readFile(InputStream is) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+        BufferedReader reader = new BufferedReader(
+                new InputStreamReader(is, StandardCharsets.UTF_8));
         
         String line;
         line = reader.readLine();
@@ -26,7 +27,8 @@ public class CSVReader {
             String[] items = line.split(",");
             if (items.length == 11) {
                 try {
-                    String get_name = DatabaseConnection.sendRawSQL("SELECT * FROM Locations WHERE name = '" + items[1] + "';");
+                    String get_name = DatabaseConnection.sendRawSQL(
+                            "SELECT * FROM Locations WHERE name = '" + items[1] + "';");
                     if (get_name.equals("")) {
                         DatabaseConnection.sendRawSQL("INSERT INTO Locations (name, address, city, state, type, phone, website, zipcode, latitude, longitude) VALUES" +
                         "('" + items[1] + "', '" + items[2] + "', '" + items[3] + "', '" + items[4] + "', '" + items[5] +

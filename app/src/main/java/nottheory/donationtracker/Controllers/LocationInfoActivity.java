@@ -1,7 +1,5 @@
 package nottheory.donationtracker.Controllers;
 
-import java.io.*;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
