@@ -51,6 +51,17 @@ public class LocationCollection {
         return null;
     }
 
+    public Location getLocationWithDonation(Donation d) {
+        for(Location l: locations) {
+            for(Donation don: l.getDonations()) {
+                if (don.getName().equals(d.getName())) {
+                    return l;
+                }
+            }
+        }
+        return null;
+    }
+
     public List<String> getLocationNames() {
         List<String> ret = new ArrayList<>();
         for(Location l : locations){

@@ -125,18 +125,18 @@ public class DonationSearchActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(DonationSearchActivity.this, DonationInfoActivity.class);
-                    intent.putExtra("dpos", position);
-                    intent.putExtra("donation", ((Donation) donations[position]).getName());
-                    search:
-                        for(Location l: LoginManager.locations.getLocations()) {
-                            for(Donation d: l.getDonations()) {
-                                if (d.getName().equals(((Donation) donations[position]).getName())) {
-                                    intent.putExtra("location", l.getName());
-                                    break search;
-                                }
-                            }
-                        }
-                    //intent.putExtra("location", ((Donation) donations[position]).getName());
+                    intent.putExtra("donation", ((Donation) donations[position]).getName()); //feature envy is necessary to tell next activity which donation was clicked
+//                    search:
+//                        for(Location l: LoginManager.locations.getLocations()) {
+//                            for(Donation d: l.getDonations()) {
+//                                if (d.getName().equals(((Donation) donations[position]).getName())) {
+//                                    intent.putExtra("location", l.getName());
+//                                    break search;
+//                                }
+//                            }
+//                        }
+                    Location l = LoginManager.locations.getLocationWithDonation((Donation) donations[position]);
+                    intent.putExtra("location", l.getName());
                     startActivity(intent);
                 }
             });
