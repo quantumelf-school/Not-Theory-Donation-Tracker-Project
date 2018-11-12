@@ -63,7 +63,8 @@ public class DonationSearchActivity extends AppCompatActivity {
         ArrayList<String> locationList = new ArrayList<>();
         locationList.add("All");
         locationList.addAll(LoginManager.locations.getLocationNames());
-        locSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, locationList));
+        locSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
+                locationList));
 
         catSpinner = findViewById(R.id.search_cat_spinner);
 //        TODO: remove this hardcoded cat. list
@@ -74,7 +75,8 @@ public class DonationSearchActivity extends AppCompatActivity {
         categoryList.add("Electronics");
         categoryList.add("Household");
         categoryList.add("Other");
-        catSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categoryList));
+        catSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
+                categoryList));
         catSpinner.setVisibility(View.GONE);
 
         searchByCat = findViewById(R.id.search_switch);
@@ -93,11 +95,13 @@ public class DonationSearchActivity extends AppCompatActivity {
 
         donationSearchList = findViewById(R.id.donationSearchList);
         List<Donation> donationArray = LoginManager.locations.getAllDonationsAL();
-        donationSearchList.setAdapter(new DonationSearchActivity.DonationAdapter(this, donationArray.toArray()));
+        donationSearchList.setAdapter(new DonationSearchActivity.DonationAdapter(this,
+                donationArray.toArray()));
         donationSearchList.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    private class DonationAdapter extends RecyclerView.Adapter<DonationSearchActivity.DonationAdapter.DonationViewHolder> {
+    private class DonationAdapter extends RecyclerView.Adapter
+            <DonationSearchActivity.DonationAdapter.DonationViewHolder> {
         private Object[] donations;
         private Context context;
         public class DonationViewHolder extends RecyclerView.ViewHolder {
@@ -114,28 +118,26 @@ public class DonationSearchActivity extends AppCompatActivity {
             this.context = context;
         }
 
-        public DonationSearchActivity.DonationAdapter.DonationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(context).inflate(R.layout.location_recyclerview_row, parent, false);
+        public DonationSearchActivity.DonationAdapter.DonationViewHolder onCreateViewHolder(
+                ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(context).inflate(R.layout.location_recyclerview_row,
+                    parent, false);
             return new DonationSearchActivity.DonationAdapter.DonationViewHolder(view);
         }
 
-        public void onBindViewHolder(DonationSearchActivity.DonationAdapter.DonationViewHolder viewHolder, final int position) {
+        public void onBindViewHolder(DonationSearchActivity.DonationAdapter.
+                                             DonationViewHolder viewHolder, final int position) {
             viewHolder.donation.setText(donations[position].toString());
             viewHolder.donation.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(DonationSearchActivity.this, DonationInfoActivity.class);
-                    intent.putExtra("donation", ((Donation) donations[position]).getName()); //feature envy is necessary to tell next activity which donation was clicked
-//                    search:
-//                        for(Location l: LoginManager.locations.getLocations()) {
-//                            for(Donation d: l.getDonations()) {
-//                                if (d.getName().equals(((Donation) donations[position]).getName())) {
-//                                    intent.putExtra("location", l.getName());
-//                                    break search;
-//                                }
-//                            }
-//                        }
-                    Location l = LoginManager.locations.getLocationWithDonation((Donation) donations[position]);
+                    Intent intent = new Intent(DonationSearchActivity.this,
+                            DonationInfoActivity.class);
+                    intent.putExtra("donation", ((Donation) donations[position]).getName());
+                    //feature envy is necessary to tell next activity which donation was clicked
+
+                    Location l = LoginManager.locations.getLocationWithDonation(
+                            (Donation) donations[position]);
                     intent.putExtra("location", l.getName());
                     startActivity(intent);
                 }
@@ -150,7 +152,8 @@ public class DonationSearchActivity extends AppCompatActivity {
     private void doSearch() {
         ArrayList<Location> locationList  = LoginManager.locations.getLocations();
         ArrayList<Donation> donationList = new ArrayList<>();
-        if ((locSpinner.getSelectedItem().toString() == "All") || (locSpinner.getSelectedItem().toString() == "")) {
+        if ((locSpinner.getSelectedItem().toString() == "All") ||
+                (locSpinner.getSelectedItem().toString() == "")) {
             for (Location l : locationList) {
                 donationList.addAll(l.getDonations());
             }
@@ -164,10 +167,12 @@ public class DonationSearchActivity extends AppCompatActivity {
         }
         DonationCollection donations = new DonationCollection(donationList);
         if (searchByCat.isChecked()) {
-            donationList = donations.getDonationsByCategory(catSpinner.getSelectedItem().toString());
+            donationList = donations.getDonationsByCategory(
+                    catSpinner.getSelectedItem().toString());
         } else {
             donationList = donations.getDonationsBySimilarName(searchBox.getText().toString());
         }
-        donationSearchList.setAdapter(new DonationSearchActivity.DonationAdapter(this, donationList.toArray()));
+        donationSearchList.setAdapter(new DonationSearchActivity.DonationAdapter(this,
+                donationList.toArray()));
     }
 }
