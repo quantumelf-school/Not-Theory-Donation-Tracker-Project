@@ -1,7 +1,6 @@
 package nottheory.donationtracker.Model;
-import java.io.Serializable;
 import java.util.ArrayList;
-import nottheory.donationtracker.Model.Donation;
+import java.util.List;
 
 public class Location {
     private String name, address, city, state, type, phone, website, zipcode, latitude, longitude;
@@ -26,8 +25,8 @@ public class Location {
             if (!locationinventory.equals("")) {
                 String delimiter = "\\),\\(";
                 String[] donation_list = (locationinventory.substring(1, locationinventory.length() - 1)).split(delimiter);
-                for (int i = 0; i < donation_list.length; i++) {
-                    String[] donation_parts = donation_list[i].substring(1, donation_list[i].length() - 1).split("', '");
+                for (String donation_x: donation_list) {
+                    String[] donation_parts = donation_x.substring(1, donation_x.length() - 1).split("', '");
                     if (donation_parts.length == 5) {
                         Donation this_donation = new Donation(donation_parts[0], donation_parts[1], donation_parts[2], donation_parts[3],
                                 donation_parts[4]);
@@ -68,7 +67,7 @@ public class Location {
     public int getRow(){
         return row;
     }
-    public ArrayList<Donation> getDonations() {
+    public List<Donation> getDonations() {
         return inventory.getDonations();
     }
     public DonationCollection getDonationCollection() {

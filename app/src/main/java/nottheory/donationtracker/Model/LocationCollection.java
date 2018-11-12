@@ -2,6 +2,7 @@ package nottheory.donationtracker.Model;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class LocationCollection {
     private ArrayList<Location> locations = new ArrayList<>();
@@ -13,7 +14,7 @@ public class LocationCollection {
     }
 
 
-    public LocationCollection(ArrayList<Location> list) {
+    public LocationCollection(Iterable<Location> list) {
         for (Location l : list) {
             locations.add(l);
         }
@@ -50,8 +51,8 @@ public class LocationCollection {
         return null;
     }
 
-    public ArrayList<String> getLocationNames() {
-        ArrayList<String> ret = new ArrayList<>();
+    public List<String> getLocationNames() {
+        List<String> ret = new ArrayList<>();
         for(Location l : locations){
             ret.add(l.getName());
         }
@@ -68,8 +69,8 @@ public class LocationCollection {
         }
         return ret;
     }
-    public ArrayList<Donation> getAllDonationsAL() {
-       ArrayList<Donation> ret = new ArrayList<>();
+    public List<Donation> getAllDonationsAL() {
+       List<Donation> ret = new ArrayList<>();
         for(Location l: locations) {
             for(Donation d: l.getDonations()) {
                 ret.add(d);

@@ -1,16 +1,13 @@
 package nottheory.donationtracker.Controllers;
 import nottheory.donationtracker.Model.AccountType;
-import nottheory.donationtracker.Model.CSVReader;
 import nottheory.donationtracker.Model.Donation;
 import nottheory.donationtracker.Model.Location;
-import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.R;
 import nottheory.donationtracker.Model.LoginManager;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,14 +15,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 public class DonationListActivity extends AppCompatActivity {
 
@@ -83,7 +76,7 @@ public class DonationListActivity extends AppCompatActivity {
         //ArrayList<Donation> donationArray =
         //ArrayList<Donation> donationArray = LoginManager.locations.getLocationFromRow(getIntent().getIntExtra("pos", 1)).getDonations();
         //donationList.setAdapter(new DonationListActivity.DonationAdapter(this, donationArray.toArray()
-        ArrayList<Donation> donations = location.getDonations();
+        List<Donation> donations = location.getDonations();
         Object donationArray[] = null;
         if(donations == null) {
             donationArray = new Object[0];
