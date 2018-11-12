@@ -26,6 +26,7 @@ public class AddDonationActivity extends AppCompatActivity {
     private Spinner category;
     private EditText value;
     private TextView errorMess;
+    final int DELAY = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +92,7 @@ public class AddDonationActivity extends AppCompatActivity {
                         public void run() {
                             errorMess.setVisibility(View.INVISIBLE);
                         }
-                    }, 3000);
+                    }, DELAY);
                 }
 
             }

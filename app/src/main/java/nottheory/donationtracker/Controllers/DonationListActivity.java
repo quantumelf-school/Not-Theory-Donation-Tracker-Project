@@ -30,6 +30,7 @@ public class DonationListActivity extends AppCompatActivity {
     private Button addButton;
 //    private Spinner searchCriteria;
     private TextView errorText;
+    final int DELAY = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +68,7 @@ public class DonationListActivity extends AppCompatActivity {
                         public void run() {
                             errorText.setVisibility(View.INVISIBLE);
                         }
-                    }, 3000);
+                    }, DELAY);
                 }
             }
         });

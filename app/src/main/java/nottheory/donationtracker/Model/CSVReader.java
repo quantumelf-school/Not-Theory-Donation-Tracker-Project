@@ -10,6 +10,7 @@ import java.nio.charset.StandardCharsets;
 
 public class CSVReader {
     private LocationCollection data;
+    final int FILE_LENGTH = 11;
     
     public CSVReader(InputStream is) throws IOException {
         data = new LocationCollection();
@@ -24,7 +25,7 @@ public class CSVReader {
         line = reader.readLine();
         while ((line = reader.readLine()) != null) {
             String[] items = line.split(",");
-            if (items.length == 11) {
+            if (items.length == FILE_LENGTH) {
                 try {
                     String get_name = DatabaseConnection.sendRawSQL(
                             "SELECT * FROM Locations WHERE name = '" + items[1] + "';");

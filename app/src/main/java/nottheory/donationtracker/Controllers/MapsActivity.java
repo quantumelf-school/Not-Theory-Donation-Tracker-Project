@@ -42,6 +42,8 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        final LatLng ATLANTA_LATLNG = new LatLng(33.7490, -84.3880);
+        final float ZOOM = 10.0f;
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
@@ -52,7 +54,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
         for(Location l: LoginManager.locations.getLocations()) {
             mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLong())).title(l.getName()).snippet(l.getSnippet()));
         }
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(33.7490, -84.3880), 10.0f));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ATLANTA_LATLNG, ZOOM));
         mMap.setOnInfoWindowClickListener(this);
 
 
