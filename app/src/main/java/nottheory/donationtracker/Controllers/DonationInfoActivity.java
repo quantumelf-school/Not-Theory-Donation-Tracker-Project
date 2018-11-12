@@ -4,7 +4,6 @@ import nottheory.donationtracker.Model.Location;
 import nottheory.donationtracker.R;
 import nottheory.donationtracker.Model.LoginManager;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;

@@ -1,29 +1,22 @@
 package nottheory.donationtracker.Controllers;
-import nottheory.donationtracker.Model.CSVReader;
 
-import java.io.IOException;
-import java.io.InputStream;
-
-import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.R;
-import nottheory.donationtracker.Controllers.WelcomeActivity;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.Model.Location;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+
 import android.widget.Button;
 import android.view.View;
 import android.view.LayoutInflater;
 import android.view.View.OnClickListener;
 import android.support.v7.widget.LinearLayoutManager;
-import android.widget.Spinner;
+
 
 
 public class LocationListActivity extends AppCompatActivity {

@@ -3,17 +3,13 @@ package nottheory.donationtracker.Controllers;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View.OnClickListener;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import nottheory.donationtracker.Model.CSVReader;
 
-import nottheory.donationtracker.Model.AccountType;
 import nottheory.donationtracker.Model.Location;
 import nottheory.donationtracker.Model.LoginManager;
-import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.R;
 
 public class LocationInfoActivity extends AppCompatActivity {

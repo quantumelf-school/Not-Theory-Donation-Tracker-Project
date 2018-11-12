@@ -11,7 +11,6 @@ import android.view.View.OnClickListener;
 import java.io.IOException;
 
 import nottheory.donationtracker.Model.CSVReader;
-import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.R;
 import nottheory.donationtracker.Model.LoginManager;
 
