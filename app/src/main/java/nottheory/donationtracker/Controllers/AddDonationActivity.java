@@ -69,13 +69,17 @@ public class AddDonationActivity extends AppCompatActivity {
                 String dcategory = (String) category.getSelectedItem();
                 String dvalue = value.getText().toString();
 
-                Location l = LoginManager.locations.getLocationByName(getIntent().getStringExtra("location"));
+                Location l = LoginManager.locations.getLocationByName(
+                        getIntent().getStringExtra("location"));
 
-                if (!shortDesc.equals("") && !fullDesc.equals("") && !time.equals("") && !dcategory.equals("") && !dvalue.equals("")) {
-                    Donation newDonation = new Donation(time, shortDesc, fullDesc, dvalue, dcategory);
+                if (!"".equals(shortDesc) && !"".equals(fullDesc) && !"".equals(time) &&
+                        !"".equals(dcategory) && !"".equals(dvalue)) {
+                    Donation newDonation = new Donation(
+                            time, shortDesc, fullDesc, dvalue, dcategory);
                     l.addDonation(newDonation);
                     //System.out.println("TEST go bac");
-                    Intent i = new Intent(AddDonationActivity.this, DonationListActivity.class);
+                    Intent i = new Intent(
+                            AddDonationActivity.this, DonationListActivity.class);
                     i.putExtra("location", l.getName());
                     startActivity(i);
                     finish();

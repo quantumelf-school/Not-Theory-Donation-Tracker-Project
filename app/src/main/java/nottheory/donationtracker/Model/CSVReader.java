@@ -28,7 +28,7 @@ public class CSVReader {
                 try {
                     String get_name = DatabaseConnection.sendRawSQL(
                             "SELECT * FROM Locations WHERE name = '" + items[1] + "';");
-                    if (get_name.equals("")) {
+                    if ("".equals(get_name)) {
                         DatabaseConnection.sendRawSQL("INSERT INTO Locations (name, address, city, state, type, phone, website, zipcode, latitude, longitude) VALUES" +
                         "('" + items[1] + "', '" + items[2] + "', '" + items[3] + "', '" + items[4] + "', '" + items[5] +
                                 "', '" + items[6] + "', '" + items[7] + "', '" + items[8] + "', '" + items[9] + "', '" + items[10] + "');");

@@ -29,7 +29,7 @@ public abstract class LoginManager {
         String getSelection;
         try {
             getSelection = DatabaseConnection.sendRawSQL("SELECT username, password FROM Users WHERE username = '" + un + "' AND password = '" + pw + "';");
-            return !(getSelection.equals(""));
+            return !("".equals(getSelection));
         } catch (Exception e) {
             e.printStackTrace();
         }

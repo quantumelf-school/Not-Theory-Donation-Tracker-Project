@@ -22,7 +22,7 @@ public class Location {
         try {
             DatabaseConnection.sendRawSQL("CREATE TABLE IF NOT EXISTS `" + name + " INV` (donation_id INT AUTO_INCREMENT, timestamp TEXT, shortDescript TEXT, longDescript TEXT, value TEXT, category TEXT, comments TEXT, PRIMARY KEY (donation_id))  ENGINE=INNODB;");
             String locationinventory = DatabaseConnection.sendRawSQL("SELECT timestamp, shortDescript, longDescript, value, category, comments FROM `" + name + " INV`");
-            if (!locationinventory.equals("")) {
+            if (!"".equals(locationinventory)) {
                 String delimiter = "\\),\\(";
                 String[] donation_list = (locationinventory.substring(1, locationinventory.length() - 1)).split(delimiter);
                 for (String donation_x: donation_list) {
