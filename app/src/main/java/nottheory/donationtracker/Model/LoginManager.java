@@ -17,8 +17,7 @@ public abstract class LoginManager {
             String getSelection = DatabaseConnection.sendRawSQL("SELECT username FROM Users WHERE username = '" + un + "';");
             if (getSelection == "") {
                 DatabaseConnection.sendRawSQL("INSERT INTO Users (name, username, password, email, accttype) " +
-                        "VALUES ('" + acct.getName() + "','" + acct.getUsername() + "','" + acct.getPassword() + "','" +
-                        acct.getEmail() + "','" + acct.getAcctType().name() + "');");
+                        "VALUES (" + acct.sqlAllInfo() + ");");
             }
         } catch (Exception e) {
             e.printStackTrace();

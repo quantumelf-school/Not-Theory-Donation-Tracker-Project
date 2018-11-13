@@ -13,24 +13,22 @@ public class Account {
         this.acctType = acctType;
     }
 
-    public Account() {}
-
     public String getName() { return name; }
-
-    public String getEmail() { return email; }
-
-    public String getPassword() {
-        return password;
-    }
 
     @Override
     public String toString() { return this.name + ", " + this.email;}
 
-    public String getUsername() {
-        return username;
-    }
-
     public AccountType getAcctType() {
         return acctType;
+    }
+    public String sqlAllInfo() {
+        String returnString = "'" + name + "','" + username + "','" + password + "',";
+        if (email != null) {
+            returnString += "'" + email + "','";
+        } else {
+            returnString += " ,'";
+        }
+        returnString += acctType.name() + "'";
+        return returnString;
     }
 }
