@@ -1,6 +1,8 @@
 package nottheory.donationtracker.Model;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 
 public class DonationCollection {
     private List<Donation> donations = new ArrayList<>();
@@ -63,7 +65,7 @@ public class DonationCollection {
         }
         return ret;
     }
-    public Donation getDonationByName(String name) { //Joey Test
+    public Donation getDonationByName(String name) throws NoSuchElementException { //Joey Test
         Donation ret = null;
         name = name.toUpperCase();
         for(Donation d : donations){
@@ -73,7 +75,7 @@ public class DonationCollection {
             }
         }
         if (ret == null) {
-            return null;
+            throw new NoSuchElementException();
         }
         return ret;
     }

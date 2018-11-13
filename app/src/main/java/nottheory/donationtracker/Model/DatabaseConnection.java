@@ -19,7 +19,7 @@ class DatabaseConnection {
         Map<String,Object> params = new LinkedHashMap<>();
         params.put("sql", SQL);
 
-        StringBuilder postData = new StringBuilder();
+        StringBuilder postData = new StringBuilder(); //uses builder design pattern
         for (Map.Entry<String,Object> param : params.entrySet()) {
             if (postData.length() != 0) postData.append('&');
             postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
