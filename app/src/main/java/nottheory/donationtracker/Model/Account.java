@@ -22,13 +22,11 @@ public class Account {
         return acctType;
     }
     public String sqlAllInfo() {
-        String returnString = "'" + name + "','" + username + "','" + password + "',";
-        if (email != null) {
-            returnString += "'" + email + "','";
-        } else {
-            returnString += " ,'";
+        String returnString = "'" + name + "','" + username + "','" + password + "','";
+        returnString += "'" + email + "','" + acctType.name() + "'";
+        if (!email.contains("@")) {
+            return null;
         }
-        returnString += acctType.name() + "'";
         return returnString;
     }
 }
