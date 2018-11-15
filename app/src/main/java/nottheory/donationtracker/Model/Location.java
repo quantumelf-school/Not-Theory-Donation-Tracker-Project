@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Location {
-    private String name, address, city, state, type, phone, website, zipcode, latitude, longitude;
+    private final String name, address, city, state, type, phone, website, zipcode, latitude, longitude;
     private DonationCollection inventory = new DonationCollection();
     //private ArrayList<Donation> inventory = new ArrayList<>();
     private int row = 0;
