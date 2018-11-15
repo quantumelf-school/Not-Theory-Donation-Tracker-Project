@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 public class CSVReader {
-    private LocationCollection data;
+    private final LocationCollection data;
     
     public CSVReader() {
         data = new LocationCollection();
@@ -24,10 +24,11 @@ public class CSVReader {
         final int FILE_LENGTH = 11;
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(is, StandardCharsets.UTF_8));
-        
+
         String line;
         reader.readLine();
-        while ((line = reader.readLine()) != null) {
+        line = reader.readLine();
+        while (line != null) {
             String[] items = line.split(",");
             if (items.length == FILE_LENGTH) {
                 try {
@@ -43,6 +44,7 @@ public class CSVReader {
                     e.printStackTrace();
                 }
             }
+            line = reader.readLine();
         }
         reader.close();
         try {

@@ -67,8 +67,8 @@ public class LocationListActivity extends AppCompatActivity {
     }
 
     private class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.LocationViewHolder> {
-        private String[] locations;
-        private Context context;
+        private final String[] locations;
+        private final Context context;
         public class LocationViewHolder extends RecyclerView.ViewHolder {
             Button location;
 

@@ -16,7 +16,7 @@ public final class LoginManager {
         try {
             String getSelection = DatabaseConnection.sendRawSQL("SELECT username FROM Users WHERE" +
                     " username = '" + un + "';");
-            if (getSelection.equals("")) {
+            if ("".equals(getSelection)) {
                 DatabaseConnection.sendRawSQL("INSERT INTO Users (name, username, password," +
                         " email, accttype) " +
                         "VALUES (" + acct.sqlAllInfo() + ");");
@@ -64,6 +64,10 @@ public final class LoginManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void setLocations(LocationCollection newLocations) {
+        locations = newLocations;
     }
 
     public static void logoutAccount() {
