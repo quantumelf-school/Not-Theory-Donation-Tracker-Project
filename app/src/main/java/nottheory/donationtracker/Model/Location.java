@@ -119,9 +119,21 @@ public class Location {
         return row;
     }
 
+    /**
+     * getter for the donations that belong
+     * to the location
+     * @return a list of the donations that belong to
+     * the location
+     */
     public List<Donation> getDonations() {
         return inventory.getDonations();
     }
+
+    /**
+     * getter method for the donations belonging to the locations
+     * @return a DonationCollection containing the donations
+     * belonging to the location
+     */
     public DonationCollection getDonationCollection() {
         return inventory;
     }
@@ -156,10 +168,22 @@ public class Location {
         return text;
     }
 
+    /**
+     * generates text representation of the location
+     * for logging and lookup purposes
+     * @return the log text in the format:
+     * Location Name: name LocationNumber: rowNumber
+     */
     public String logText() {
         return "Location Name: " + name + " LocationNumber: " + row;
     }
 
+    /**
+     * makes marker options for the map marker
+     * to be displayed for the location
+     * @return the MarkerOptions object for the
+     * marker that represents the location
+     */
     public MarkerOptions makeMarkerOption() {
         MarkerOptions markerOption = new MarkerOptions();
         MarkerOptions markerPosition = markerOption.position(new LatLng(this.getLat(),

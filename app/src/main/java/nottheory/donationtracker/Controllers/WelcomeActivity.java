@@ -1,6 +1,7 @@
 package nottheory.donationtracker.Controllers;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,7 +27,9 @@ public class WelcomeActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.ThreadPolicy.Builder policyBuilder = new StrictMode.ThreadPolicy.Builder();
+        StrictMode.ThreadPolicy.Builder permitAll = policyBuilder.permitAll();
+        StrictMode.ThreadPolicy policy = permitAll.build();
         //uses builder design pattern so chained calls are ok
         StrictMode.setThreadPolicy(policy);
         loginButton = findViewById(R.id.welcome_loginbutton);
@@ -42,7 +45,8 @@ public class WelcomeActivity extends AppCompatActivity {
         LoginManager.initialize_tables();
         CSVReader aReader = new CSVReader();
         try {
-            aReader.readFile(getResources().openRawResource(R.raw.locationdata));
+            Resources theseResources = getResources();
+            aReader.readFile(theseResources.openRawResource(R.raw.locationdata));
             LoginManager.setLocations(aReader.getLC());
         } catch(IOException e) {
             return;
