@@ -17,6 +17,9 @@ import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.R;
 
+/**
+ * Controller link to activity_maps UI
+ */
 public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWindowClickListener,
         OnMapReadyCallback {
 
