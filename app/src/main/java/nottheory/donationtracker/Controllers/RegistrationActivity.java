@@ -3,6 +3,7 @@ package nottheory.donationtracker.Controllers;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -48,10 +49,14 @@ public class RegistrationActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = nameEntry.getText().toString(); //this is the most concise way
-                String email = emailEntry.getText().toString();
-                String un = unEntry.getText().toString();
-                String pw = pwEntry.getText().toString();
+                Editable nameEdit = nameEntry.getText();
+                String name = nameEdit.toString(); //this is the most concise way
+                Editable emailEdit = emailEntry.getText();
+                String email = emailEdit.toString();
+                Editable unEdit = unEntry.getText();
+                String un = unEntry.toString();
+                Editable pwEdit = pwEntry.getText();
+                String pw = pwEntry.toString();
                 AccountType acctType = (AccountType) acctTypeSpinner.getSelectedItem();
 
                 if (!"".equals(name) && !"".equals(email) && !"".equals(un) && !"".equals(pw)) {
