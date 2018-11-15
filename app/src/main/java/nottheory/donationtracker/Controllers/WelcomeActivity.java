@@ -15,10 +15,11 @@ import nottheory.donationtracker.R;
 import nottheory.donationtracker.Model.LoginManager;
 
 public class WelcomeActivity extends AppCompatActivity {
-    private Button loginButton, registerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Button loginButton, registerButton;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build(); //uses builder design pattern so chained calls are ok
