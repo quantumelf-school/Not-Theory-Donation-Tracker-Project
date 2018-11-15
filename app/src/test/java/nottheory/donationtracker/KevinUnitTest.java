@@ -23,7 +23,7 @@ public class KevinUnitTest {
                 "this_email@gmail.com", AccountType.USER);
         String target = "'this_name', 'this_username', 'this_password', 'this_email@gmail.com', "
             +"'USER'";
-        System.out.println(testAccount.sqlAllInfo());
+
         assertTrue(target.equals(testAccount.sqlAllInfo()));
     }
 
