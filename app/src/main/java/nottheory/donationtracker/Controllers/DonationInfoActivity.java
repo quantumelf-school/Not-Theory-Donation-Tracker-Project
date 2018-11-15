@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class DonationInfoActivity extends AppCompatActivity {
-    Intent intent = getIntent();
+    private final Intent intent = getIntent();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

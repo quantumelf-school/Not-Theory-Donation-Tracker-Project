@@ -75,7 +75,7 @@ public class LocationListActivity extends AppCompatActivity {
         private final Context context;
 
         public class LocationViewHolder extends RecyclerView.ViewHolder {
-            Button location;
+            final Button location;
 
             LocationViewHolder(View view) {
                 super(view);

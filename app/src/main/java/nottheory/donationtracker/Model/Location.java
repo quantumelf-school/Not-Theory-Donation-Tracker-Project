@@ -124,15 +124,15 @@ public class Location {
         return inventory;
     }
 
-    public double getLat() {
+    private double getLat() {
         return Double.valueOf(this.latitude);
     }
 
-    public double getLong() {
+    private double getLong() {
         return Double.valueOf(this.longitude);
     }
 
-    public String getSnippet() {
+    private String getSnippet() {
         String text = "";
         text += "Phone: " + phone + "\n";
         text += "Website: " + website;
