@@ -37,9 +37,13 @@ public class CSVReader {
                     String get_name = DatabaseConnection.sendRawSQL(
                             "SELECT * FROM Locations WHERE name = '" + items[1] + "';");
                     if ("".equals(get_name)) {
-                        DatabaseConnection.sendRawSQL("INSERT INTO Locations (name, address, city, state, type, phone, website, zipcode, latitude, longitude) VALUES" +
-                        "('" + items[1] + "', '" + items[2] + "', '" + items[3] + "', '" + items[4] + "', '" + items[5] +
-                                "', '" + items[6] + "', '" + items[7] + "', '" + items[8] + "', '" + items[9] + "', '" + items[10] + "');");
+                        DatabaseConnection.sendRawSQL("INSERT INTO Locations (name, "
+                                + "address, city, state, type, phone, website, zipcode, "
+                                + "latitude, longitude) VALUES" +
+                        "('" + items[1] + "', '" + items[2] + "', '" + items[3] + "', '"
+                                + items[4] + "', '" + items[5] +
+                                "', '" + items[6] + "', '" + items[7] + "', '" + items[8]
+                                + "', '" + items[9] + "', '" + items[10] + "');");
                         Log.d("@JT LOCATION INSERTED","Location Name: " + items[1] + "; get_name was: " + get_name);
                     }
                 } catch (Exception e) {
