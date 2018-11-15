@@ -30,7 +30,8 @@ public class RegistrationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Button loginButton, cancelButton;
+        Button loginButton;
+        Button cancelButton;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         nameEntry = findViewById(R.id.register_nameentry);
