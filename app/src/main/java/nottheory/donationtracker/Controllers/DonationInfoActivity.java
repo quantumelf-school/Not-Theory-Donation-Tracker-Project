@@ -13,6 +13,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * activity giving information about a particular donation to the user
+ */
 public class DonationInfoActivity extends AppCompatActivity {
     private final Intent intent = getIntent();
 
