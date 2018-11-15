@@ -5,6 +5,7 @@ import nottheory.donationtracker.Model.AccountType;
 
 import org.junit.Test;
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertTrue;
 
 /**
  * Created by Kevin Lu on 11/13/18.
@@ -20,8 +21,10 @@ public class KevinUnitTest {
     public void testProperEmail() {
         testAccount = new Account("this_name", "this_username", "this_password",
                 "this_email@gmail.com", AccountType.USER);
-        String target = "'this_name','this_username','this_password','this_email@gmail.com','User'";
-        assertEquals("wrong string created", target, testAccount.sqlAllInfo());
+        String target = "'this_name', 'this_username', 'this_password', 'this_email@gmail.com', "
+            +"'USER'";
+        System.out.println(testAccount.sqlAllInfo());
+        assertTrue(target.equals(testAccount.sqlAllInfo()));
     }
 
     /**
