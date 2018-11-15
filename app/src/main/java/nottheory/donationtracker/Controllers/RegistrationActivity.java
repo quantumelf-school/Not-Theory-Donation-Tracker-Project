@@ -50,9 +50,11 @@ public class RegistrationActivity extends AppCompatActivity {
                 //TODO: Add a message for invalid credentials
                 if (!"".equals(name) && !"".equals(email) && !"".equals(un) && !"".equals(pw)) {
 
-                    LoginManager.addCredentials(un, new Account(name, email, un, pw, acctType));
-                    startActivity(new Intent(RegistrationActivity.this, WelcomeActivity.class));
-
+                    boolean goodCheck = LoginManager.addCredentials(un,
+                            new Account(name, email, un, pw, acctType));
+                    if (goodCheck) {
+                        startActivity(new Intent(RegistrationActivity.this, WelcomeActivity.class));
+                    }
                 }
             }
         });

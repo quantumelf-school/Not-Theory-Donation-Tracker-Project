@@ -11,7 +11,7 @@ public final class LoginManager {
 
     private LoginManager() {}
 
-    public static void addCredentials(String un, Account acct) {
+    public static boolean addCredentials(String un, Account acct) {
 
         try {
             String getSelection = DatabaseConnection.sendRawSQL("SELECT username FROM Users WHERE" +
@@ -21,8 +21,9 @@ public final class LoginManager {
                         " email, accttype) " +
                         "VALUES (" + acct.sqlAllInfo() + ");");
             }
+            return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            return false;
         }
     }
 
