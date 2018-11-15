@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import nottheory.donationtracker.Model.Location;
+import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.R;
 
@@ -30,7 +31,8 @@ public class LocationInfoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_location_info);
 
         Intent thisIntent = getIntent();
-        location = LoginManager.locations.getLocationByName(thisIntent.getStringExtra("location"));
+        LocationCollection allLocations = LoginManager.getLocations();
+        location = allLocations.getLocationByName(thisIntent.getStringExtra("location"));
         if (location == null) {
             Log.d("@JT CHECK LOCATION", "--LOCATION IS NULL");
         }
@@ -64,7 +66,7 @@ public class LocationInfoActivity extends AppCompatActivity {
 
         locationText = findViewById(R.id.locationinfo_info_text);
         Intent givenIntent = getIntent();
-        Location rawText = LoginManager.locations.getLocationFromRow(givenIntent.getIntExtra("pos",
+        Location rawText = allLocations.getLocationFromRow(givenIntent.getIntExtra("pos",
                 0));
         String text = rawText.toString();
 

@@ -54,9 +54,9 @@ public class RegistrationActivity extends AppCompatActivity {
                 Editable emailEdit = emailEntry.getText();
                 String email = emailEdit.toString();
                 Editable unEdit = unEntry.getText();
-                String un = unEntry.toString();
+                String un = unEdit.toString();
                 Editable pwEdit = pwEntry.getText();
-                String pw = pwEntry.toString();
+                String pw = pwEdit.toString();
                 AccountType acctType = (AccountType) acctTypeSpinner.getSelectedItem();
 
                 if (!"".equals(name) && !"".equals(email) && !"".equals(un) && !"".equals(pw)) {
