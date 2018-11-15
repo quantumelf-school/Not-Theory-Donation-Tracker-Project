@@ -42,7 +42,7 @@ class DatabaseConnection {
             Reader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
 
             StringBuilder sb = new StringBuilder();
-            for (int c; (c = in.read()) >= 0;) {
+            for (int c = in.read(); c >= 0; c = in.read()) {
                 sb.append((char)c);
             }
 

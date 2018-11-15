@@ -24,7 +24,7 @@ public class CSVReader {
     public void readFile(InputStream is) throws IOException {
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(is, StandardCharsets.UTF_8));
-        
+
         String line;
         reader.readLine();
         while ((line = reader.readLine()) != null) {
