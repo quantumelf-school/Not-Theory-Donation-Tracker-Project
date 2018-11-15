@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 
 public class DonationCollection {
-    private List<Donation> donations = new ArrayList<>();
+    private final List<Donation> donations = new ArrayList<>();
 
     public DonationCollection() {
         //default method instantiates empty donation list
