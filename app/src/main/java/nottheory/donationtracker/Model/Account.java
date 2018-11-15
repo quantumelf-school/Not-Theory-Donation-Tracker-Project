@@ -1,8 +1,11 @@
 package nottheory.donationtracker.Model;
 
 public class Account {
-    private final String name, email, username, password;
-    private AccountType acctType;
+    private final String name;
+    private final String email;
+    private final String username;
+    private final String password;
+    private final AccountType acctType;
 
 
     public Account(String name, String un, String pw, String email, AccountType acctType) {

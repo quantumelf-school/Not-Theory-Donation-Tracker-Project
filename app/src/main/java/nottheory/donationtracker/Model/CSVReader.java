@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 public class CSVReader {
-    private LocationCollection data;
+    private final LocationCollection data;
     
     public CSVReader() {
         data = new LocationCollection();
