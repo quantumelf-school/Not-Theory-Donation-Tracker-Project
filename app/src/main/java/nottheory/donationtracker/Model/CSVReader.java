@@ -75,4 +75,7 @@ public class CSVReader {
         }
     }
 
+    public LocationCollection getLC() {
+        return data;
+    }
 }
