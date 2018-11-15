@@ -44,7 +44,8 @@ public class CSVReader {
                                 + items[4] + "', '" + items[5] +
                                 "', '" + items[6] + "', '" + items[7] + "', '" + items[8]
                                 + "', '" + items[9] + "', '" + items[10] + "');");
-                        Log.d("@JT LOCATION INSERTED","Location Name: " + items[1] + "; get_name was: " + get_name);
+                        Log.d("@JT LOCATION INSERTED","Location Name: " + items[1]
+                                + "; get_name was: " + get_name);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -54,7 +55,8 @@ public class CSVReader {
         }
         reader.close();
         try {
-            String get_locations = DatabaseConnection.sendRawSQL("SELECT name, address, city, state, type, phone, website, zipcode, latitude, longitude FROM Locations;");
+            String get_locations = DatabaseConnection.sendRawSQL("SELECT name, address, city, "
+                    + "state, type, phone, website, zipcode, latitude, longitude FROM Locations;");
             String delimiter = "\\),\\(";
             Log.d("myApp", "DB QUERY RESULT: " + get_locations);
             String[] location_list = (get_locations.substring(1, get_locations.length() - 1)).split(delimiter);
