@@ -57,7 +57,7 @@ public class DonationListActivity extends AppCompatActivity {
             }
         });
         LocationCollection allLocations = LoginManager.getLocations();
-        final Location location = allLocations.getLocationByName(fromLocation);
+//        final Location location = allLocations.getLocationByName(fromLocation);
         addButton = findViewById(R.id.donationlist_add_button);
         errorText = findViewById(R.id.donationlist_error_text);
         errorText.setVisibility(View.INVISIBLE);
