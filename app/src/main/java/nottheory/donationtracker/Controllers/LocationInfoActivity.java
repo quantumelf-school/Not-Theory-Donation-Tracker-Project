@@ -29,8 +29,8 @@ public class LocationInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_info);
 
-
-        location = LoginManager.locations.getLocationByName(getIntent().getStringExtra("location"));
+        Intent thisIntent = getIntent();
+        location = LoginManager.locations.getLocationByName(thisIntent.getStringExtra("location"));
         if (location == null) {
             Log.d("@JT CHECK LOCATION", "--LOCATION IS NULL");
         }
@@ -51,7 +51,8 @@ public class LocationInfoActivity extends AppCompatActivity {
                 locationIntent = new Intent(LocationInfoActivity.this, DonationListActivity.class);
                 String key = "location";
                 locationIntent.putExtra(key, location.getName());
-                locationIntent.putExtra("pos", getIntent().getIntExtra("pos", 0));
+                Intent lastIntent = getIntent();
+                locationIntent.putExtra("pos", lastIntent.getIntExtra("pos", 0));
                 startActivity(locationIntent);
             }
         });
@@ -62,8 +63,10 @@ public class LocationInfoActivity extends AppCompatActivity {
 //        }
 
         locationText = findViewById(R.id.locationinfo_info_text);
-        String text = LoginManager.locations.getLocationFromRow(getIntent().getIntExtra("pos",
-                0)).toString();
+        Intent givenIntent = getIntent();
+        Location rawText = LoginManager.locations.getLocationFromRow(givenIntent.getIntExtra("pos",
+                0));
+        String text = rawText.toString();
 
         locationText.setText(text);
         locationText.setVisibility(View.VISIBLE);

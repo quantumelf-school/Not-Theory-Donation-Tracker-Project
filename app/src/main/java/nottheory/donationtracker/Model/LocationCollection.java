@@ -45,7 +45,8 @@ public class LocationCollection {
 
     public Location getLocationByName(String name) {
         for (Location l : locations) {
-            if (l.getName().equals(name)) {
+            String thisName = l.getName();
+            if (thisName.equals(name)) {
                 return l;
             }
         }
@@ -55,7 +56,8 @@ public class LocationCollection {
     public Location getLocationWithDonation(Donation d) {
         for(Location l: locations) {
             for(Donation don: l.getDonations()) {
-                if (don.getName().equals(d.getName())) {
+                String donationName = don.getName();
+                if (donationName.equals(d.getName())) {
                     return l;
                 }
             }

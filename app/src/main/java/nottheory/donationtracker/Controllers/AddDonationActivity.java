@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -68,11 +69,15 @@ public class AddDonationActivity extends AppCompatActivity {
         addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { //JoeyFix
-                String shortDesc = shortDescText.getText().toString(); //most concise way to do this
-                String fullDesc = fullDescText.getText().toString(); //also does meed LoD
-                String time = dateTime.getText().toString();
+                Editable shortEdit = shortDescText.getText();
+                String shortDesc = shortEdit.toString(); //most concise way to do this
+                Editable fullEdit = fullDescText.getText();
+                String fullDesc = fullEdit.toString(); //also does meed LoD
+                Editable timeEdit = dateTime.getText();
+                String time = timeEdit.toString();
                 String dcategory = (String) category.getSelectedItem();
-                String dvalue = value.getText().toString();
+                Editable valueEdit = value.getText();
+                String dvalue = valueEdit.toString();
 
                 Location l = LoginManager.locations.getLocationByName(
                         intent.getStringExtra("location"));

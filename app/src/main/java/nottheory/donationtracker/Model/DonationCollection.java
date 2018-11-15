@@ -83,7 +83,8 @@ public class DonationCollection {
     public ArrayList<Donation> getDonationsByCategory(String category) { //replace string with enum
         ArrayList<Donation> ret = new ArrayList<>();
         for(Donation d : donations){
-            if(d.getCategory().equals(category)) {
+            String thisCategory = d.getCategory();
+            if(thisCategory.equals(category)) {
                 ret.add(d);
             }
         }
@@ -100,7 +101,8 @@ public class DonationCollection {
     public ArrayList<Donation> getDonationsByName(String name) {
         ArrayList<Donation> ret = new ArrayList<>();
         for(Donation d : donations){
-            String checkName = d.getName().toUpperCase();
+            String rawName = d.getName();
+            String checkName = rawName.toUpperCase();
             if(checkName.equals(name.toUpperCase())) {
                 ret.add(d);
             }
@@ -118,7 +120,8 @@ public class DonationCollection {
     public Donation getDonationByName(String name) throws NoSuchElementException { //Joey Test
         Donation ret = null;
         for(Donation d : donations){
-            String checkName = d.getName().toUpperCase();
+            String rawName = d.getName();
+            String checkName = rawName.toUpperCase();
             if(checkName.equals(name.toUpperCase())) {
                 ret = d;
             }
@@ -139,7 +142,8 @@ public class DonationCollection {
     public ArrayList<Donation> getDonationsBySimilarName(String name) { //replace string with enum
         ArrayList<Donation> ret = new ArrayList<>();
         for(Donation d : donations){
-            String checkName = d.getName().toUpperCase();
+            String rawName = d.getName();
+            String checkName = rawName.toUpperCase();
             if(checkName.contains(name.toUpperCase())) {
                 ret.add(d);
             }

@@ -1,4 +1,5 @@
 package nottheory.donationtracker.Controllers;
+import nottheory.donationtracker.Model.Account;
 import nottheory.donationtracker.Model.AccountType;
 import nottheory.donationtracker.Model.Donation;
 import nottheory.donationtracker.Model.Location;
@@ -35,7 +36,8 @@ public class DonationListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_donation_list);
 
         String str = "location";
-        fromLocation = getIntent().getStringExtra(str);
+        Intent currIntent = getIntent();
+        fromLocation = currIntent.getStringExtra(str);
         //fix so pushes name of the location picked
         backButton = findViewById(R.id.donationlist_back_button);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +57,9 @@ public class DonationListActivity extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(LoginManager.getCurrAccount().getAcctType().equals(AccountType.values()[1])) {
+                Account currAccount = LoginManager.getCurrAccount();
+                AccountType currAcctType = currAccount.getAcctType();
+                if(currAcctType.equals(AccountType.values()[1])) {
                     Intent i = new Intent(DonationListActivity.this, AddDonationActivity.class);
                     i.putExtra("location", location.getName());
                     startActivity(i);
@@ -109,7 +113,8 @@ public class DonationListActivity extends AppCompatActivity {
         @Override
         public DonationListActivity.DonationAdapter.DonationViewHolder onCreateViewHolder(
                 ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(context).inflate(
+            LayoutInflater currLayoutInflator = LayoutInflater.from(context);
+            View view = currLayoutInflator.inflate(
                     R.layout.location_recyclerview_row, parent, false);
             return new DonationListActivity.DonationAdapter.DonationViewHolder(view);
         }
@@ -126,7 +131,8 @@ public class DonationListActivity extends AppCompatActivity {
                     intent.putExtra("dpos", viewHolder.getAdapterPosition());
                     intent.putExtra("donation", (
                             (Donation) donations[viewHolder.getAdapterPosition()]).getName());
-                    intent.putExtra("location", getIntent().getStringExtra("location"));
+                    Intent lastIntent = getIntent();
+                    intent.putExtra("location", lastIntent.getStringExtra("location"));
                     startActivity(intent);
                 }
             });
