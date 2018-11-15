@@ -49,7 +49,7 @@ public class Account {
      */
     public String sqlAllInfo() {
         String returnString = "'" + name + "','" + username + "','" + password + "','";
-        returnString += "'" + email + "','" + acctType.name() + "'";
+        returnString += email + "','" + acctType.name() + "'";
         if (!email.contains("@")) {
             return null;
         }
