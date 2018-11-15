@@ -16,7 +16,8 @@ import nottheory.donationtracker.Model.Location;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.R;
 
-public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWindowClickListener, OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWindowClickListener,
+        OnMapReadyCallback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
