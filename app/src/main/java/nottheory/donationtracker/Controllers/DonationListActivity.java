@@ -24,7 +24,9 @@ import java.util.List;
 
 /**
  * activity for displaying the donations of a particular location
- * to the user
+ * to the user. There is feature envy for Login Manager because
+ * the locations is a private field and heavily altered, so
+ * there is a lot of different things Login Manager is needed for.
  */
 public class DonationListActivity extends AppCompatActivity {
     
