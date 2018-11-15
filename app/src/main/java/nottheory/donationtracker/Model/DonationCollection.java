@@ -56,10 +56,9 @@ public class DonationCollection {
 //    returns list of donations by name (NOT case-sensitive)
     public ArrayList<Donation> getDonationsByName(String name) { //replace string with enum
         ArrayList<Donation> ret = new ArrayList<>();
-        name = name.toUpperCase();
         for(Donation d : donations){
             String checkName = d.getName().toUpperCase();
-            if(checkName.equals(name)) {
+            if(checkName.equals(name.toUpperCase())) {
                 ret.add(d);
             }
         }
