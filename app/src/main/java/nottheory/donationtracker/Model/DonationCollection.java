@@ -1,7 +1,6 @@
 package nottheory.donationtracker.Model;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 
 public class DonationCollection {
