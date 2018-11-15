@@ -35,12 +35,11 @@ public class DonationInfoActivity extends AppCompatActivity {
         });
 
         donationText = findViewById(R.id.donationinfo_info_text);
-        String text = "";
         Location l = LoginManager.locations.getLocationByName(intent.getStringExtra("location"));
         DonationCollection gottenCollection = l.getDonationCollection();
         Donation foundDonation = gottenCollection.getDonationByName(
                 intent.getStringExtra("donation"));
-        text = foundDonation.toString();
+        String text = foundDonation.toString();
         donationText.setText(text);
         donationText.setVisibility(View.VISIBLE);
     }
