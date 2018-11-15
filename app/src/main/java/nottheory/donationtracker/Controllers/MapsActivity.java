@@ -13,6 +13,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 
 import nottheory.donationtracker.Model.Location;
+import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.R;
 
@@ -52,7 +53,8 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
         //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
-        for(Location l: LoginManager.locations.getLocations()) {
+        LocationCollection allLocations = LoginManager.getLocations();
+        for(Location l: allLocations.getLocations()) {
             mMap.addMarker(l.makeMarkerOption());
         }
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ATLANTA_LATLNG, ZOOM));

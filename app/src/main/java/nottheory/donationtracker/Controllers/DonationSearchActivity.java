@@ -65,7 +65,8 @@ public class DonationSearchActivity extends AppCompatActivity {
         locSpinner = findViewById(R.id.search_location_spinner);
         ArrayList<String> locationList = new ArrayList<>();
         locationList.add("All");
-        locationList.addAll(LoginManager.locations.getLocationNames());
+        LocationCollection allLocations = LoginManager.getLocations();
+        locationList.addAll(allLocations.getLocationNames());
         locSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
                 locationList));
 
@@ -96,7 +97,7 @@ public class DonationSearchActivity extends AppCompatActivity {
         });
 
         donationSearchList = findViewById(R.id.donationSearchList);
-        List<Donation> donationArray = LoginManager.locations.getAllDonationsAL();
+        List<Donation> donationArray = allLocations.getAllDonationsAL();
         donationSearchList.setAdapter(new DonationSearchActivity.DonationAdapter(this,
                 donationArray.toArray()));
         donationSearchList.setLayoutManager(new LinearLayoutManager(this));
@@ -142,7 +143,8 @@ public class DonationSearchActivity extends AppCompatActivity {
                             (Donation) donations[viewHolder.getAdapterPosition()]).getName());
                     //feature envy is necessary to tell next activity which donation was clicked
 
-                    Location l = LoginManager.locations.getLocationWithDonation(
+                    LocationCollection allLocations = LoginManager.getLocations();
+                    Location l = allLocations.getLocationWithDonation(
                             (Donation) donations[viewHolder.getAdapterPosition()]);
                     intent.putExtra("location", l.getName());
                     startActivity(intent);
@@ -157,7 +159,8 @@ public class DonationSearchActivity extends AppCompatActivity {
     }
 
     private void doSearch() {
-        ArrayList<Location> locationList  = LoginManager.locations.getLocations();
+        LocationCollection allLocations = LoginManager.getLocations();
+        ArrayList<Location> locationList  = allLocations.getLocations();
         ArrayList<Donation> donationList = new ArrayList<>();
         Object locSelected = locSpinner.getSelectedItem();
         if (("All".equals(locSelected.toString())) ||

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public final class LoginManager {
     private static List<Account> currUsers = new ArrayList<Account>();
-    public static LocationCollection locations;
+    private static LocationCollection locations;
 
     private LoginManager() {}
 
@@ -98,5 +98,9 @@ public final class LoginManager {
     public static String getLocationByName(String name) {
         Location l = locations.getLocationByName(name);
         return l.getName();
+    }
+
+    public static LocationCollection getLocations() {
+        return locations;
     }
 }

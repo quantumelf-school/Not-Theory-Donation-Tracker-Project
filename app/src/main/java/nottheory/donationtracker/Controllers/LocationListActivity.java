@@ -1,5 +1,6 @@
 package nottheory.donationtracker.Controllers;
 
+import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.R;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.Model.Location;
@@ -63,9 +64,10 @@ public class LocationListActivity extends AppCompatActivity {
 
 
         locationList = findViewById(R.id.locationList);
-        List<String> locationNames = LoginManager.locations.getLocationNames();
+        LocationCollection allLocations = LoginManager.getLocations();
+        List<String> locationNames = allLocations.getLocationNames();
         String[] locationArray = locationNames.toArray(
-                new String[LoginManager.locations.getNumLocations()]);
+                new String[allLocations.getNumLocations()]);
         locationList.setAdapter(new LocationAdapter(this, locationArray));
         locationList.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -101,7 +103,8 @@ public class LocationListActivity extends AppCompatActivity {
             viewHolder.location.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Location l = LoginManager.locations.getLocationFromRow(
+                    LocationCollection allLocations = LoginManager.getLocations();
+                    Location l = allLocations.getLocationFromRow(
                             viewHolder.getAdapterPosition());
                     Intent intent = new Intent(LocationListActivity.this,
                             LocationInfoActivity.class);

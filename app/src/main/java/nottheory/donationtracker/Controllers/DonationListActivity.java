@@ -3,6 +3,7 @@ import nottheory.donationtracker.Model.Account;
 import nottheory.donationtracker.Model.AccountType;
 import nottheory.donationtracker.Model.Donation;
 import nottheory.donationtracker.Model.Location;
+import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.R;
 import nottheory.donationtracker.Model.LoginManager;
 
@@ -53,7 +54,8 @@ public class DonationListActivity extends AppCompatActivity {
                 finish();
             }
         });
-        final Location location = LoginManager.locations.getLocationByName(fromLocation);
+        LocationCollection allLocations = LoginManager.getLocations();
+        final Location location = allLocations.getLocationByName(fromLocation);
         addButton = findViewById(R.id.donationlist_add_button);
         errorText = findViewById(R.id.donationlist_error_text);
         errorText.setVisibility(View.INVISIBLE);
