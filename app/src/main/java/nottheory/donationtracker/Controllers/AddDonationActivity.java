@@ -18,8 +18,6 @@ import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.R;
 
 public class AddDonationActivity extends AppCompatActivity {
-    private Button backButton;
-    private Button addItemButton;
     private EditText shortDescText;
     private EditText fullDescText;
     private EditText dateTime;
@@ -30,6 +28,8 @@ public class AddDonationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Button backButton;
+        Button addItemButton;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_donation);
         shortDescText = findViewById(R.id.additem_shortdesc);
@@ -40,7 +40,7 @@ public class AddDonationActivity extends AppCompatActivity {
         final Intent intent = getIntent();
 
 //        TODO: remove this hardcoded garbage cat. list
-        ArrayList<String> categoryList = new ArrayList<String>();
+        ArrayList<String> categoryList = new ArrayList<>();
         categoryList.add("Clothing");
         categoryList.add("Hat");
         categoryList.add("Kitchen");
