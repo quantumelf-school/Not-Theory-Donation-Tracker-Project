@@ -79,4 +79,24 @@ public final class LoginManager {
     public static Account getCurrAccount() {
         return currUsers.get(0);
     }
+
+    /**
+     * Adds a donation to certain location given its name.
+     * @param name the name of the location
+     * @param donation the donation object to be added
+     */
+    public static void addDonationToLocationByName(String name, Donation donation) {
+        Location l = locations.getLocationByName(name);
+        l.addDonation(donation);
+    }
+
+    /**
+     * Returns a location object given its name.
+     * @param name the name of the location
+     * @return location
+     */
+    public static String getLocationByName(String name) {
+        Location l = locations.getLocationByName(name);
+        return l.getName();
+    }
 }
