@@ -3,13 +3,10 @@ package nottheory.donationtracker;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.NoSuchElementException;
-
 import nottheory.donationtracker.Model.Donation;
 import nottheory.donationtracker.Model.DonationCollection;
 
 import static junit.framework.TestCase.assertEquals;
-import static junit.framework.TestCase.fail;
 
 /**
  * Created by Joseph Crawford on 11/11/18.
@@ -66,7 +63,7 @@ public class TylerUnitTest {
     }
 
     /**
-     * Tests that exact name is found
+     * Tests that exact name is found when searched
      */
     @Test
     public void testOneYeet() {
@@ -103,5 +100,36 @@ public class TylerUnitTest {
         DonationCollection newCollection = new DonationCollection();
         assertEquals("Elements found in DonationCollection when none exist", newCollection,
                 testCollection.getDonationsBySimilarName("ab cd"));
+        newCollection.addDonation(new Donation("TEST", "name with spaces",
+                "TEST","TEST","TEST", "TEST"));
+        assertEquals("Elements incorrectly found in DonationCollection", newCollection,
+                testCollection.getDonationsBySimilarName("name with"));
+        newCollection.addDonation(new Donation("TEST", "namewithoutspaces",
+                "TEST","TEST","TEST", "TEST"));
+        assertEquals("Elements incorrectly found in DonationCollection", newCollection,
+                testCollection.getDonationsBySimilarName("name"));
+    }
+
+    /**
+     * Tests that substring at end of name is checked
+     */
+    @Test
+    public void testEnd() {
+        DonationCollection newCollection = new DonationCollection();
+        newCollection.addDonation(new Donation("TEST", "name with spaces",
+                "TEST","TEST","TEST", "TEST"));
+        newCollection.addDonation(new Donation("TEST", "namewithoutspaces",
+                "TEST","TEST","TEST", "TEST"));
+        assertEquals("Cases checked in DonationCollection", newCollection,
+                testCollection.getDonationsBySimilarName("aces"));
+    }
+
+    /**
+     * Tests that empty string returns all donations
+     */
+    @Test
+    public void testEmptyString() {
+        assertEquals("Cases checked in DonationCollection", testCollection,
+                testCollection.getDonationsBySimilarName(""));
     }
 }
