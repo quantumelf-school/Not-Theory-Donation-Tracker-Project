@@ -58,7 +58,7 @@ public class TylerUnitTest {
                 "TEST","TEST","TEST", "TEST"));
         newCollection.addDonation(new Donation("TEST", "yeet2",
                 "TEST","TEST","TEST", "TEST"));
-        assertEquals("Yeets Not correctly found in DonationCollection", newCollection,
+        assertEquals("Yeets Not correctly found in DonationCollection", newCollection.getDonations(),
                 testCollection.getDonationsBySimilarName("yeet"));
     }
 
@@ -70,7 +70,7 @@ public class TylerUnitTest {
         DonationCollection newCollection = new DonationCollection();
         newCollection.addDonation(new Donation("TEST", "yeet1",
                 "TEST","TEST","TEST", "TEST"));
-        assertEquals("Element yeet1 not correctly found in DonationCollection", newCollection,
+        assertEquals("Element yeet1 not correctly found in DonationCollection", newCollection.getDonations(),
                 testCollection.getDonationsBySimilarName("yeet1"));
     }
 
@@ -84,11 +84,11 @@ public class TylerUnitTest {
                 "TEST","TEST","TEST", "TEST"));
         newCollection.addDonation(new Donation("TEST", "aaaaaa",
                 "TEST","TEST","TEST", "TEST"));
-        assertEquals("Cases checked in DonationCollection", newCollection,
+        assertEquals("Cases checked in DonationCollection", newCollection.getDonations(),
                 testCollection.getDonationsBySimilarName("aaaaaa"));
-        assertEquals("Cases checked in DonationCollection", newCollection,
+        assertEquals("Cases checked in DonationCollection", newCollection.getDonations(),
                 testCollection.getDonationsBySimilarName("AAAAAA"));
-        assertEquals("Cases checked in DonationCollection", newCollection,
+        assertEquals("Cases checked in DonationCollection", newCollection.getDonations(),
                 testCollection.getDonationsBySimilarName("AaAaaA"));
     }
 
@@ -98,15 +98,15 @@ public class TylerUnitTest {
     @Test
     public void testEmpty() {
         DonationCollection newCollection = new DonationCollection();
-        assertEquals("Elements found in DonationCollection when none exist", newCollection,
+        assertEquals("Elements found in DonationCollection when none exist", newCollection.getDonations(),
                 testCollection.getDonationsBySimilarName("ab cd"));
         newCollection.addDonation(new Donation("TEST", "name with spaces",
                 "TEST","TEST","TEST", "TEST"));
-        assertEquals("Elements incorrectly found in DonationCollection", newCollection,
+        assertEquals("Elements incorrectly found in DonationCollection", newCollection.getDonations(),
                 testCollection.getDonationsBySimilarName("name with"));
         newCollection.addDonation(new Donation("TEST", "namewithoutspaces",
                 "TEST","TEST","TEST", "TEST"));
-        assertEquals("Elements incorrectly found in DonationCollection", newCollection,
+        assertEquals("Elements incorrectly found in DonationCollection", newCollection.getDonations(),
                 testCollection.getDonationsBySimilarName("name"));
     }
 
@@ -120,7 +120,7 @@ public class TylerUnitTest {
                 "TEST","TEST","TEST", "TEST"));
         newCollection.addDonation(new Donation("TEST", "namewithoutspaces",
                 "TEST","TEST","TEST", "TEST"));
-        assertEquals("Cases checked in DonationCollection", newCollection,
+        assertEquals("Cases checked in DonationCollection", newCollection.getDonations(),
                 testCollection.getDonationsBySimilarName("aces"));
     }
 
@@ -129,7 +129,7 @@ public class TylerUnitTest {
      */
     @Test
     public void testEmptyString() {
-        assertEquals("Cases checked in DonationCollection", testCollection,
+        assertEquals("Cases checked in DonationCollection", testCollection.getDonations(),
                 testCollection.getDonationsBySimilarName(""));
     }
 }
