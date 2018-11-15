@@ -22,6 +22,9 @@ public class VarunUnitTest {
     private ArrayList<Location> locations;
     private ArrayList<Donation> donations;
 
+    /**
+     * Creates the necessary objects to conduct testing
+     */
     @Before
     public void setUp() {
         donations = new ArrayList<>();
@@ -64,7 +67,10 @@ public class VarunUnitTest {
         
         locationCollection = new LocationCollection(locations);
     }
-    
+
+    /**
+     * Test to search for a location by a donation for all valid donations
+     */
     @Test
     public void testFindLocationInCollectionWithValidDonation() {
         assertSame("Location not found correctly", locations.get(0),
@@ -80,7 +86,10 @@ public class VarunUnitTest {
         assertSame("Location not found correctly", locations.get(2),
             locationCollection.getLocationWithDonation(donations.get(5)));
     }
-    
+
+    /**
+     * Test to search for a location with a donation that no location has
+     */
     @Test
     public void testNoLocationWithDonation() {
         Donation d = new Donation("TEST", "X", "TEST", "TEST",
@@ -88,7 +97,11 @@ public class VarunUnitTest {
         assertEquals("Improperly returned a location", null,
             locationCollection.getLocationWithDonation(d));
     }
-    
+
+    /**
+     * Test to search for a location by donation and ensure it is looking for the name of
+     * the donation and not the exact same Donation object
+     */
     @Test
     public void testObjectEqualityVSReferenceEquality() {
         Donation d = new Donation("TEST", "A", "TEST", "TEST",
@@ -97,9 +110,24 @@ public class VarunUnitTest {
             locationCollection.getLocationWithDonation(d));
     }
 
+    /**
+     * Test to ensure method works when null Donation object is passed in
+     */
     @Test
     public void testNullDonation() {
         assertEquals("Failed to handle null donation", null,
             locationCollection.getLocationWithDonation(null));
+    }
+
+    /**
+     * Test to ensure the method works when there are no locations
+     */
+    @Test
+    public void testNoLocationsInCollection() {
+        LocationCollection lc = new LocationCollection();
+        Donation d = new Donation("TEST", "A", "TEST", "TEST",
+                "TEST", "TEST");
+        assertEquals("Returned an unexpected location", null,
+                lc.getLocationWithDonation(d));
     }
 }
