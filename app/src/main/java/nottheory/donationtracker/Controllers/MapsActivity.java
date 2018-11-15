@@ -10,7 +10,6 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import nottheory.donationtracker.Model.Location;
 import nottheory.donationtracker.Model.LoginManager;
@@ -60,6 +59,8 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
 
 
     }
+
+    @Override
     public void onInfoWindowClick(Marker marker) {
         marker.getTitle();
         Intent i = new Intent(MapsActivity.this, LocationInfoActivity.class);

@@ -42,7 +42,6 @@ public class AddDonationActivity extends AppCompatActivity {
         value = findViewById(R.id.additem_value);
         final Intent intent = getIntent();
 
-//        TODO: remove this hardcoded garbage cat. list
         ArrayList<String> categoryList = new ArrayList<>();
         categoryList.add("Clothing");
         categoryList.add("Hat");
@@ -94,6 +93,7 @@ public class AddDonationActivity extends AppCompatActivity {
                     errorMess.setVisibility(View.VISIBLE);
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
+                        @Override
                         public void run() {
                             errorMess.setVisibility(View.INVISIBLE);
                         }

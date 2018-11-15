@@ -2,7 +2,6 @@ package nottheory.donationtracker.Model;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

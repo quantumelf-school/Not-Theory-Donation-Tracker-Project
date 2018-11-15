@@ -63,6 +63,7 @@ public class DonationListActivity extends AppCompatActivity {
                     errorText.setVisibility(View.VISIBLE);
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
+                        @Override
                         public void run() {
                             errorText.setVisibility(View.INVISIBLE);
                         }
@@ -105,6 +106,7 @@ public class DonationListActivity extends AppCompatActivity {
             this.context = context;
         }
 
+        @Override
         public DonationListActivity.DonationAdapter.DonationViewHolder onCreateViewHolder(
                 ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(context).inflate(
@@ -112,6 +114,7 @@ public class DonationListActivity extends AppCompatActivity {
             return new DonationListActivity.DonationAdapter.DonationViewHolder(view);
         }
 
+        @Override
         public void onBindViewHolder(final DonationListActivity.
                 DonationAdapter.DonationViewHolder viewHolder, int position) {
             viewHolder.donation.setText(donations[position].toString());
@@ -129,6 +132,7 @@ public class DonationListActivity extends AppCompatActivity {
             });
         }
 
+        @Override
         public int getItemCount() {
             return donations.length;
         }

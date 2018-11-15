@@ -53,8 +53,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 String pw = pwEntry.getText().toString();
                 AccountType acctType = (AccountType) acctTypeSpinner.getSelectedItem();
 
-                //TODO: Implement this logic through try, catch and exception in login class
-                //TODO: Add a message for invalid credentials
                 if (!"".equals(name) && !"".equals(email) && !"".equals(un) && !"".equals(pw)) {
 
                     boolean goodCheck = LoginManager.addCredentials(un,
