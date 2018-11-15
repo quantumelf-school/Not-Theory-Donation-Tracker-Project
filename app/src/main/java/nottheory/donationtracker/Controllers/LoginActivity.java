@@ -12,6 +12,9 @@ import android.widget.TextView;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.R;
 
+/**
+ * The activity shown to allow users to log in
+ */
 public class LoginActivity extends AppCompatActivity {
 
     private EditText unEntry, pwEntry;

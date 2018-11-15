@@ -17,6 +17,9 @@ import nottheory.donationtracker.Model.Location;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.R;
 
+/**
+ * The activity to add a new donation to a location
+ */
 public class AddDonationActivity extends AppCompatActivity {
     private Button backButton;
     private Button addItemButton;

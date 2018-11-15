@@ -1,5 +1,8 @@
 package nottheory.donationtracker.Model;
 
+/**
+ * An enum of the different account types that can be had
+ */
 public enum AccountType {
     USER("User"),
     LOCATION_EMPLOYEE("Location Employee"),

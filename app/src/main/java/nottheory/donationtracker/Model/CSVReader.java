@@ -8,10 +8,18 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * A model class to read information from a CSV file and post it to the SQL database
+ */
 public class CSVReader {
     private LocationCollection data;
     private final int FILE_LENGTH = 11;
-    
+
+    /**
+     * A constructor for a CSVReader which takes a file to be read and reads it upon construction
+     * @param is is the input file to the reader
+     * @throws IOException will throw if the file cannot be read for some reason
+     */
     public CSVReader(InputStream is) throws IOException {
         data = new LocationCollection();
         readFile(is);
@@ -66,5 +74,4 @@ public class CSVReader {
         }
     }
 
-    public LocationCollection getLC(){return data;}
 }

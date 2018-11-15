@@ -9,6 +9,9 @@ import android.view.View.OnClickListener;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.R;
 
+/**
+ * The activity to be shown after a login is successful indicating that they have entered the app
+ */
 public class SuccessfulLoginActivity extends AppCompatActivity {
 
     private Button logoutButton;

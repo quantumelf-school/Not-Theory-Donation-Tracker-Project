@@ -26,6 +26,9 @@ import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.R;
 
+/**
+ * The activity where you can search all donations from all locations
+ */
 public class DonationSearchActivity extends AppCompatActivity {
     private Switch searchByCat;
     private TextView searchBox;

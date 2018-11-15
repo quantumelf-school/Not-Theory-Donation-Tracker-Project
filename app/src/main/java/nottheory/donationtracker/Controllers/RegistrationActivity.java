@@ -17,6 +17,9 @@ import nottheory.donationtracker.Model.AccountType;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.R;
 
+/**
+ * The activity shown to register a new user
+ */
 public class RegistrationActivity extends AppCompatActivity {
 
     private EditText nameEntry, emailEntry, unEntry, pwEntry;

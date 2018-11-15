@@ -19,7 +19,9 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import java.util.List;
 
-
+/**
+ * The activity which shows all locations and allows the user to search for locations
+ */
 public class LocationListActivity extends AppCompatActivity {
 
     private RecyclerView locationList;
