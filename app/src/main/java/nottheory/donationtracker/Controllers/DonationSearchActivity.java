@@ -120,7 +120,8 @@ public class DonationSearchActivity extends AppCompatActivity {
 
         public DonationSearchActivity.DonationAdapter.DonationViewHolder onCreateViewHolder(
                 ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(context).inflate(R.layout.location_recyclerview_row,
+            LayoutInflater inflater = LayoutInflater.from(context);
+            View view = inflater.inflate(R.layout.location_recyclerview_row,
                     parent, false);
             return new DonationSearchActivity.DonationAdapter.DonationViewHolder(view);
         }
@@ -152,13 +153,14 @@ public class DonationSearchActivity extends AppCompatActivity {
     private void doSearch() {
         ArrayList<Location> locationList  = LoginManager.locations.getLocations();
         ArrayList<Donation> donationList = new ArrayList<>();
-        if ((locSpinner.getSelectedItem().toString() == "All") ||
-                (locSpinner.getSelectedItem().toString() == "")) {
+        Object locSelected = locSpinner.getSelectedItem();
+        if ((locSelected.toString() == "All") ||
+                (locSelected.toString() == "")) {
             for (Location l : locationList) {
                 donationList.addAll(l.getDonations());
             }
         } else {
-            String locationString = locSpinner.getSelectedItem().toString();
+            String locationString = locSelected.toString();
             LocationCollection locationCol = new LocationCollection(locationList);
             Location location = locationCol.getLocationByName(locationString);
             if (location != null) {
@@ -166,11 +168,13 @@ public class DonationSearchActivity extends AppCompatActivity {
             }
         }
         DonationCollection donations = new DonationCollection(donationList);
+        Object catSelected = catSpinner.getSelectedItem();
         if (searchByCat.isChecked()) {
             donationList = donations.getDonationsByCategory(
-                    catSpinner.getSelectedItem().toString());
+                    catSelected.toString());
         } else {
-            donationList = donations.getDonationsBySimilarName(searchBox.getText().toString());
+            CharSequence searchText = searchBox.getText();
+            donationList = donations.getDonationsBySimilarName(searchText.toString());
         }
         donationSearchList.setAdapter(new DonationSearchActivity.DonationAdapter(this,
                 donationList.toArray()));
