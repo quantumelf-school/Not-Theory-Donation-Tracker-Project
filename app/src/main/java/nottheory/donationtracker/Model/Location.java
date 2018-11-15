@@ -18,9 +18,8 @@ public class Location {
     private final String website;
     private final String zipcode;
     private final String latitude;
-    longitude;
+    private final String longitude;
     private DonationCollection inventory = new DonationCollection();
-    //private ArrayList<Donation> inventory = new ArrayList<>();
     private int row = 0;
     /**
      * A constructor for a location with all required information

@@ -22,7 +22,10 @@ import nottheory.donationtracker.R;
  */
 public class RegistrationActivity extends AppCompatActivity {
 
-    private EditText nameEntry, emailEntry, unEntry, pwEntry;
+    private EditText nameEntry;
+    private EditText emailEntry;
+    private EditText unEntry;
+    private EditText pwEntry;
     private Spinner acctTypeSpinner;
 
     @Override
