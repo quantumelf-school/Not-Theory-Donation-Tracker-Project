@@ -4,7 +4,7 @@ package nottheory.donationtracker.Model;
 import java.util.List;
 import java.util.ArrayList;
 
-public abstract class LoginManager {
+public final class LoginManager {
     private static List<Account> currUsers = new ArrayList<Account>();
     public static LocationCollection locations;
     public static Location currLocation;
