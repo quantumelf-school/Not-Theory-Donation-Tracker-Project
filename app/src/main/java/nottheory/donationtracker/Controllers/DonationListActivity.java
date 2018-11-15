@@ -2,8 +2,6 @@ package nottheory.donationtracker.Controllers;
 import nottheory.donationtracker.Model.Account;
 import nottheory.donationtracker.Model.AccountType;
 import nottheory.donationtracker.Model.Donation;
-import nottheory.donationtracker.Model.Location;
-import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.R;
 import nottheory.donationtracker.Model.LoginManager;
 
