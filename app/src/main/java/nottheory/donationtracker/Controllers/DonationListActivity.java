@@ -3,12 +3,14 @@ import nottheory.donationtracker.Model.Account;
 import nottheory.donationtracker.Model.AccountType;
 import nottheory.donationtracker.Model.Donation;
 import nottheory.donationtracker.Model.Location;
+import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.R;
 import nottheory.donationtracker.Model.LoginManager;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -23,7 +25,9 @@ import java.util.List;
 
 /**
  * activity for displaying the donations of a particular location
- * to the user
+ * to the user. There is feature envy for Login Manager because
+ * the locations is a private field and heavily altered, so
+ * there is a lot of different things Login Manager is needed for.
  */
 public class DonationListActivity extends AppCompatActivity {
     
@@ -52,7 +56,8 @@ public class DonationListActivity extends AppCompatActivity {
                 finish();
             }
         });
-        final Location location = LoginManager.locations.getLocationByName(fromLocation);
+        LocationCollection allLocations = LoginManager.getLocations();
+        final Location location = allLocations.getLocationByName(fromLocation);
         addButton = findViewById(R.id.donationlist_add_button);
         errorText = findViewById(R.id.donationlist_error_text);
         errorText.setVisibility(View.INVISIBLE);
@@ -81,7 +86,7 @@ public class DonationListActivity extends AppCompatActivity {
 
         donationList = findViewById(R.id.donationList);
         List<Donation> donations = LoginManager.getDonationsOfLocationByName(fromLocation);
-        Object donationArray[] = null;
+        Object donationArray[];
         if(donations == null) {
             donationArray = new Object[0];
             donationList.setAdapter(new DonationListActivity.DonationAdapter(this, donationArray));
@@ -113,9 +118,10 @@ public class DonationListActivity extends AppCompatActivity {
             this.context = context;
         }
 
+        @NonNull
         @Override
         public DonationListActivity.DonationAdapter.DonationViewHolder onCreateViewHolder(
-                ViewGroup parent, int viewType) {
+                @NonNull ViewGroup parent, int viewType) {
             LayoutInflater currLayoutInflator = LayoutInflater.from(context);
             View view = currLayoutInflator.inflate(
                     R.layout.location_recyclerview_row, parent, false);
@@ -123,7 +129,7 @@ public class DonationListActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final DonationListActivity.
+        public void onBindViewHolder(final @NonNull DonationListActivity.
                 DonationAdapter.DonationViewHolder viewHolder, int position) {
             viewHolder.donation.setText(donations[position].toString());
             viewHolder.donation.setOnClickListener(new View.OnClickListener() {

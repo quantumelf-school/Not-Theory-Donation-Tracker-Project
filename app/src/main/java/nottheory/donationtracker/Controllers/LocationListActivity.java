@@ -1,11 +1,13 @@
 package nottheory.donationtracker.Controllers;
 
+import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.R;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.Model.Location;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -63,9 +65,10 @@ public class LocationListActivity extends AppCompatActivity {
 
 
         locationList = findViewById(R.id.locationList);
-        List<String> locationNames = LoginManager.locations.getLocationNames();
+        LocationCollection allLocations = LoginManager.getLocations();
+        List<String> locationNames = allLocations.getLocationNames();
         String[] locationArray = locationNames.toArray(
-                new String[LoginManager.locations.getNumLocations()]);
+                new String[allLocations.getNumLocations()]);
         locationList.setAdapter(new LocationAdapter(this, locationArray));
         locationList.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -88,20 +91,22 @@ public class LocationListActivity extends AppCompatActivity {
             this.context = context;
         }
 
+        @NonNull
         @Override
-        public LocationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public LocationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(context);
             View view = inflater.inflate(R.layout.location_recyclerview_row, parent, false);
             return new LocationViewHolder(view);
         }
 
         @Override
-        public void onBindViewHolder(final LocationViewHolder viewHolder, int position) {
+        public void onBindViewHolder(final @NonNull LocationViewHolder viewHolder, int position) {
             viewHolder.location.setText(locations[position]);
             viewHolder.location.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Location l = LoginManager.locations.getLocationFromRow(
+                    LocationCollection allLocations = LoginManager.getLocations();
+                    Location l = allLocations.getLocationFromRow(
                             viewHolder.getAdapterPosition());
                     Intent intent = new Intent(LocationListActivity.this,
                             LocationInfoActivity.class);

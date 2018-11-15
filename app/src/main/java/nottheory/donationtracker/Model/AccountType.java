@@ -1,5 +1,7 @@
 package nottheory.donationtracker.Model;
 
+import android.support.annotation.NonNull;
+
 /**
  * An enum of the different account types that can be had
  */
@@ -15,5 +17,6 @@ public enum AccountType {
     }
 
     @Override
-    public String toString() { return displayString; }
+    public @NonNull
+    String toString() { return displayString; }
 }

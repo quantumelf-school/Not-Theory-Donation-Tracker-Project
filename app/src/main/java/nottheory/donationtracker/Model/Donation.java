@@ -2,6 +2,7 @@ package nottheory.donationtracker.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
 /**
  * Information Holder class to represent and store data for
@@ -94,6 +95,8 @@ public class Donation implements Parcelable{
             return new Donation[size];
         }
     };
+
+    @NonNull
     public String toString() {
         String text = "";
         text += "Name: " + shortDescript + "\n";

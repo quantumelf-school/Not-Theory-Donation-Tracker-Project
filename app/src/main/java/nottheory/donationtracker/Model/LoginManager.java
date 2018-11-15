@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 public final class LoginManager {
-    private static List<Account> currUsers = new ArrayList<Account>();
-    public static LocationCollection locations;
+    private static List<Account> currUsers = new ArrayList<>();
+    private static LocationCollection locations;
 
     private LoginManager() {}
 
@@ -74,7 +74,7 @@ public final class LoginManager {
     }
 
     public static void logoutAccount() {
-        currUsers = new ArrayList<Account>();
+        currUsers = new ArrayList<>();
     }
     public static Account getCurrAccount() {
         return currUsers.get(0);
@@ -99,13 +99,7 @@ public final class LoginManager {
         return l.getDonations();
     }
 
-    /**
-     * Returns the name of a location with the donation passed in
-     * @param d the donation to search for in the location
-     * @return the name of the location
-     */
-    public static String getNameOfLocationWithDonation(Donation d) {
-        Location l = locations.getLocationWithDonation(d);
-        return l.getName();
+    public static LocationCollection getLocations() {
+        return locations;
     }
 }

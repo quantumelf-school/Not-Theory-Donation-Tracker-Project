@@ -3,6 +3,7 @@ package nottheory.donationtracker.Controllers;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -65,12 +66,13 @@ public class DonationSearchActivity extends AppCompatActivity {
         locSpinner = findViewById(R.id.search_location_spinner);
         ArrayList<String> locationList = new ArrayList<>();
         locationList.add("All");
-        locationList.addAll(LoginManager.locations.getLocationNames());
+        LocationCollection allLocations = LoginManager.getLocations();
+        locationList.addAll(allLocations.getLocationNames());
         locSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
                 locationList));
 
         catSpinner = findViewById(R.id.search_cat_spinner);
-        ArrayList<String> categoryList = new ArrayList<String>();
+        ArrayList<String> categoryList = new ArrayList<>();
         categoryList.add("Clothing");
         categoryList.add("Hat");
         categoryList.add("Kitchen");
@@ -96,7 +98,7 @@ public class DonationSearchActivity extends AppCompatActivity {
         });
 
         donationSearchList = findViewById(R.id.donationSearchList);
-        List<Donation> donationArray = LoginManager.locations.getAllDonationsAL();
+        List<Donation> donationArray = allLocations.getAllDonationsAL();
         donationSearchList.setAdapter(new DonationSearchActivity.DonationAdapter(this,
                 donationArray.toArray()));
         donationSearchList.setLayoutManager(new LinearLayoutManager(this));
@@ -120,9 +122,10 @@ public class DonationSearchActivity extends AppCompatActivity {
             this.context = context;
         }
 
+        @NonNull
         @Override
         public DonationSearchActivity.DonationAdapter.DonationViewHolder onCreateViewHolder(
-                ViewGroup parent, int viewType) {
+                @NonNull ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(context);
             View view = inflater.inflate(R.layout.location_recyclerview_row,
                     parent, false);
@@ -130,7 +133,7 @@ public class DonationSearchActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final DonationSearchActivity.DonationAdapter.
+        public void onBindViewHolder(final @NonNull DonationSearchActivity.DonationAdapter.
                                              DonationViewHolder viewHolder, int position) {
             viewHolder.donation.setText(donations[position].toString());
             viewHolder.donation.setOnClickListener(new View.OnClickListener() {
@@ -142,7 +145,8 @@ public class DonationSearchActivity extends AppCompatActivity {
                             (Donation) donations[viewHolder.getAdapterPosition()]).getName());
                     //feature envy is necessary to tell next activity which donation was clicked
 
-                    Location l = LoginManager.locations.getLocationWithDonation(
+                    LocationCollection allLocations = LoginManager.getLocations();
+                    Location l = allLocations.getLocationWithDonation(
                             (Donation) donations[viewHolder.getAdapterPosition()]);
                     intent.putExtra("location", LoginManager.getNameOfLocationWithDonation(
                             (Donation) donations[viewHolder.getAdapterPosition()]
@@ -159,7 +163,8 @@ public class DonationSearchActivity extends AppCompatActivity {
     }
 
     private void doSearch() {
-        ArrayList<Location> locationList  = LoginManager.locations.getLocations();
+        LocationCollection allLocations = LoginManager.getLocations();
+        ArrayList<Location> locationList  = allLocations.getLocations();
         ArrayList<Donation> donationList = new ArrayList<>();
         Object locSelected = locSpinner.getSelectedItem();
         if (("All".equals(locSelected.toString())) ||

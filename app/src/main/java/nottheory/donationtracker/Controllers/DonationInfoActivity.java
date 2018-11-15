@@ -3,6 +3,7 @@ package nottheory.donationtracker.Controllers;
 import nottheory.donationtracker.Model.Donation;
 import nottheory.donationtracker.Model.DonationCollection;
 import nottheory.donationtracker.Model.Location;
+import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.R;
 import nottheory.donationtracker.Model.LoginManager;
 
@@ -17,7 +18,6 @@ import android.widget.TextView;
  * activity giving information about a particular donation to the user
  */
 public class DonationInfoActivity extends AppCompatActivity {
-    private final Intent intent = getIntent();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +35,13 @@ public class DonationInfoActivity extends AppCompatActivity {
         });
 
         donationText = findViewById(R.id.donationinfo_info_text);
-        String text = "";
-        Location l = LoginManager.locations.getLocationByName(intent.getStringExtra("location"));
+        final Intent intent = getIntent();
+        LocationCollection allLocations = LoginManager.getLocations();
+        Location l = allLocations.getLocationByName(intent.getStringExtra("location"));
         DonationCollection gottenCollection = l.getDonationCollection();
         Donation foundDonation = gottenCollection.getDonationByName(
                 intent.getStringExtra("donation"));
-        text = foundDonation.toString();
+        String text = foundDonation.toString();
         donationText.setText(text);
         donationText.setVisibility(View.VISIBLE);
     }
