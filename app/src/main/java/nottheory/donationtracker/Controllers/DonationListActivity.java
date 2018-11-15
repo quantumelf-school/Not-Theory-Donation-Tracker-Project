@@ -30,7 +30,7 @@ public class DonationListActivity extends AppCompatActivity {
     private Button addButton;
 //    private Spinner searchCriteria;
     private TextView errorText;
-    final int DELAY = 3000;
+    private final int DELAY = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

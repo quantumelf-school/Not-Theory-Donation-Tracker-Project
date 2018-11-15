@@ -71,15 +71,15 @@ public class LocationListActivity extends AppCompatActivity {
         private String[] locations;
         private Context context;
         public class LocationViewHolder extends RecyclerView.ViewHolder {
-            public Button location;
+            Button location;
 
-            public LocationViewHolder(View view) {
+            LocationViewHolder(View view) {
                 super(view);
                 location = view.findViewById(R.id.location_row_button);
             }
         }
 
-        public LocationAdapter(Context context, String[] locations) {
+        LocationAdapter(Context context, String[] locations) {
             this.locations = locations;
             this.context = context;
         }

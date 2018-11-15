@@ -105,15 +105,15 @@ public class DonationSearchActivity extends AppCompatActivity {
         private Object[] donations;
         private Context context;
         public class DonationViewHolder extends RecyclerView.ViewHolder {
-            public Button donation;
+            Button donation;
 
-            public DonationViewHolder(View view) {
+            DonationViewHolder(View view) {
                 super(view);
                 donation = view.findViewById(R.id.location_row_button);
             }
         }
 
-        public DonationAdapter(Context context, Object[] donations) {
+        DonationAdapter(Context context, Object[] donations) {
             this.donations = donations;
             this.context = context;
         }

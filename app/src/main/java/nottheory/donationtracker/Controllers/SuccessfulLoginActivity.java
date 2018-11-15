@@ -11,8 +11,8 @@ import nottheory.donationtracker.R;
 
 public class SuccessfulLoginActivity extends AppCompatActivity {
 
-    Button logoutButton;
-    Button importButton;
+    private Button logoutButton;
+    private Button importButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

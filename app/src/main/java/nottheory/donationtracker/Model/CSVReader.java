@@ -10,14 +10,14 @@ import java.nio.charset.StandardCharsets;
 
 public class CSVReader {
     private LocationCollection data;
-    final int FILE_LENGTH = 11;
+    private final int FILE_LENGTH = 11;
     
     public CSVReader(InputStream is) throws IOException {
         data = new LocationCollection();
         readFile(is);
     }
     
-    public void readFile(InputStream is) throws IOException {
+    private void readFile(InputStream is) throws IOException {
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(is, StandardCharsets.UTF_8));
         

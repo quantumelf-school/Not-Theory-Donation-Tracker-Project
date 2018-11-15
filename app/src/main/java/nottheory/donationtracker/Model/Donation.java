@@ -22,7 +22,7 @@ public class Donation implements Parcelable{
     public String getCategory() { return category;}
 
     //Parcelable stuff
-    public Donation(Parcel in){
+    private Donation(Parcel in){
         String[] data = new String[6];
         in.readStringArray(data);
 

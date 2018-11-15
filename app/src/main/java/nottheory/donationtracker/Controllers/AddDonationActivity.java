@@ -26,7 +26,7 @@ public class AddDonationActivity extends AppCompatActivity {
     private Spinner category;
     private EditText value;
     private TextView errorMess;
-    final int DELAY = 3000;
+    private final int DELAY = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
