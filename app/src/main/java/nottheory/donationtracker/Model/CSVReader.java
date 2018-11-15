@@ -27,7 +27,8 @@ public class CSVReader {
 
         String line;
         reader.readLine();
-        while ((line = reader.readLine()) != null) {
+        line = reader.readLine();
+        while (line != null) {
             String[] items = line.split(",");
             if (items.length == FILE_LENGTH) {
                 try {
@@ -43,6 +44,7 @@ public class CSVReader {
                     e.printStackTrace();
                 }
             }
+            line = reader.readLine();
         }
         reader.close();
         try {
