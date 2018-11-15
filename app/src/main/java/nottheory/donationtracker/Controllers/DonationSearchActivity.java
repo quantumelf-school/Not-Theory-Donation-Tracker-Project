@@ -127,7 +127,7 @@ public class DonationSearchActivity extends AppCompatActivity {
         }
 
         public void onBindViewHolder(DonationSearchActivity.DonationAdapter.
-                                             DonationViewHolder viewHolder, final int position) {
+                                             DonationViewHolder viewHolder, int position) {
             viewHolder.donation.setText(donations[position].toString());
             viewHolder.donation.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -154,8 +154,8 @@ public class DonationSearchActivity extends AppCompatActivity {
         ArrayList<Location> locationList  = LoginManager.locations.getLocations();
         ArrayList<Donation> donationList = new ArrayList<>();
         Object locSelected = locSpinner.getSelectedItem();
-        if ((locSelected.toString() == "All") ||
-                (locSelected.toString() == "")) {
+        if ((locSelected.toString().equals("All")) ||
+                (locSelected.toString().equals(""))) {
             for (Location l : locationList) {
                 donationList.addAll(l.getDonations());
             }
