@@ -19,7 +19,7 @@ public class Location {
     private final String latitude;
     private final String longitude;
     private final DonationCollection inventory = new DonationCollection();
-    private int row = 0;
+    private int row;
     /**
      * A constructor for a location with all required information
      * @param name the location's name
