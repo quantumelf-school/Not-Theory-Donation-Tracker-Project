@@ -112,12 +112,12 @@ public class Location {
 
     /**
      * Gets the row from a location (an artifact from the CSV file
-     * @return
+     * @return the row of a location
      */
     public int getRow(){
         return row;
     }
-    
+
     public List<Donation> getDonations() {
         return inventory.getDonations();
     }
