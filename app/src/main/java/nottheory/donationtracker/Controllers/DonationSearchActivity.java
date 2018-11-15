@@ -18,6 +18,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import nottheory.donationtracker.Model.Donation;
@@ -93,7 +94,7 @@ public class DonationSearchActivity extends AppCompatActivity {
         donationSearchList.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    private void addCategories(List<String> categoryList) {
+    private void addCategories(Collection<String> categoryList) {
         categoryList.add("Clothing");
         categoryList.add("Hat");
         categoryList.add("Kitchen");
