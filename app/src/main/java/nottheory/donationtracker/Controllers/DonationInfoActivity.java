@@ -12,12 +12,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class DonationInfoActivity extends AppCompatActivity {
-    private Button backButton;
-    private TextView donationText;
     Intent intent = getIntent();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Button backButton;
+        TextView donationText;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donation_info);
 

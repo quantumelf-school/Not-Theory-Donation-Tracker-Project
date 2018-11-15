@@ -32,11 +32,11 @@ public class DonationSearchActivity extends AppCompatActivity {
     private RecyclerView donationSearchList;
     private Spinner catSpinner;
     private Spinner locSpinner;
-    private Button searchButton;
-    private Button backButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        Button searchButton;
+        Button backButton;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donation_search);
 
@@ -154,8 +154,8 @@ public class DonationSearchActivity extends AppCompatActivity {
         ArrayList<Location> locationList  = LoginManager.locations.getLocations();
         ArrayList<Donation> donationList = new ArrayList<>();
         Object locSelected = locSpinner.getSelectedItem();
-        if ((locSelected.toString() == "All") ||
-                (locSelected.toString() == "")) {
+        if ((locSelected.toString().equals("All")) ||
+                (locSelected.toString().equals(""))) {
             for (Location l : locationList) {
                 donationList.addAll(l.getDonations());
             }
