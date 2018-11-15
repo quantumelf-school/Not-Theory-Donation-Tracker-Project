@@ -102,16 +102,22 @@ public class Location {
         return name;
     }
 
+    /**
+     * Sets the row aspect of a location (an artifact from the CSV file)
+     * @param row the row we apply to the location
+     */
     public void setRow(int row) {
         this.row = row;
     }
-    public ArrayList<String> getNames() {
-        ArrayList<String> ret = inventory.getDonationNames();
-        return ret;
-    }
+
+    /**
+     * Gets the row from a location (an artifact from the CSV file
+     * @return
+     */
     public int getRow(){
         return row;
     }
+    
     public List<Donation> getDonations() {
         return inventory.getDonations();
     }
