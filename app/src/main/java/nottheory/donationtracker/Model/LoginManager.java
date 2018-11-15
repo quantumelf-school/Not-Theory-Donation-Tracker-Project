@@ -4,12 +4,26 @@ package nottheory.donationtracker.Model;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * static monolith class to track login credentials and status between
+ * activities of the application; should be static to lower confusion
+ * of passing intents and writing/saving data that need not be recovered
+ * between restarts
+ */
 public final class LoginManager {
     private static List<Account> currUsers = new ArrayList<>();
     private static LocationCollection locations;
 
     private LoginManager() {}
 
+    /**
+     * adds credentials to the login manager
+     * and also updates the database to facilitate persistence
+     * @param un the username of the account
+     * @param acct the account of interest
+     * @return a boolean indicating the status
+     * of the add
+     */
     public static boolean addCredentials(String un, Account acct) {
         try {
             String getSelection = DatabaseConnection.sendRawSQL("SELECT username FROM Users WHERE" +
@@ -29,6 +43,14 @@ public final class LoginManager {
         }
     }
 
+    /**
+     * checks to see if the credentials are
+     * valid
+     * @param un the username to check
+     * @param pw the password to check
+     * @return boolean representing whether or
+     * not the credentials are valid
+     */
     public static boolean checkCredentials(String un, String pw) {
         String getSelection;
         try {
@@ -41,6 +63,10 @@ public final class LoginManager {
         return false;
     }
 
+    /**
+     * initializes location and user database tables
+     * if they do not already exist
+     */
     public static void initialize_tables() {
         try {
             DatabaseConnection.sendRawSQL("CREATE TABLE IF NOT EXISTS Users (user_id INT" +
@@ -55,6 +81,11 @@ public final class LoginManager {
         }
     }
 
+    /**
+     * checks the database for an account given a username and updates the current
+     * user based on the account found
+     * @param un the username string to be searched for
+     */
     public static void logAccount(String un) {
         try {
             String this_user = DatabaseConnection.sendRawSQL("SELECT name, username, password," +
@@ -69,13 +100,28 @@ public final class LoginManager {
         }
     }
 
+    /**
+     * sets the locations the app is using
+     * to the passed location collection
+     * @param newLocations the location collection to use
+     *                     to set the current locations
+     */
     public static void setLocations(LocationCollection newLocations) {
         locations = newLocations;
     }
 
+    /**
+     * sets the current account back to a default
+     * to symbolize the user has logged out
+     */
     public static void logoutAccount() {
         currUsers = new ArrayList<>();
     }
+
+    /**
+     * gets the current account that is being used to log in
+     * @return the current account
+     */
     public static Account getCurrAccount() {
         return currUsers.get(0);
     }
