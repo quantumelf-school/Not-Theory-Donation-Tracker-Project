@@ -22,7 +22,7 @@ class DatabaseConnection {
 
         StringBuilder postData = new StringBuilder(); //uses builder design pattern
         for (Map.Entry<String,Object> param : params.entrySet()) {
-            if (postData.length() != 0) postData.append('&');
+            if (postData.length() != 0) { postData.append('&'); }
             postData.append(URLEncoder.encode(param.getKey(), "UTF-8"));
             postData.append('=');
             postData.append(URLEncoder.encode(String.valueOf(param.getValue()), "UTF-8"));
