@@ -154,6 +154,10 @@ public final class LoginManager {
         return l.getDonations();
     }
 
+    /**
+     * gets the location collection the app is working with
+     * @return the current location collection
+     */
     public static LocationCollection getLocations() {
         return locations;
     }
