@@ -144,7 +144,9 @@ public class DonationSearchActivity extends AppCompatActivity {
 
                     Location l = LoginManager.locations.getLocationWithDonation(
                             (Donation) donations[viewHolder.getAdapterPosition()]);
-                    intent.putExtra("location", l.getName());
+                    intent.putExtra("location", LoginManager.getNameOfLocationWithDonation(
+                            (Donation) donations[viewHolder.getAdapterPosition()]
+                    ));
                     startActivity(intent);
                 }
             });
@@ -170,7 +172,8 @@ public class DonationSearchActivity extends AppCompatActivity {
             LocationCollection locationCol = new LocationCollection(locationList);
             Location location = locationCol.getLocationByName(locationString);
             if (location != null) {
-                donationList.addAll(location.getDonations());
+                List<Donation> donations = location.getDonations();
+                donationList.addAll(donations);
             }
         }
         DonationCollection donations = new DonationCollection(donationList);

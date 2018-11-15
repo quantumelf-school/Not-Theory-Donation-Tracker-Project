@@ -86,4 +86,14 @@ public class LocationCollection {
     public ArrayList<Location> getLocations() {
         return locations;
     }
+
+    /**
+     * Adds a donation to certain location given its name.
+     * @param name the name of the location
+     * @param donation the donation object to be added
+     */
+    public void addDonationToLocationByName(String name, Donation donation) {
+        Location l = getLocationByName(name);
+        l.addDonation(donation);
+    }
 }

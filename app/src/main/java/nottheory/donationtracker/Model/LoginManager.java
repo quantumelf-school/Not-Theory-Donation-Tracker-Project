@@ -86,8 +86,7 @@ public final class LoginManager {
      * @param donation the donation object to be added
      */
     public static void addDonationToLocationByName(String name, Donation donation) {
-        Location l = locations.getLocationByName(name);
-        l.addDonation(donation);
+        locations.addDonationToLocationByName(name, donation);
     }
 
     /**
@@ -98,5 +97,15 @@ public final class LoginManager {
     public static List<Donation> getDonationsOfLocationByName(String name) {
         Location l = locations.getLocationByName(name);
         return l.getDonations();
+    }
+
+    /**
+     * Returns the name of a location with the donation passed in
+     * @param d the donation to search for in the location
+     * @return the name of the location
+     */
+    public static String getNameOfLocationWithDonation(Donation d) {
+        Location l = locations.getLocationWithDonation(d);
+        return l.getName();
     }
 }
