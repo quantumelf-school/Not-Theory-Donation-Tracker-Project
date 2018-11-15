@@ -17,9 +17,15 @@ import nottheory.donationtracker.Model.AccountType;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.R;
 
+/**
+ * The activity shown to register a new user
+ */
 public class RegistrationActivity extends AppCompatActivity {
 
-    private EditText nameEntry, emailEntry, unEntry, pwEntry;
+    private EditText nameEntry;
+    private EditText emailEntry;
+    private EditText unEntry;
+    private EditText pwEntry;
     private Spinner acctTypeSpinner;
 
     @Override
@@ -35,7 +41,8 @@ public class RegistrationActivity extends AppCompatActivity {
         cancelButton = findViewById(R.id.register_cancelbutton);
         acctTypeSpinner = findViewById(R.id.registration_accttypespinner);
 
-        acctTypeSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, AccountType.values()));
+        acctTypeSpinner.setAdapter(new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_item, AccountType.values()));
 
         loginButton.setOnClickListener(new OnClickListener() {
             @Override

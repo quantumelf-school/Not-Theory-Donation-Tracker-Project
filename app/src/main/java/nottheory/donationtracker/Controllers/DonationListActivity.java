@@ -35,7 +35,8 @@ public class DonationListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_donation_list);
 
         String str = "location";
-        fromLocation = getIntent().getStringExtra(str); //fix so that this pushes the name of the location picked
+        fromLocation = getIntent().getStringExtra(str);
+        //fix so pushes name of the location picked
         backButton = findViewById(R.id.donationlist_back_button);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,9 +72,6 @@ public class DonationListActivity extends AppCompatActivity {
         });
 
         donationList = findViewById(R.id.donationList);
-        //ArrayList<Donation> donationArray =
-        //ArrayList<Donation> donationArray = LoginManager.locations.getLocationFromRow(getIntent().getIntExtra("pos", 1)).getDonations();
-        //donationList.setAdapter(new DonationListActivity.DonationAdapter(this, donationArray.toArray()
         List<Donation> donations = location.getDonations();
         Object donationArray[] = null;
         if(donations == null) {
@@ -81,14 +79,16 @@ public class DonationListActivity extends AppCompatActivity {
             donationList.setAdapter(new DonationListActivity.DonationAdapter(this, donationArray));
         } else {
             donationArray = new Object[donations.size()];
-            donationList.setAdapter(new DonationListActivity.DonationAdapter(this, donations.toArray(donationArray)));
+            donationList.setAdapter(new DonationListActivity.DonationAdapter(
+                    this, donations.toArray(donationArray)));
         }
 
 
         donationList.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    private class DonationAdapter extends RecyclerView.Adapter<DonationListActivity.DonationAdapter.DonationViewHolder> {
+    private class DonationAdapter
+            extends RecyclerView.Adapter<DonationListActivity.DonationAdapter.DonationViewHolder> {
         private final Object[] donations;
         private final Context context;
         public class DonationViewHolder extends RecyclerView.ViewHolder {
@@ -105,19 +105,24 @@ public class DonationListActivity extends AppCompatActivity {
             this.context = context;
         }
 
-        public DonationListActivity.DonationAdapter.DonationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(context).inflate(R.layout.location_recyclerview_row, parent, false);
+        public DonationListActivity.DonationAdapter.DonationViewHolder onCreateViewHolder(
+                ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(context).inflate(
+                    R.layout.location_recyclerview_row, parent, false);
             return new DonationListActivity.DonationAdapter.DonationViewHolder(view);
         }
 
-        public void onBindViewHolder(final DonationListActivity.DonationAdapter.DonationViewHolder viewHolder, int position) {
+        public void onBindViewHolder(final DonationListActivity.
+                DonationAdapter.DonationViewHolder viewHolder, int position) {
             viewHolder.donation.setText(donations[position].toString());
             viewHolder.donation.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(DonationListActivity.this, DonationInfoActivity.class);
+                    Intent intent = new Intent(
+                            DonationListActivity.this, DonationInfoActivity.class);
                     intent.putExtra("dpos", viewHolder.getAdapterPosition());
-                    intent.putExtra("donation", ((Donation) donations[viewHolder.getAdapterPosition()]).getName());
+                    intent.putExtra("donation", (
+                            (Donation) donations[viewHolder.getAdapterPosition()]).getName());
                     intent.putExtra("location", getIntent().getStringExtra("location"));
                     startActivity(intent);
                 }

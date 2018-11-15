@@ -12,11 +12,16 @@ import android.widget.TextView;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.R;
 
+/**
+ * The activity shown to allow users to log in
+ */
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText unEntry, pwEntry;
-    private TextView invalidLoginText, tryAgainText;
-    
+    private EditText unEntry;
+    private EditText pwEntry;
+    private TextView invalidLoginText;
+    private TextView tryAgainText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Button loginButton, cancelButton;

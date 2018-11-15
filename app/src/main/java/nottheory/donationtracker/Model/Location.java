@@ -5,6 +5,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A class to store all information about a location
+ */
 public class Location {
     private final String name;
     private final String address;
@@ -15,11 +18,22 @@ public class Location {
     private final String website;
     private final String zipcode;
     private final String latitude;
-    longitude;
+    private final String longitude;
     private DonationCollection inventory = new DonationCollection();
-    //private ArrayList<Donation> inventory = new ArrayList<>();
     private int row = 0;
-
+    /**
+     * A constructor for a location with all required information
+     * @param name the location's name
+     * @param latitude the lattitude of a location
+     * @param longitude the longitude of a location
+     * @param address the address of a location
+     * @param city the city a location is in
+     * @param state the state a location is in
+     * @param zipcode the zipcode of a location
+     * @param type the type of location this is
+     * @param phone the phone number of the location
+     * @param website the website for the location
+     */
     public Location(String name, String latitude, String longitude, String address, String city,
                     String state, String zipcode, String type, String phone, String website) {
         this.name = name;
@@ -64,6 +78,11 @@ public class Location {
             e.printStackTrace();
         }
     }
+
+    /**
+     * Adds a donation to the location's collection
+     * @param d the donation we want to add
+     */
     public void addDonation(Donation d) {
         try {
             DatabaseConnection.sendRawSQL("INSERT INTO `" + name + " INV` (timestamp," +
@@ -74,22 +93,31 @@ public class Location {
         }
         inventory.addDonation(d);
     }
-    public void removeDonation(Donation d) {
-        inventory.removeDonation(d);
-    }
+
+    /**
+     * Gets the location's name
+     * @return the location's name
+     */
     public String getName(){
         return name;
     }
+
+    /**
+     * Sets the row aspect of a location (an artifact from the CSV file)
+     * @param row the row we apply to the location
+     */
     public void setRow(int row) {
         this.row = row;
     }
-    public ArrayList<String> getNames() {
-        ArrayList<String> ret = inventory.getDonationNames();
-        return ret;
-    }
+
+    /**
+     * Gets the row from a location (an artifact from the CSV file
+     * @return the row of a location
+     */
     public int getRow(){
         return row;
     }
+
     public List<Donation> getDonations() {
         return inventory.getDonations();
     }

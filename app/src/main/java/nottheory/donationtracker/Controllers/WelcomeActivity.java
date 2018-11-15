@@ -14,11 +14,15 @@ import nottheory.donationtracker.Model.CSVReader;
 import nottheory.donationtracker.R;
 import nottheory.donationtracker.Model.LoginManager;
 
+/**
+ * The Activity shown which leads to login and registration
+ */
 public class WelcomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Button loginButton, registerButton;
+        Button loginButton;
+        Button registerButton;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);

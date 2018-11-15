@@ -10,7 +10,9 @@ import java.nio.charset.StandardCharsets;
 
 public class CSVReader {
     private final LocationCollection data;
-    
+    /**
+     * A constructor for a CSVReader which takes a file to be read and reads it upon construction
+     */
     public CSVReader() {
         data = new LocationCollection();
     }
@@ -65,5 +67,4 @@ public class CSVReader {
         }
     }
 
-    public LocationCollection getLC(){return data;}
 }

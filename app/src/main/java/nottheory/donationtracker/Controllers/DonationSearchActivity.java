@@ -26,6 +26,9 @@ import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.R;
 
+/**
+ * The activity where you can search all donations from all locations
+ */
 public class DonationSearchActivity extends AppCompatActivity {
     private Switch searchByCat;
     private TextView searchBox;
@@ -134,7 +137,8 @@ public class DonationSearchActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(DonationSearchActivity.this,
                             DonationInfoActivity.class);
-                    intent.putExtra("donation", ((Donation) donations[viewHolder.getAdapterPosition()]).getName());
+                    intent.putExtra("donation", (
+                            (Donation) donations[viewHolder.getAdapterPosition()]).getName());
                     //feature envy is necessary to tell next activity which donation was clicked
 
                     Location l = LoginManager.locations.getLocationWithDonation(

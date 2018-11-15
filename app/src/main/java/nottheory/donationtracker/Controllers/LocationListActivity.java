@@ -19,7 +19,9 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import java.util.List;
 
-
+/**
+ * The activity which shows all locations and allows the user to search for locations
+ */
 public class LocationListActivity extends AppCompatActivity {
 
     @Override
@@ -96,7 +98,8 @@ public class LocationListActivity extends AppCompatActivity {
             viewHolder.location.setOnClickListener(new OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Location l = LoginManager.locations.getLocationFromRow(viewHolder.getAdapterPosition());
+                    Location l = LoginManager.locations.getLocationFromRow(
+                            viewHolder.getAdapterPosition());
                     Intent intent = new Intent(LocationListActivity.this,
                             LocationInfoActivity.class);
                     intent.putExtra("pos", viewHolder.getAdapterPosition());

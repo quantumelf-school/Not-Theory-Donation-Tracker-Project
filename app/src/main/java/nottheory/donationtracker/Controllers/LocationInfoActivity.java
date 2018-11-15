@@ -12,6 +12,9 @@ import nottheory.donationtracker.Model.Location;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.R;
 
+/**
+ * The activity to show all of the information on a location in text form
+ */
 public class LocationInfoActivity extends AppCompatActivity {
 
     private Intent locationIntent;
