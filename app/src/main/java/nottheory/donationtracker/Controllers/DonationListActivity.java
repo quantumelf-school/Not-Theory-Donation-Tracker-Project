@@ -32,7 +32,6 @@ public class DonationListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        String fromLocation;
         RecyclerView donationList;
         Button backButton;
         Button addButton;
@@ -41,7 +40,7 @@ public class DonationListActivity extends AppCompatActivity {
 
         String str = "location";
         Intent currIntent = getIntent();
-        fromLocation = currIntent.getStringExtra(str);
+        final String fromLocation = currIntent.getStringExtra(str);
         //fix so pushes name of the location picked
         backButton = findViewById(R.id.donationlist_back_button);
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +64,7 @@ public class DonationListActivity extends AppCompatActivity {
                 AccountType currAcctType = currAccount.getAcctType();
                 if(currAcctType.equals(AccountType.values()[1])) {
                     Intent i = new Intent(DonationListActivity.this, AddDonationActivity.class);
-                    i.putExtra("location", location.getName());
+                    i.putExtra("location", fromLocation);
                     startActivity(i);
                 } else {
                     errorText.setVisibility(View.VISIBLE);
@@ -81,7 +80,7 @@ public class DonationListActivity extends AppCompatActivity {
         });
 
         donationList = findViewById(R.id.donationList);
-        List<Donation> donations = location.getDonations();
+        List<Donation> donations = LoginManager.getDonationsOfLocationByName(fromLocation);
         Object donationArray[] = null;
         if(donations == null) {
             donationArray = new Object[0];
