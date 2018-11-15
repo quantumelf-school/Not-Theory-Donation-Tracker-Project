@@ -100,7 +100,7 @@ public class LocationListActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final @NonNull LocationViewHolder viewHolder, int position) {
+        public void onBindViewHolder(@NonNull final LocationViewHolder viewHolder, int position) {
             viewHolder.location.setText(locations[position]);
             viewHolder.location.setOnClickListener(new OnClickListener() {
                 @Override

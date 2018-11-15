@@ -16,7 +16,7 @@ public enum AccountType {
         this.displayString = displayString;
     }
 
+    @NonNull
     @Override
-    public @NonNull
-    String toString() { return displayString; }
+    public String toString() { return displayString; }
 }

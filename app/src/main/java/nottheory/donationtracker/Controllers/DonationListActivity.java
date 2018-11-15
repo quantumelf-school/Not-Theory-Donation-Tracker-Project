@@ -129,7 +129,7 @@ public class DonationListActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final @NonNull DonationListActivity.
+        public void onBindViewHolder(@NonNull final DonationListActivity.
                 DonationAdapter.DonationViewHolder viewHolder, int position) {
             viewHolder.donation.setText(donations[position].toString());
             viewHolder.donation.setOnClickListener(new View.OnClickListener() {
