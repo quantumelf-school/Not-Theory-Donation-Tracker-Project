@@ -73,6 +73,7 @@ public class LocationListActivity extends AppCompatActivity {
     private class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.LocationViewHolder> {
         private final String[] locations;
         private final Context context;
+
         public class LocationViewHolder extends RecyclerView.ViewHolder {
             Button location;
 
@@ -93,6 +94,7 @@ public class LocationListActivity extends AppCompatActivity {
             return new LocationViewHolder(view);
         }
 
+        @Override
         public void onBindViewHolder(final LocationViewHolder viewHolder, int position) {
             viewHolder.location.setText(locations[position]);
             viewHolder.location.setOnClickListener(new OnClickListener() {
@@ -110,6 +112,7 @@ public class LocationListActivity extends AppCompatActivity {
             });
         }
 
+        @Override
         public int getItemCount() {
             return locations.length;
         }

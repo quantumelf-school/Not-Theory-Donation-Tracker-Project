@@ -93,6 +93,7 @@ public class AddDonationActivity extends AppCompatActivity {
                     errorMess.setVisibility(View.VISIBLE);
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
+                        @Override
                         public void run() {
                             errorMess.setVisibility(View.INVISIBLE);
                         }

@@ -120,6 +120,7 @@ public class DonationSearchActivity extends AppCompatActivity {
             this.context = context;
         }
 
+        @Override
         public DonationSearchActivity.DonationAdapter.DonationViewHolder onCreateViewHolder(
                 ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(context);
@@ -128,6 +129,7 @@ public class DonationSearchActivity extends AppCompatActivity {
             return new DonationSearchActivity.DonationAdapter.DonationViewHolder(view);
         }
 
+        @Override
         public void onBindViewHolder(final DonationSearchActivity.DonationAdapter.
                                              DonationViewHolder viewHolder, int position) {
             viewHolder.donation.setText(donations[position].toString());
@@ -148,6 +150,7 @@ public class DonationSearchActivity extends AppCompatActivity {
             });
         }
 
+        @Override
         public int getItemCount() {
             return donations.length;
         }

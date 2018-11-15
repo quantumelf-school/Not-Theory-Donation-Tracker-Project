@@ -1,5 +1,7 @@
 package nottheory.donationtracker.Model;
 
+import android.support.annotation.NonNull;
+
 /**
  * A class for the Account which grants permissions and saves login information
  */
@@ -32,6 +34,7 @@ public class Account {
      */
     public String getName() { return name; }
 
+    @NonNull
     @Override
     public String toString() { return this.name + ", " + this.email;}
 

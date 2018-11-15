@@ -51,10 +51,12 @@ public class Donation implements Parcelable{
         out.writeStringArray(output);
     }
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        @Override
         public Donation createFromParcel(Parcel in) {
             return new Donation(in);
         }
 
+        @Override
         public Donation[] newArray(int size) {
             return new Donation[size];
         }
