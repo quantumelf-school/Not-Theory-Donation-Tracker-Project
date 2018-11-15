@@ -137,7 +137,8 @@ public class DonationSearchActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(DonationSearchActivity.this,
                             DonationInfoActivity.class);
-                    intent.putExtra("donation", ((Donation) donations[viewHolder.getAdapterPosition()]).getName());
+                    intent.putExtra("donation", (
+                            (Donation) donations[viewHolder.getAdapterPosition()]).getName());
                     //feature envy is necessary to tell next activity which donation was clicked
 
                     Location l = LoginManager.locations.getLocationWithDonation(

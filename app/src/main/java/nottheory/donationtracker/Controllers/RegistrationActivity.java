@@ -41,7 +41,8 @@ public class RegistrationActivity extends AppCompatActivity {
         cancelButton = findViewById(R.id.register_cancelbutton);
         acctTypeSpinner = findViewById(R.id.registration_accttypespinner);
 
-        acctTypeSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, AccountType.values()));
+        acctTypeSpinner.setAdapter(new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_item, AccountType.values()));
 
         loginButton.setOnClickListener(new OnClickListener() {
             @Override

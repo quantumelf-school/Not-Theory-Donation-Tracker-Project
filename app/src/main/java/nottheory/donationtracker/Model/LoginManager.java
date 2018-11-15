@@ -70,7 +70,7 @@ public final class LoginManager {
     }
 
     /**
-     * A method to get the account by its username in the SQL table and parse it as an Account object
+     * Method to get the account by its username in the SQL table and parse it as an Account object
      * @param un The username we want the account information about
      */
     public static void logAccount(String un) {
