@@ -25,7 +25,9 @@ public class LocationListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         RecyclerView locationList;
-        Button backButton, searchButton, mapButton;
+        Button backButton;
+        Button searchButton;
+        Button mapButton;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_list);
