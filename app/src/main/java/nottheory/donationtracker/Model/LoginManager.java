@@ -91,13 +91,13 @@ public final class LoginManager {
     }
 
     /**
-     * Returns a location object given its name.
+     * Returns the list of donations of a certain location given its name
      * @param name the name of the location
-     * @return location
+     * @return the list of its donations
      */
-    public static String getLocationByName(String name) {
+    public static List<Donation> getDonationsOfLocationByName(String name) {
         Location l = locations.getLocationByName(name);
-        return l.getName();
+        return l.getDonations();
     }
 
     public static LocationCollection getLocations() {
