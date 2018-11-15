@@ -6,7 +6,8 @@ import java.util.List;
 
 public class LocationCollection {
     private ArrayList<Location> locations = new ArrayList<>();
-    private /*static*/ int nextRow; //the id of a location is defined by its row in the .csv file or the order in which it was added
+    private /*static*/ int nextRow; //the id of a location is defined by its row in the .csv file
+    // or the order in which it was added
 
 
     public LocationCollection() {
