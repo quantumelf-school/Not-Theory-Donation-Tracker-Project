@@ -88,6 +88,7 @@ public class LocationListActivity extends AppCompatActivity {
             this.context = context;
         }
 
+        @Override
         public LocationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(context);
             View view = inflater.inflate(R.layout.location_recyclerview_row, parent, false);
