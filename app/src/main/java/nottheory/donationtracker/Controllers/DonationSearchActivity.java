@@ -43,7 +43,6 @@ public class DonationSearchActivity extends AppCompatActivity {
         Button backButton;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donation_search);
-
         searchButton = findViewById(R.id.search_button);
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +50,6 @@ public class DonationSearchActivity extends AppCompatActivity {
                 doSearch();
             }
         });
-
         backButton = findViewById(R.id.search_back_button);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,10 +57,8 @@ public class DonationSearchActivity extends AppCompatActivity {
                 finish();
             }
         });
-
         searchBox = findViewById(R.id.search_entry);
         searchBox.setVisibility(View.VISIBLE);
-
         locSpinner = findViewById(R.id.search_location_spinner);
         ArrayList<String> locationList = new ArrayList<>();
         locationList.add("All");
@@ -70,7 +66,6 @@ public class DonationSearchActivity extends AppCompatActivity {
         locationList.addAll(allLocations.getLocationNames());
         locSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
                 locationList));
-
         catSpinner = findViewById(R.id.search_cat_spinner);
         ArrayList<String> categoryList = new ArrayList<>();
         categoryList.add("Clothing");
@@ -82,7 +77,6 @@ public class DonationSearchActivity extends AppCompatActivity {
         catSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
                 categoryList));
         catSpinner.setVisibility(View.GONE);
-
         searchByCat = findViewById(R.id.search_switch);
         searchByCat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,7 +90,6 @@ public class DonationSearchActivity extends AppCompatActivity {
                 }
             }
         });
-
         donationSearchList = findViewById(R.id.donationSearchList);
         List<Donation> donationArray = allLocations.getAllDonationsAL();
         donationSearchList.setAdapter(new DonationSearchActivity.DonationAdapter(this,

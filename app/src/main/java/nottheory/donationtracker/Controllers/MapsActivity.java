@@ -31,7 +31,11 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
         FragmentManager thisFragmentManager = getSupportFragmentManager();
         SupportMapFragment mapFragment = (SupportMapFragment) thisFragmentManager
                 .findFragmentById(R.id.map); //Most concise way to do this, does not disobey LoD
-        mapFragment.getMapAsync(this);
+        try {
+            mapFragment.getMapAsync(this);
+        } catch (Exception e) {
+            return;
+        }
     }
 
 
