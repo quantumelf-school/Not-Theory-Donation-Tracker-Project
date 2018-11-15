@@ -4,6 +4,7 @@ import nottheory.donationtracker.Model.Account;
 import nottheory.donationtracker.Model.AccountType;
 
 import org.junit.Test;
+import static junit.framework.TestCase.assertEquals;
 
 public class KevinUnitTest {
     private Account testAccount;

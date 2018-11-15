@@ -10,10 +10,10 @@ import java.nio.charset.StandardCharsets;
 
 public class CSVReader {
     private LocationCollection data;
+    private final int FILE_LENGTH = 11;
     
-    public CSVReader(InputStream is) throws IOException {
+    public CSVReader() {
         data = new LocationCollection();
-        readFile(is);
     }
 
     //This method has feature envy for DatabaseConnection. However, it is unintuitive and wouldn't
@@ -21,13 +21,12 @@ public class CSVReader {
     //We created CSVReader and DatabaseConnection in order to make it separate from the overall app
     //as individual tools, so it wouldn't make sense to combine them. There are also many other
     //cases of using sendRawSQL, so we shouldn't make a specialized method for this case.
-    private void readFile(InputStream is) throws IOException {
-        final int FILE_LENGTH = 11;
+    public void readFile(InputStream is) throws IOException {
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(is, StandardCharsets.UTF_8));
         
         String line;
-        line = reader.readLine();
+        reader.readLine();
         while ((line = reader.readLine()) != null) {
             String[] items = line.split(",");
             if (items.length == FILE_LENGTH) {
@@ -56,9 +55,7 @@ public class CSVReader {
                 Location this_location = new Location(location_parts[0], location_parts[1], location_parts[2], location_parts[3],
                         location_parts[4], location_parts[5], location_parts[6], location_parts[7], location_parts[8],
                         location_parts[9]);
-                data.addLocation(this_location);
             }
-            LoginManager.locations = data;
 
         } catch (Exception e) {
             e.printStackTrace();
