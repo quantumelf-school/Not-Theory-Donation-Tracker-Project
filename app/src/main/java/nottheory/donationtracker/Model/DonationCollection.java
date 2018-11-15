@@ -98,4 +98,30 @@ public class DonationCollection {
     public List<Donation> getDonations() {
         return donations;
     }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (o == this) {
+            return true;
+        }
+
+        if (o == null) {
+            return false;
+        }
+
+        if (!(o instanceof DonationCollection)) {
+            return false;
+        }
+
+        DonationCollection other = (DonationCollection) o;
+
+        for (Donation d : other.getDonations()) {
+             if (!other.getDonations().contains(d)) {
+                 return false;
+             }
+        }
+
+        return true;
+    }
 }
