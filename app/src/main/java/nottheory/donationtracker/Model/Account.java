@@ -45,12 +45,12 @@ public class Account {
      * @return the string used for the SQL Table
      */
     public String sqlAllInfo() {
-        String returnString = "'" + name + "','" + username + "','" + password + "','";
-        returnString += email + "','" + acctType.name() + "'";
+        String returnString = "'" + name + "', '" + username + "', '" + password + "', '";
+        returnString += email + "', '" + acctType.name() + "'";
+        System.out.println(returnString);
         if (!email.contains("@")) {
             return null;
         }
-        System.out.println(returnString);
         return returnString;
     }
 }
