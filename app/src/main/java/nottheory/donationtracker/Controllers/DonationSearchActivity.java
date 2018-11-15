@@ -127,7 +127,7 @@ public class DonationSearchActivity extends AppCompatActivity {
         }
 
         public void onBindViewHolder(DonationSearchActivity.DonationAdapter.
-                                             DonationViewHolder viewHolder, final int position) {
+                                             DonationViewHolder viewHolder, int position) {
             viewHolder.donation.setText(donations[position].toString());
             viewHolder.donation.setOnClickListener(new View.OnClickListener() {
                 @Override
