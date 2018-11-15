@@ -44,7 +44,7 @@ public class LocationCollection {
         locations.add(l);
         l.setRow(nextRow);
         nextRow++;
-        Log.d("LOCATION ADDED", l.logText());
+        //Log.d("LOCATION ADDED", l.logText());
     }
 
     /**
