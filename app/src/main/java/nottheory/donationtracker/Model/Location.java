@@ -1,4 +1,6 @@
 package nottheory.donationtracker.Model;
+import android.support.annotation.NonNull;
+
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -153,6 +155,7 @@ public class Location {
         return text;
     }
 
+    @NonNull
     public String toString() {
         String text = "";
         text += "Name: " + name + "\n";

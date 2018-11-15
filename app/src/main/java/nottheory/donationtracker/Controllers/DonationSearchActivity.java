@@ -3,6 +3,7 @@ package nottheory.donationtracker.Controllers;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -120,9 +121,10 @@ public class DonationSearchActivity extends AppCompatActivity {
             this.context = context;
         }
 
+        @NonNull
         @Override
         public DonationSearchActivity.DonationAdapter.DonationViewHolder onCreateViewHolder(
-                ViewGroup parent, int viewType) {
+                @NonNull ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(context);
             View view = inflater.inflate(R.layout.location_recyclerview_row,
                     parent, false);
@@ -130,7 +132,7 @@ public class DonationSearchActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(final DonationSearchActivity.DonationAdapter.
+        public void onBindViewHolder(final @NonNull DonationSearchActivity.DonationAdapter.
                                              DonationViewHolder viewHolder, int position) {
             viewHolder.donation.setText(donations[position].toString());
             viewHolder.donation.setOnClickListener(new View.OnClickListener() {
