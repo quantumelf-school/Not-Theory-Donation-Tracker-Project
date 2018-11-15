@@ -3,6 +3,7 @@ package nottheory.donationtracker.Controllers;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Button;
@@ -38,8 +39,10 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                String un = unEntry.getText().toString(); //most concise way to do this
-                String pw = pwEntry.getText().toString(); //and it obeys law of demeter
+                Editable unEdit = unEntry.getText();
+                String un = unEdit.toString(); //most concise way to do this
+                Editable pwEdit = pwEntry.getText();
+                String pw = pwEdit.toString(); //and it obeys law of demeter
 
                 if (LoginManager.checkCredentials(un, pw)) {
                     LoginManager.logAccount(un);

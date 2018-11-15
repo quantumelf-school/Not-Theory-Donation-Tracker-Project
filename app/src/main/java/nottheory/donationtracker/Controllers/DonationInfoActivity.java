@@ -1,5 +1,7 @@
 package nottheory.donationtracker.Controllers;
 
+import nottheory.donationtracker.Model.Donation;
+import nottheory.donationtracker.Model.DonationCollection;
 import nottheory.donationtracker.Model.Location;
 import nottheory.donationtracker.R;
 import nottheory.donationtracker.Model.LoginManager;
@@ -35,8 +37,10 @@ public class DonationInfoActivity extends AppCompatActivity {
         donationText = findViewById(R.id.donationinfo_info_text);
         String text = "";
         Location l = LoginManager.locations.getLocationByName(intent.getStringExtra("location"));
-        text = l.getDonationCollection().getDonationByName(
-                intent.getStringExtra("donation")).toString();
+        DonationCollection gottenCollection = l.getDonationCollection();
+        Donation foundDonation = gottenCollection.getDonationByName(
+                intent.getStringExtra("donation"));
+        text = foundDonation.toString();
         donationText.setText(text);
         donationText.setVisibility(View.VISIBLE);
     }

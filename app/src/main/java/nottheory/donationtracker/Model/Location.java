@@ -55,11 +55,13 @@ public class Location {
                     "comments FROM `" + name + " INV`");
             if (!"".equals(locationinventory)) {
                 String delimiter = "\\),\\(";
-                String[] donation_list = (locationinventory.substring(1,
-                        locationinventory.length() - 1)).split(delimiter);
+                String noEndsLocation = locationinventory.substring(1,
+                        locationinventory.length() - 1);
+                String[] donation_list = noEndsLocation.split(delimiter);
                 for (String donation_x: donation_list) {
-                    String[] donation_parts = donation_x.substring(1,
-                            donation_x.length() - 1).split("', '");
+                    String noEndDonation = donation_x.substring(1,
+                            donation_x.length() - 1);
+                    String[] donation_parts = noEndDonation.split("', '");
                     if (donation_parts.length == 5) {
                         Donation this_donation = new Donation(donation_parts[0],
                                 donation_parts[1], donation_parts[2], donation_parts[3],
@@ -159,8 +161,11 @@ public class Location {
     }
 
     public MarkerOptions makeMarkerOption() {
-        return new MarkerOptions().position(new LatLng(this.getLat(), this.getLong()))
-                .title(name).snippet(this.getSnippet());
+        MarkerOptions markerOption = new MarkerOptions();
+        MarkerOptions markerPosition = markerOption.position(new LatLng(this.getLat(),
+                this.getLong()));
+        MarkerOptions markerTitle = markerPosition.title(name);
+        return markerTitle.snippet(this.getSnippet());
     }
 }
 

@@ -28,9 +28,6 @@ public class LocationCollection {
         nextRow++;
         Log.d("LOCATION ADDED", l.logText());
     }
-    public void removeLocation(Location l) {
-        locations.remove(l);
-    }
 
     public Location getLocationFromRow(int row) {
         for(Location l: locations) {
@@ -45,7 +42,8 @@ public class LocationCollection {
 
     public Location getLocationByName(String name) {
         for (Location l : locations) {
-            if (l.getName().equals(name)) {
+            String thisName = l.getName();
+            if (thisName.equals(name)) {
                 return l;
             }
         }
@@ -55,7 +53,8 @@ public class LocationCollection {
     public Location getLocationWithDonation(Donation d) {
         for(Location l: locations) {
             for(Donation don: l.getDonations()) {
-                if (don.getName().equals(d.getName())) {
+                String donationName = don.getName();
+                if (donationName.equals(d.getName())) {
                     return l;
                 }
             }
@@ -74,22 +73,15 @@ public class LocationCollection {
     public int getNumLocations() {
         return locations.size();
     }
-    public DonationCollection getAllDonations() {
-        DonationCollection ret = new DonationCollection();
-        for(Location l: locations) {
-            ret.addDonations(l.getDonationCollection());
-        }
-        return ret;
-    }
+
     public List<Donation> getAllDonationsAL() {
        List<Donation> ret = new ArrayList<>();
         for(Location l: locations) {
-            for(Donation d: l.getDonations()) {
-                ret.add(d);
-            }
+                ret.addAll(l.getDonations());
         }
         return ret;
     }
+
 
     public ArrayList<Location> getLocations() {
         return locations;

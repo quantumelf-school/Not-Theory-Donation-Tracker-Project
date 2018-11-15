@@ -72,11 +72,11 @@ public class CSVReader {
                     + "state, type, phone, website, zipcode, latitude, longitude FROM Locations;");
             String delimiter = "\\),\\(";
             Log.d("myApp", "DB QUERY RESULT: " + get_locations);
-            String[] location_list = (get_locations.substring(1, get_locations.length() - 1))
-                    .split(delimiter);
+            String noEndsLocation = get_locations.substring(1, get_locations.length() - 1);
+            String[] location_list = noEndsLocation.split(delimiter);
             for (String location_x: location_list) {
-                String[] location_parts = location_x.substring(1, location_x.length() - 1)
-                        .split("', '");
+                String noEndLocation = location_x.substring(1, location_x.length() - 1);
+                String[] location_parts = noEndLocation.split("', '");
                 Location this_location = new Location(location_parts[0], location_parts[1],
                         location_parts[2], location_parts[3], location_parts[4], location_parts[5],
                         location_parts[6], location_parts[7], location_parts[8], location_parts[9]);
