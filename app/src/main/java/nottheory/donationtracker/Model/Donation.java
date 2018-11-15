@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Donation implements Parcelable{
-    private String timestamp, shortDescript, longDescript, value, category, comments;
+    private final String timestamp, shortDescript, longDescript, value, category, comments;
     public Donation(String timestamp, String shortDescript, String longDescript, String value,
                     String category, String comments) {
         this.timestamp = timestamp;
