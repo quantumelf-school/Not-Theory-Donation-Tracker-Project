@@ -19,7 +19,7 @@ public class Location {
     private final String zipcode;
     private final String latitude;
     private final String longitude;
-    private DonationCollection inventory = new DonationCollection();
+    private final DonationCollection inventory = new DonationCollection();
     private int row = 0;
     /**
      * A constructor for a location with all required information
