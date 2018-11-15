@@ -67,6 +67,7 @@ public class CSVReader {
                 Location this_location = new Location(location_parts[0], location_parts[1],
                         location_parts[2], location_parts[3], location_parts[4], location_parts[5],
                         location_parts[6], location_parts[7], location_parts[8], location_parts[9]);
+                data.addLocation(this_location);
             }
 
         } catch (Exception e) {
