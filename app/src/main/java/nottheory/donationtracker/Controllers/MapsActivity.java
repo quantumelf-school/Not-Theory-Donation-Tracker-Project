@@ -33,9 +33,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
                 .findFragmentById(R.id.map); //Most concise way to do this, does not disobey LoD
         try {
             mapFragment.getMapAsync(this);
-        } catch (Exception e) {
-            return;
-        }
+        } catch (Exception e) {}
     }
 
 
