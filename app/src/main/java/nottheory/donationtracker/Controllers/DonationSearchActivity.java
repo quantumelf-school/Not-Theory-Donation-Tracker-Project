@@ -68,12 +68,8 @@ public class DonationSearchActivity extends AppCompatActivity {
                 locationList));
         catSpinner = findViewById(R.id.search_cat_spinner);
         ArrayList<String> categoryList = new ArrayList<>();
-        categoryList.add("Clothing");
-        categoryList.add("Hat");
-        categoryList.add("Kitchen");
-        categoryList.add("Electronics");
-        categoryList.add("Household");
-        categoryList.add("Other");
+        addCategories(categoryList);
+
         catSpinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
                 categoryList));
         catSpinner.setVisibility(View.GONE);
@@ -95,6 +91,15 @@ public class DonationSearchActivity extends AppCompatActivity {
         donationSearchList.setAdapter(new DonationSearchActivity.DonationAdapter(this,
                 donationArray.toArray()));
         donationSearchList.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void addCategories(ArrayList<String> categoryList) {
+        categoryList.add("Clothing");
+        categoryList.add("Hat");
+        categoryList.add("Kitchen");
+        categoryList.add("Electronics");
+        categoryList.add("Household");
+        categoryList.add("Other");
     }
 
     private class DonationAdapter extends RecyclerView.Adapter
