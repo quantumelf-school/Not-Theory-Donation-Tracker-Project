@@ -87,6 +87,9 @@ public class LocationCollection {
      * @return the location containing donation d
      */
     public Location getLocationWithDonation(Donation d) {
+        if (d == null) {
+            return null;
+        }
         for(Location l: locations) {
             for(Donation don: l.getDonations()) {
                 String donationName = don.getName();
