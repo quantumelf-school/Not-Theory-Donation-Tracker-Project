@@ -66,6 +66,10 @@ public final class LoginManager {
         }
     }
 
+    public static void setLocations(LocationCollection newLocations) {
+        locations = newLocations;
+    }
+
     public static void logoutAccount() {
         currUsers = new ArrayList<Account>();
     }

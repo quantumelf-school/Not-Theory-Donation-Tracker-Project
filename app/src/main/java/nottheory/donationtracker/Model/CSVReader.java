@@ -24,7 +24,7 @@ public class CSVReader {
         final int FILE_LENGTH = 11;
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(is, StandardCharsets.UTF_8));
-        
+
         String line;
         reader.readLine();
         while ((line = reader.readLine()) != null) {
