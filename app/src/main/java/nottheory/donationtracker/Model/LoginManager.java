@@ -15,7 +15,6 @@ public final class LoginManager {
         try {
             String getSelection = DatabaseConnection.sendRawSQL("SELECT username FROM Users WHERE" +
                     " username = '" + un + "';");
-            System.out.println(getSelection);
             if ("".equals(getSelection)) {
                 String sqlAllInfo = acct.sqlAllInfo();
                 if (sqlAllInfo == null) {
