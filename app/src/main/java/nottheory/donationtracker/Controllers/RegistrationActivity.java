@@ -23,11 +23,11 @@ import nottheory.donationtracker.R;
 public class RegistrationActivity extends AppCompatActivity {
 
     private EditText nameEntry, emailEntry, unEntry, pwEntry;
-    private Button loginButton, cancelButton;
     private Spinner acctTypeSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Button loginButton, cancelButton;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
         nameEntry = findViewById(R.id.register_nameentry);

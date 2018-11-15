@@ -9,11 +9,19 @@ import java.util.List;
  * A class to store all information about a location
  */
 public class Location {
-    private String name, address, city, state, type, phone, website, zipcode, latitude, longitude;
+    private final String name;
+    private final String address;
+    private final String city;
+    private final String state;
+    private final String type;
+    private final String phone;
+    private final String website;
+    private final String zipcode;
+    private final String latitude;
+    longitude;
     private DonationCollection inventory = new DonationCollection();
     //private ArrayList<Donation> inventory = new ArrayList<>();
     private int row = 0;
-
     /**
      * A constructor for a location with all required information
      * @param name the location's name
@@ -27,7 +35,8 @@ public class Location {
      * @param phone the phone number of the location
      * @param website the website for the location
      */
-    public Location(String name, String latitude, String longitude, String address, String city, String state, String zipcode, String type, String phone, String website) {
+    public Location(String name, String latitude, String longitude, String address, String city,
+                    String state, String zipcode, String type, String phone, String website) {
         this.name = name;
         this.address = address;
         this.city = city;
@@ -39,19 +48,28 @@ public class Location {
         this.latitude = latitude;
         this.longitude = longitude;
         try {
-            DatabaseConnection.sendRawSQL("CREATE TABLE IF NOT EXISTS `" + name + " INV` (donation_id INT AUTO_INCREMENT, timestamp TEXT, shortDescript TEXT, longDescript TEXT, value TEXT, category TEXT, comments TEXT, PRIMARY KEY (donation_id))  ENGINE=INNODB;");
-            String locationinventory = DatabaseConnection.sendRawSQL("SELECT timestamp, shortDescript, longDescript, value, category, comments FROM `" + name + " INV`");
+            DatabaseConnection.sendRawSQL("CREATE TABLE IF NOT EXISTS `" + name + " INV` " +
+                    "(donation_id INT AUTO_INCREMENT, timestamp TEXT, shortDescript TEXT, " +
+                    "longDescript TEXT, value TEXT, category TEXT, comments TEXT, PRIMARY KEY " +
+                    "(donation_id))  ENGINE=INNODB;");
+            String locationinventory = DatabaseConnection.sendRawSQL("SELECT timestamp, " +
+                    "shortDescript, longDescript, value, category, " +
+                    "comments FROM `" + name + " INV`");
             if (!"".equals(locationinventory)) {
                 String delimiter = "\\),\\(";
-                String[] donation_list = (locationinventory.substring(1, locationinventory.length() - 1)).split(delimiter);
+                String[] donation_list = (locationinventory.substring(1,
+                        locationinventory.length() - 1)).split(delimiter);
                 for (String donation_x: donation_list) {
-                    String[] donation_parts = donation_x.substring(1, donation_x.length() - 1).split("', '");
+                    String[] donation_parts = donation_x.substring(1,
+                            donation_x.length() - 1).split("', '");
                     if (donation_parts.length == 5) {
-                        Donation this_donation = new Donation(donation_parts[0], donation_parts[1], donation_parts[2], donation_parts[3],
+                        Donation this_donation = new Donation(donation_parts[0],
+                                donation_parts[1], donation_parts[2], donation_parts[3],
                                 donation_parts[4]);
                         inventory.addDonation(this_donation);
                     } else {
-                        Donation this_donation = new Donation(donation_parts[0], donation_parts[1], donation_parts[2], donation_parts[3],
+                        Donation this_donation = new Donation(donation_parts[0],
+                                donation_parts[1], donation_parts[2], donation_parts[3],
                                 donation_parts[4], donation_parts[5]);
                         inventory.addDonation(this_donation);
                     }
@@ -68,7 +86,8 @@ public class Location {
      */
     public void addDonation(Donation d) {
         try {
-            DatabaseConnection.sendRawSQL("INSERT INTO `" + name + " INV` (timestamp, shortDescript, longDescript, value, category, comments) " +
+            DatabaseConnection.sendRawSQL("INSERT INTO `" + name + " INV` (timestamp," +
+                    " shortDescript, longDescript, value, category, comments) " +
             "VALUES(" + d.dataBaseString() + ");");
         } catch (Exception e) {
             e.printStackTrace();
@@ -83,7 +102,7 @@ public class Location {
     public String getName(){
         return name;
     }
-    
+
     public void setRow(int row) {
         this.row = row;
     }

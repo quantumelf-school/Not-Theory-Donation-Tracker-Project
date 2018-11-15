@@ -1,14 +1,13 @@
 package nottheory.donationtracker.Model;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.NoSuchElementException;
 
 /**
  * A class to hold and manage all of the donations in a location
  */
 public class DonationCollection {
-    private List<Donation> donations = new ArrayList<>();
+    private final List<Donation> donations = new ArrayList<>();
 
     /**
      * The default constructor for a DonationCollection which creates an empty collection
@@ -100,10 +99,9 @@ public class DonationCollection {
      */
     public ArrayList<Donation> getDonationsByName(String name) {
         ArrayList<Donation> ret = new ArrayList<>();
-        name = name.toUpperCase();
         for(Donation d : donations){
             String checkName = d.getName().toUpperCase();
-            if(checkName.equals(name)) {
+            if(checkName.equals(name.toUpperCase())) {
                 ret.add(d);
             }
         }
@@ -119,10 +117,9 @@ public class DonationCollection {
      */
     public Donation getDonationByName(String name) throws NoSuchElementException { //Joey Test
         Donation ret = null;
-        name = name.toUpperCase();
         for(Donation d : donations){
             String checkName = d.getName().toUpperCase();
-            if(checkName.equals(name)) {
+            if(checkName.equals(name.toUpperCase())) {
                 ret = d;
             }
         }
@@ -141,10 +138,9 @@ public class DonationCollection {
      */
     public ArrayList<Donation> getDonationsBySimilarName(String name) { //replace string with enum
         ArrayList<Donation> ret = new ArrayList<>();
-        name = name.toUpperCase();
         for(Donation d : donations){
             String checkName = d.getName().toUpperCase();
-            if(checkName.contains(name)) {
+            if(checkName.contains(name.toUpperCase())) {
                 ret.add(d);
             }
         }

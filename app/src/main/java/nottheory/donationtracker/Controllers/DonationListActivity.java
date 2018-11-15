@@ -21,19 +21,16 @@ import android.widget.TextView;
 import java.util.List;
 
 public class DonationListActivity extends AppCompatActivity {
-
-    private String fromLocation;
-    private RecyclerView donationList;
-//    private EditText searchBar;
-//    private Button searchButton;
-    private Button backButton;
-    private Button addButton;
-//    private Spinner searchCriteria;
+    
     private TextView errorText;
     private final int DELAY = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        String fromLocation;
+        RecyclerView donationList;
+        Button backButton;
+        Button addButton;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donation_list);
 
@@ -92,8 +89,8 @@ public class DonationListActivity extends AppCompatActivity {
     }
 
     private class DonationAdapter extends RecyclerView.Adapter<DonationListActivity.DonationAdapter.DonationViewHolder> {
-        private Object[] donations;
-        private Context context;
+        private final Object[] donations;
+        private final Context context;
         public class DonationViewHolder extends RecyclerView.ViewHolder {
             public Button donation;
 

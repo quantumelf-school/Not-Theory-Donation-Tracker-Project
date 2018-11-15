@@ -17,14 +17,15 @@ import nottheory.donationtracker.R;
  */
 public class LocationInfoActivity extends AppCompatActivity {
 
-    private TextView locationText;
-    private Button backButton;
-    private Button donationButton;
     private Intent locationIntent;
     private Location location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        TextView locationText;
+        Button backButton;
+        Button donationButton;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_info);
 
@@ -59,7 +60,8 @@ public class LocationInfoActivity extends AppCompatActivity {
 //        }
 
         locationText = findViewById(R.id.locationinfo_info_text);
-        String text = LoginManager.locations.getLocationFromRow(getIntent().getIntExtra("pos", 0)).toString();
+        String text = LoginManager.locations.getLocationFromRow(getIntent().getIntExtra("pos",
+                0)).toString();
 
         locationText.setText(text);
         locationText.setVisibility(View.VISIBLE);

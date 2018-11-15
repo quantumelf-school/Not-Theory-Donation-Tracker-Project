@@ -4,8 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Donation implements Parcelable{
-    private String timestamp, shortDescript, longDescript, value, category, comments;
-    public Donation(String timestamp, String shortDescript, String longDescript, String value, String category, String comments) {
+    private final String timestamp;
+    private final String shortDescript;
+    private final String longDescript;
+    private final String value;
+    private final String category;
+    private final String comments;
+    public Donation(String timestamp, String shortDescript, String longDescript, String value,
+                    String category, String comments) {
         this.timestamp = timestamp;
         this.shortDescript = shortDescript;
         this.longDescript = longDescript;
@@ -13,7 +19,8 @@ public class Donation implements Parcelable{
         this.category = category;
         this.comments = comments;
     }
-    public Donation(String timestamp, String shortDescript, String longDescript, String value, String category) { //optional no comment
+    public Donation(String timestamp, String shortDescript, String longDescript, String value,
+                    String category) { //optional no comment
         this(timestamp, shortDescript, longDescript, value, category, "");
     }
     public String getName(){
@@ -39,7 +46,8 @@ public class Donation implements Parcelable{
     }
     @Override
     public void writeToParcel(Parcel out, int flags) {
-        String[] output = {this.timestamp, this.shortDescript, this.longDescript, this.value, this.category, this.comments};
+        String[] output = {this.timestamp, this.shortDescript, this.longDescript, this.value,
+                this.category, this.comments};
         out.writeStringArray(output);
     }
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {

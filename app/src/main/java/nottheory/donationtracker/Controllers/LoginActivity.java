@@ -19,10 +19,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText unEntry, pwEntry;
     private TextView invalidLoginText, tryAgainText;
-    private Button loginButton, cancelButton;
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Button loginButton, cancelButton;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         unEntry = findViewById(R.id.login_unentry);

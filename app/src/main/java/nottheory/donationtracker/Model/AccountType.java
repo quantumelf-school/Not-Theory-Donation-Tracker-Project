@@ -8,7 +8,7 @@ public enum AccountType {
     LOCATION_EMPLOYEE("Location Employee"),
     ADMIN("Admin");
 
-    private String displayString;
+    private final String displayString;
 
     AccountType(String displayString) {
         this.displayString = displayString;

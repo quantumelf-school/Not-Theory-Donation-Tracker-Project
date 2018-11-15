@@ -4,8 +4,11 @@ package nottheory.donationtracker.Model;
  * A class for the Account which grants permissions and saves login information
  */
 public class Account {
-    private String name, email, username, password;
-    private AccountType acctType;
+    private final String name;
+    private final String email;
+    private final String username;
+    private final String password;
+    private final AccountType acctType;
 
     /**
      * The constructor for the account with all information to be saved

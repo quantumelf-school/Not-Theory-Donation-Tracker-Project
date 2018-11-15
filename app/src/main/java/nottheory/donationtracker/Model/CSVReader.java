@@ -8,21 +8,13 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
-/**
- * A model class to read information from a CSV file and post it to the SQL database
- */
 public class CSVReader {
-    private LocationCollection data;
-    private final int FILE_LENGTH = 11;
-
+    private final LocationCollection data;
     /**
      * A constructor for a CSVReader which takes a file to be read and reads it upon construction
-     * @param is is the input file to the reader
-     * @throws IOException will throw if the file cannot be read for some reason
      */
-    public CSVReader(InputStream is) throws IOException {
+    public CSVReader() {
         data = new LocationCollection();
-        readFile(is);
     }
 
     //This method has feature envy for DatabaseConnection. However, it is unintuitive and wouldn't
@@ -30,13 +22,15 @@ public class CSVReader {
     //We created CSVReader and DatabaseConnection in order to make it separate from the overall app
     //as individual tools, so it wouldn't make sense to combine them. There are also many other
     //cases of using sendRawSQL, so we shouldn't make a specialized method for this case.
-    private void readFile(InputStream is) throws IOException {
+    public void readFile(InputStream is) throws IOException {
+        final int FILE_LENGTH = 11;
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(is, StandardCharsets.UTF_8));
-        
+
         String line;
+        reader.readLine();
         line = reader.readLine();
-        while ((line = reader.readLine()) != null) {
+        while (line != null) {
             String[] items = line.split(",");
             if (items.length == FILE_LENGTH) {
                 try {
@@ -52,6 +46,7 @@ public class CSVReader {
                     e.printStackTrace();
                 }
             }
+            line = reader.readLine();
         }
         reader.close();
         try {
@@ -64,9 +59,7 @@ public class CSVReader {
                 Location this_location = new Location(location_parts[0], location_parts[1], location_parts[2], location_parts[3],
                         location_parts[4], location_parts[5], location_parts[6], location_parts[7], location_parts[8],
                         location_parts[9]);
-                data.addLocation(this_location);
             }
-            LoginManager.locations = data;
 
         } catch (Exception e) {
             e.printStackTrace();

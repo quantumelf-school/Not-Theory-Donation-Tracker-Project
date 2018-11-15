@@ -24,14 +24,10 @@ import java.util.List;
  */
 public class LocationListActivity extends AppCompatActivity {
 
-    private RecyclerView locationList;
-    private Button backButton;
-    private Button searchButton, mapButton;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        RecyclerView locationList;
+        Button backButton, searchButton, mapButton;
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_list);
@@ -73,8 +69,8 @@ public class LocationListActivity extends AppCompatActivity {
     }
 
     private class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.LocationViewHolder> {
-        private String[] locations;
-        private Context context;
+        private final String[] locations;
+        private final Context context;
         public class LocationViewHolder extends RecyclerView.ViewHolder {
             Button location;
 
@@ -101,8 +97,10 @@ public class LocationListActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     Location l = LoginManager.locations.getLocationFromRow(position);
-                    Intent intent = new Intent(LocationListActivity.this, LocationInfoActivity.class);
-                    intent.putExtra("pos", position);//+1 b/c array has position 0 is the first non key row
+                    Intent intent = new Intent(LocationListActivity.this,
+                            LocationInfoActivity.class);
+                    intent.putExtra("pos", position);
+                    //+1 b/c array has position 0 is the first non key row
                     intent.putExtra("location", l.getName());
                     startActivity(intent);
                 }

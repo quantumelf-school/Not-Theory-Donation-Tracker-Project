@@ -18,13 +18,15 @@ import nottheory.donationtracker.Model.LoginManager;
  * The Activity shown which leads to login and registration
  */
 public class WelcomeActivity extends AppCompatActivity {
-    private Button loginButton, registerButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Button loginButton, registerButton;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build(); //uses builder design pattern so chained calls are ok
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        //uses builder design pattern so chained calls are ok
         StrictMode.setThreadPolicy(policy);
         loginButton = findViewById(R.id.welcome_loginbutton);
         registerButton = findViewById(R.id.welcome_registerbutton);
@@ -37,6 +39,14 @@ public class WelcomeActivity extends AppCompatActivity {
         });
 
         LoginManager.initialize_tables();
+        CSVReader aReader = new CSVReader();
+        try {
+            aReader.readFile(getResources().openRawResource(R.raw.locationdata));
+            LoginManager.setLocations(aReader.getLC());
+        } catch(IOException e) {
+            System.out.println("IOException, csv file cannot be read");
+            return;
+        }
 
         registerButton.setOnClickListener(new OnClickListener() {
             @Override

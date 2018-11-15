@@ -21,8 +21,6 @@ import nottheory.donationtracker.R;
  * The activity to add a new donation to a location
  */
 public class AddDonationActivity extends AppCompatActivity {
-    private Button backButton;
-    private Button addItemButton;
     private EditText shortDescText;
     private EditText fullDescText;
     private EditText dateTime;
@@ -33,6 +31,8 @@ public class AddDonationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Button backButton;
+        Button addItemButton;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_donation);
         shortDescText = findViewById(R.id.additem_shortdesc);
@@ -43,14 +43,15 @@ public class AddDonationActivity extends AppCompatActivity {
         final Intent intent = getIntent();
 
 //        TODO: remove this hardcoded garbage cat. list
-        ArrayList<String> categoryList = new ArrayList<String>();
+        ArrayList<String> categoryList = new ArrayList<>();
         categoryList.add("Clothing");
         categoryList.add("Hat");
         categoryList.add("Kitchen");
         categoryList.add("Electronics");
         categoryList.add("Household");
         categoryList.add("Other");
-        category.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categoryList));
+        category.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
+                categoryList));
 
 
         backButton = findViewById(R.id.additem_cancelbutton);
