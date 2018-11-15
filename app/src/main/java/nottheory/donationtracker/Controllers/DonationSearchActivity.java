@@ -32,11 +32,11 @@ public class DonationSearchActivity extends AppCompatActivity {
     private RecyclerView donationSearchList;
     private Spinner catSpinner;
     private Spinner locSpinner;
-    private Button searchButton;
-    private Button backButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        Button searchButton;
+        Button backButton;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donation_search);
 
