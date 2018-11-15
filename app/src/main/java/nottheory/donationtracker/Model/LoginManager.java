@@ -12,17 +12,19 @@ public final class LoginManager {
     private LoginManager() {}
 
     public static boolean addCredentials(String un, Account acct) {
-        System.out.println("REACHED ADD1");
         try {
             String getSelection = DatabaseConnection.sendRawSQL("SELECT username FROM Users WHERE" +
                     " username = '" + un + "';");
+            System.out.println(getSelection);
             if ("".equals(getSelection)) {
-                DatabaseConnection.sendRawSQL("INSERT INTO Users (name, username, password," +
-                        " email, accttype) " +
-                        "VALUES (" + acct.sqlAllInfo() + ");");
-                System.out.println("REACHED ADD");
+                String sqlAllInfo = acct.sqlAllInfo();
+                if (sqlAllInfo == null) {
+                    return false;
+                }
+                String sqlCommand = "INSERT INTO Users (name, username, password," +
+                        " email, accttype) " + "VALUES (" + sqlAllInfo + ");";
+                DatabaseConnection.sendRawSQL(sqlCommand);
             }
-            System.out.println("REACHED ADD2");
             return true;
         } catch (Exception e) {
             return false;
