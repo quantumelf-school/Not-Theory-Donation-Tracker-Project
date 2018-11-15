@@ -16,7 +16,12 @@ public class CSVReader {
         data = new LocationCollection();
         readFile(is);
     }
-    
+
+    //This method has feature envy for DatabaseConnection. However, it is unintuitive and wouldn't
+    //make things easier to understand to combine all of the sendRawSQL methods into one method.
+    //We created CSVReader and DatabaseConnection in order to make it separate from the overall app
+    //as individual tools, so it wouldn't make sense to combine them. There are also many other
+    //cases of using sendRawSQL, so we shouldn't make a specialized method for this case.
     private void readFile(InputStream is) throws IOException {
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(is, StandardCharsets.UTF_8));

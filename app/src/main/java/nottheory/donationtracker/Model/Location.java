@@ -1,4 +1,7 @@
 package nottheory.donationtracker.Model;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,6 +105,15 @@ public class Location {
         text += "Phone: " + phone + "\n";
         text += "Website: " + website;
         return text;
+    }
+
+    public String logText() {
+        return "Location Name: " + name + " LocationNumber: " + row;
+    }
+
+    public MarkerOptions makeMarkerOption() {
+        return new MarkerOptions().position(new LatLng(this.getLat(), this.getLong()))
+                .title(name).snippet(this.getSnippet());
     }
 }
 

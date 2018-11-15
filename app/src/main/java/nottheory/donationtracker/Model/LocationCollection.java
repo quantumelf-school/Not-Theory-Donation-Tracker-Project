@@ -25,7 +25,7 @@ public class LocationCollection {
         locations.add(l);
         l.setRow(nextRow);
         nextRow++;
-        Log.d("@JT LOCATION ADDED", "Location Name: " + l.getName() + " LocationNumber: " + l.getRow());
+        Log.d("LOCATION ADDED", l.logText());
     }
     public void removeLocation(Location l) {
         locations.remove(l);
@@ -33,12 +33,12 @@ public class LocationCollection {
 
     public Location getLocationFromRow(int row) {
         for(Location l: locations) {
-            Log.d("@JT LOCATION SEARCHED", "Location: " + l.getName() + " RowNumber: " + l.getRow());
+            Log.d("LOCATION SEARCHED", l.logText());
             if (l.getRow() == row) {
                 return l;
             }
         }
-        Log.d("@JT LOCATION NOT FOUND", "ROW NUMBER ATTEMPTED" + row);
+        Log.d("LOCATION NOT FOUND", "ROW NUMBER ATTEMPTED" + row);
         return null;
     }
 
