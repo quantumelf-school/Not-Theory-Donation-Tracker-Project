@@ -28,12 +28,6 @@ public class Account {
         this.acctType = acctType;
     }
 
-    /**
-     * The getter for the name attribute
-     * @return the user's name
-     */
-    public String getName() { return name; }
-
     @NonNull
     @Override
     public String toString() { return this.name + ", " + this.email;}
