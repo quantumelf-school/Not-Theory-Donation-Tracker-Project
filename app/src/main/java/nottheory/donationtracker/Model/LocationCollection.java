@@ -94,5 +94,4 @@ public class LocationCollection {
     public ArrayList<Location> getLocations() {
         return locations;
     }
-
 }
