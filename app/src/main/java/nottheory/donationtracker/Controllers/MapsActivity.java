@@ -12,6 +12,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 
+import java.util.Objects;
+
 import nottheory.donationtracker.Model.Location;
 import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.Model.LoginManager;
@@ -32,7 +34,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
         SupportMapFragment mapFragment = (SupportMapFragment) thisFragmentManager
                 .findFragmentById(R.id.map); //Most concise way to do this, does not disobey LoD
         try {
-            mapFragment.getMapAsync(this);
+            Objects.requireNonNull(mapFragment).getMapAsync(this);
         } catch (Exception e) {}
     }
 
