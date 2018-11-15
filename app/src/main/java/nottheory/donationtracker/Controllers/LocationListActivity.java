@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View.OnClickListener;
 import android.support.v7.widget.LinearLayoutManager;
 
+import java.util.List;
 
 
 public class LocationListActivity extends AppCompatActivity {
@@ -62,7 +63,9 @@ public class LocationListActivity extends AppCompatActivity {
 
 
         locationList = findViewById(R.id.locationList);
-        String[] locationArray = LoginManager.locations.getLocationNames().toArray(new String[LoginManager.locations.getNumLocations()]);
+        List<String> locationNames = LoginManager.locations.getLocationNames();
+        String[] locationArray = locationNames.toArray(
+                new String[LoginManager.locations.getNumLocations()]);
         locationList.setAdapter(new LocationAdapter(this, locationArray));
         locationList.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -85,7 +88,8 @@ public class LocationListActivity extends AppCompatActivity {
         }
 
         public LocationViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(context).inflate(R.layout.location_recyclerview_row, parent, false);
+            LayoutInflater inflater = LayoutInflater.from(context);
+            View view = inflater.inflate(R.layout.location_recyclerview_row, parent, false);
             return new LocationViewHolder(view);
         }
 

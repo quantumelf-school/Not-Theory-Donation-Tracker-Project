@@ -37,6 +37,7 @@ public class AddDonationActivity extends AppCompatActivity {
         dateTime = findViewById(R.id.additem_time);
         category = findViewById(R.id.additem_catspinner);
         value = findViewById(R.id.additem_value);
+        final Intent intent = getIntent();
 
 //        TODO: remove this hardcoded garbage cat. list
         ArrayList<String> categoryList = new ArrayList<String>();
@@ -64,14 +65,14 @@ public class AddDonationActivity extends AppCompatActivity {
         addItemButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { //JoeyFix
-                String shortDesc = shortDescText.getText().toString();
-                String fullDesc = fullDescText.getText().toString();
+                String shortDesc = shortDescText.getText().toString(); //most concise way to do this
+                String fullDesc = fullDescText.getText().toString(); //also does meed LoD
                 String time = dateTime.getText().toString();
                 String dcategory = (String) category.getSelectedItem();
                 String dvalue = value.getText().toString();
 
                 Location l = LoginManager.locations.getLocationByName(
-                        getIntent().getStringExtra("location"));
+                        intent.getStringExtra("location"));
 
                 if (!"".equals(shortDesc) && !"".equals(fullDesc) && !"".equals(time) &&
                         !"".equals(dcategory) && !"".equals(dvalue)) {

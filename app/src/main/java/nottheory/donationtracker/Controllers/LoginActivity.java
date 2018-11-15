@@ -32,8 +32,8 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                String un = unEntry.getText().toString();
-                String pw = pwEntry.getText().toString();
+                String un = unEntry.getText().toString(); //most concise way to do this
+                String pw = pwEntry.getText().toString(); //and it obeys law of demeter
 
                 if (LoginManager.checkCredentials(un, pw)) {
                     LoginManager.logAccount(un);
