@@ -110,14 +110,14 @@ public class DonationListActivity extends AppCompatActivity {
             return new DonationListActivity.DonationAdapter.DonationViewHolder(view);
         }
 
-        public void onBindViewHolder(DonationListActivity.DonationAdapter.DonationViewHolder viewHolder, final int position) {
+        public void onBindViewHolder(final DonationListActivity.DonationAdapter.DonationViewHolder viewHolder, int position) {
             viewHolder.donation.setText(donations[position].toString());
             viewHolder.donation.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(DonationListActivity.this, DonationInfoActivity.class);
-                    intent.putExtra("dpos", position);
-                    intent.putExtra("donation", ((Donation) donations[position]).getName());
+                    intent.putExtra("dpos", viewHolder.getAdapterPosition());
+                    intent.putExtra("donation", ((Donation) donations[viewHolder.getAdapterPosition()]).getName());
                     intent.putExtra("location", getIntent().getStringExtra("location"));
                     startActivity(intent);
                 }
