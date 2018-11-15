@@ -17,7 +17,6 @@ public class Location {
     private final String latitude;
     private final String longitude;
     private DonationCollection inventory = new DonationCollection();
-    //private ArrayList<Donation> inventory = new ArrayList<>();
     private int row = 0;
 
     public Location(String name, String latitude, String longitude, String address, String city,
