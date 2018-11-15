@@ -72,7 +72,7 @@ public class DonationSearchActivity extends AppCompatActivity {
                 locationList));
 
         catSpinner = findViewById(R.id.search_cat_spinner);
-        ArrayList<String> categoryList = new ArrayList<String>();
+        ArrayList<String> categoryList = new ArrayList<>();
         categoryList.add("Clothing");
         categoryList.add("Hat");
         categoryList.add("Kitchen");

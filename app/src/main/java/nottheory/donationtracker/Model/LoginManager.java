@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 public final class LoginManager {
-    private static List<Account> currUsers = new ArrayList<Account>();
+    private static List<Account> currUsers = new ArrayList<>();
     private static LocationCollection locations;
 
     private LoginManager() {}
@@ -74,7 +74,7 @@ public final class LoginManager {
     }
 
     public static void logoutAccount() {
-        currUsers = new ArrayList<Account>();
+        currUsers = new ArrayList<>();
     }
     public static Account getCurrAccount() {
         return currUsers.get(0);
