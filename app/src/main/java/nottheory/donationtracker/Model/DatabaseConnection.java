@@ -48,7 +48,7 @@ class DatabaseConnection {
 
             return sb.toString();
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println(e.getStackTrace());
         }
         return "";
     }
