@@ -14,14 +14,15 @@ import nottheory.donationtracker.R;
 
 public class LocationInfoActivity extends AppCompatActivity {
 
-    private TextView locationText;
-    private Button backButton;
-    private Button donationButton;
     private Intent locationIntent;
     private Location location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        TextView locationText;
+        Button backButton;
+        Button donationButton;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location_info);
 
