@@ -31,12 +31,9 @@ public class DonationInfoActivity extends AppCompatActivity {
 
         donationText = findViewById(R.id.donationinfo_info_text);
         String text = "";
-//        if(getIntent().getStringExtra("is master").equals("t")) {
-//            text = LoginManager.donations.getDonations().get(getIntent().getIntExtra("dpos", 0)).toString();
-//        } else {
         Location l = LoginManager.locations.getLocationByName(intent.getStringExtra("location"));
-        text = l.getDonationCollection().getDonationByName(intent.getStringExtra("donation")).toString();
-        //text = l.getDonations().get(getIntent().getIntExtra("dpos", 0)).toString();
+        text = l.getDonationCollection().getDonationByName(
+                intent.getStringExtra("donation")).toString();
         donationText.setText(text);
         donationText.setVisibility(View.VISIBLE);
     }
