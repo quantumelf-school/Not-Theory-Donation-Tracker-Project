@@ -15,7 +15,11 @@ import static junit.framework.TestCase.fail;
 
 /**
  * Created by Joseph Crawford on 11/11/18.
- * Tests the DonationCollection Model class getDonationByName method (Line 67)
+ * Tests the DonationCollection Model class getDonationByName method (Line 60)
+ *
+ * The branches to cover are the for loo,p which has an if statement, so there must be elements
+ * that are iterated past and an element must be found. There is also a branch if the element
+ * name is not in the collection, in which case an exception must be thrown.
  */
 public class JoeyUnitTest {
     private DonationCollection testCollection;
