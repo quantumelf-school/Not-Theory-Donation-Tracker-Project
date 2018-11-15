@@ -28,9 +28,6 @@ public class LocationCollection {
         nextRow++;
         Log.d("LOCATION ADDED", l.logText());
     }
-    public void removeLocation(Location l) {
-        locations.remove(l);
-    }
 
     public Location getLocationFromRow(int row) {
         for(Location l: locations) {
@@ -76,25 +73,17 @@ public class LocationCollection {
     public int getNumLocations() {
         return locations.size();
     }
-    public DonationCollection getAllDonations() {
-        DonationCollection ret = new DonationCollection();
-        for(Location l: locations) {
-            ret.addDonations(l.getDonationCollection());
-        }
-        return ret;
-    }
+
     public List<Donation> getAllDonationsAL() {
        List<Donation> ret = new ArrayList<>();
         for(Location l: locations) {
-            for(Donation d: l.getDonations()) {
-                ret.add(d);
-            }
+                ret.addAll(l.getDonations());
         }
         return ret;
     }
+
 
     public ArrayList<Location> getLocations() {
         return locations;
     }
-
 }
