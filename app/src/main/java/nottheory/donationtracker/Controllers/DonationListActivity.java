@@ -81,7 +81,7 @@ public class DonationListActivity extends AppCompatActivity {
 
         donationList = findViewById(R.id.donationList);
         List<Donation> donations = LoginManager.getDonationsOfLocationByName(fromLocation);
-        Object donationArray[] = null;
+        Object donationArray[];
         if(donations == null) {
             donationArray = new Object[0];
             donationList.setAdapter(new DonationListActivity.DonationAdapter(this, donationArray));
