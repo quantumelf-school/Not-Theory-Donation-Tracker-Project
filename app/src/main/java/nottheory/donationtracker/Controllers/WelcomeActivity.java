@@ -21,16 +21,10 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build(); //uses builder design pattern so chained calls are ok
         StrictMode.setThreadPolicy(policy);
         loginButton = findViewById(R.id.welcome_loginbutton);
         registerButton = findViewById(R.id.welcome_registerbutton);
-        try {
-            CSVReader reader = new CSVReader(getResources().openRawResource(R.raw.locationdata));
-        } catch(IOException e) {
-            System.out.println("IOException, csv file cannot be read");
-            return;
-        }
 
         loginButton.setOnClickListener(new OnClickListener() {
             @Override

@@ -40,7 +40,7 @@ public class RegistrationActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = nameEntry.getText().toString();
+                String name = nameEntry.getText().toString(); //this is the most concise way
                 String email = emailEntry.getText().toString();
                 String un = unEntry.getText().toString();
                 String pw = pwEntry.getText().toString();
