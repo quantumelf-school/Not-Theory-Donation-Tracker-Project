@@ -90,6 +90,15 @@ public final class LoginManager {
     }
 
     /**
+     * Returns the name of a location with a certain donation
+     * @param d the donation to search for the location
+     * @return name of the location
+     */
+    public static String getNameOfLocationWithDonation(Donation d) {
+        Location l = locations.getLocationWithDonation(d);
+        return l.getName();
+    }
+    /**
      * Returns the list of donations of a certain location given its name
      * @param name the name of the location
      * @return the list of its donations
