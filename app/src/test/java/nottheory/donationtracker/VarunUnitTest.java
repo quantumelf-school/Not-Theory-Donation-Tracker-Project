@@ -4,6 +4,7 @@ import nottheory.donationtracker.Model.Donation;
 import nottheory.donationtracker.Model.LocationCollection;
 import nottheory.donationtracker.Model.Location;
 
+import java.util.List;
 import java.util.ArrayList;
 
 import org.junit.Before;
@@ -19,8 +20,8 @@ import static org.junit.Assert.assertEquals;
 public class VarunUnitTest {
 
     private LocationCollection locationCollection;
-    private ArrayList<Location> locations;
-    private ArrayList<Donation> donations;
+    private List<Location> locations;
+    private List<Donation> donations;
 
     /**
      * Creates the necessary objects to conduct testing
