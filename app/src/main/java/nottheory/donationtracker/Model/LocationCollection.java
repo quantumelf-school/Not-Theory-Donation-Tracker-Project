@@ -44,7 +44,7 @@ public class LocationCollection {
         locations.add(l);
         l.setRow(nextRow);
         nextRow++;
-        Log.d("LOCATION ADDED", l.logText());
+        //Log.d("LOCATION ADDED", l.logText());
     }
 
     /**
@@ -87,6 +87,9 @@ public class LocationCollection {
      * @return the location containing donation d
      */
     public Location getLocationWithDonation(Donation d) {
+        if (d == null) {
+            return null;
+        }
         for(Location l: locations) {
             for(Donation don: l.getDonations()) {
                 String donationName = don.getName();
