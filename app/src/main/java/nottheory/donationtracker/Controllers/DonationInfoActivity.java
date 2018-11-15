@@ -4,6 +4,7 @@ import nottheory.donationtracker.Model.Location;
 import nottheory.donationtracker.R;
 import nottheory.donationtracker.Model.LoginManager;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 public class DonationInfoActivity extends AppCompatActivity {
     private Button backButton;
     private TextView donationText;
+    Intent intent = getIntent();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +34,8 @@ public class DonationInfoActivity extends AppCompatActivity {
 //        if(getIntent().getStringExtra("is master").equals("t")) {
 //            text = LoginManager.donations.getDonations().get(getIntent().getIntExtra("dpos", 0)).toString();
 //        } else {
-        Location l = LoginManager.locations.getLocationByName(getIntent().getStringExtra("location"));
-        text = l.getDonationCollection().getDonationByName(getIntent().getStringExtra("donation")).toString();
+        Location l = LoginManager.locations.getLocationByName(intent.getStringExtra("location"));
+        text = l.getDonationCollection().getDonationByName(intent.getStringExtra("donation")).toString();
         //text = l.getDonations().get(getIntent().getIntExtra("dpos", 0)).toString();
         donationText.setText(text);
         donationText.setVisibility(View.VISIBLE);
