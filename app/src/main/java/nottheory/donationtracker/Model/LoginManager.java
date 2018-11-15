@@ -12,7 +12,7 @@ public final class LoginManager {
     private LoginManager() {}
 
     public static boolean addCredentials(String un, Account acct) {
-
+        System.out.println("REACHED ADD1");
         try {
             String getSelection = DatabaseConnection.sendRawSQL("SELECT username FROM Users WHERE" +
                     " username = '" + un + "';");
@@ -20,7 +20,9 @@ public final class LoginManager {
                 DatabaseConnection.sendRawSQL("INSERT INTO Users (name, username, password," +
                         " email, accttype) " +
                         "VALUES (" + acct.sqlAllInfo() + ");");
+                System.out.println("REACHED ADD");
             }
+            System.out.println("REACHED ADD2");
             return true;
         } catch (Exception e) {
             return false;

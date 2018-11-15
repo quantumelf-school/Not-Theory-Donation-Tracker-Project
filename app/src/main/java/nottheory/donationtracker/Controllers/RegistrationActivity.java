@@ -54,7 +54,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 AccountType acctType = (AccountType) acctTypeSpinner.getSelectedItem();
 
                 if (!"".equals(name) && !"".equals(email) && !"".equals(un) && !"".equals(pw)) {
-
+                    System.out.println("REACHED REGISTER");
                     boolean goodCheck = LoginManager.addCredentials(un,
                             new Account(name, email, un, pw, acctType));
                     if (goodCheck) {
