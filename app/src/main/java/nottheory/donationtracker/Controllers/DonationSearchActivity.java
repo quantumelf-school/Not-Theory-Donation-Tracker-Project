@@ -70,7 +70,6 @@ public class DonationSearchActivity extends AppCompatActivity {
                 locationList));
 
         catSpinner = findViewById(R.id.search_cat_spinner);
-//        TODO: remove this hardcoded cat. list
         ArrayList<String> categoryList = new ArrayList<String>();
         categoryList.add("Clothing");
         categoryList.add("Hat");
