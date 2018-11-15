@@ -47,7 +47,8 @@ public class AddDonationActivity extends AppCompatActivity {
         categoryList.add("Electronics");
         categoryList.add("Household");
         categoryList.add("Other");
-        category.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categoryList));
+        category.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_item,
+                categoryList));
 
 
         backButton = findViewById(R.id.additem_cancelbutton);
