@@ -20,6 +20,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
+/**
+ * activity for displaying the donations of a particular location
+ * to the user
+ */
 public class DonationListActivity extends AppCompatActivity {
     
     private TextView errorText;

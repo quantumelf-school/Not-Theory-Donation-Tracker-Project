@@ -3,6 +3,10 @@ package nottheory.donationtracker.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+/**
+ * Information Holder class to represent and store data for
+ * donations logged by the system
+ */
 public class Donation implements Parcelable{
     private final String timestamp;
     private final String shortDescript;
@@ -10,6 +14,16 @@ public class Donation implements Parcelable{
     private final String value;
     private final String category;
     private final String comments;
+
+    /**
+     * Creates a donation based on passed in string data
+     * @param timestamp the timestamp for the donation
+     * @param shortDescript a short description of the donation
+     * @param longDescript a long description of the donation
+     * @param value the monetary value of the donation
+     * @param category the category of the donation
+     * @param comments any comments given about the donation
+     */
     public Donation(String timestamp, String shortDescript, String longDescript, String value,
                     String category, String comments) {
         this.timestamp = timestamp;
@@ -19,13 +33,32 @@ public class Donation implements Parcelable{
         this.category = category;
         this.comments = comments;
     }
+
+    /**
+     * A constructor allowing the omission of comments
+     * @param timestamp the timestamp for the donation
+     * @param shortDescript a short description of the donation
+     * @param longDescript a long description of the donation
+     * @param value the monetary value of the donation
+     * @param category the category of the donation
+     */
     public Donation(String timestamp, String shortDescript, String longDescript, String value,
                     String category) { //optional no comment
         this(timestamp, shortDescript, longDescript, value, category, "");
     }
+
+    /**
+     * simple getter method for the name of the donation
+     * @return the name of the donation
+     */
     public String getName(){
         return shortDescript;
     }
+
+    /**
+     * simple getter for the category of the donation
+     * @return the string representation of the donation's category
+     */
     public String getCategory() { return category;}
 
     //Parcelable stuff
@@ -71,6 +104,12 @@ public class Donation implements Parcelable{
         text += "Comments (Optional): " + comments + "\n";
         return text;
     }
+
+    /**
+     * generates and returns the string representation
+     * of the donation needed for database operations
+     * @return the database string of the donation
+     */
     public String dataBaseString() {
         String text = "";
         text += "'" + timestamp + "', '";
