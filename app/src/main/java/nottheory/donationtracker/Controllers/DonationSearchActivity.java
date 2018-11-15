@@ -102,8 +102,8 @@ public class DonationSearchActivity extends AppCompatActivity {
 
     private class DonationAdapter extends RecyclerView.Adapter
             <DonationSearchActivity.DonationAdapter.DonationViewHolder> {
-        private Object[] donations;
-        private Context context;
+        private final Object[] donations;
+        private final Context context;
         public class DonationViewHolder extends RecyclerView.ViewHolder {
             Button donation;
 
