@@ -34,6 +34,14 @@ public class WelcomeActivity extends AppCompatActivity {
         });
 
         LoginManager.initialize_tables();
+        CSVReader aReader = new CSVReader();
+        try {
+            aReader.readFile(getResources().openRawResource(R.raw.locationdata));
+            LoginManager.locations = aReader.getLC();
+        } catch(IOException e) {
+            System.out.println("IOException, csv file cannot be read");
+            return;
+        }
 
         registerButton.setOnClickListener(new OnClickListener() {
             @Override
