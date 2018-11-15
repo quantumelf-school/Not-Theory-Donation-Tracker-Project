@@ -52,7 +52,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
         for(Location l: LoginManager.locations.getLocations()) {
-            mMap.addMarker(new MarkerOptions().position(new LatLng(l.getLat(), l.getLong())).title(l.getName()).snippet(l.getSnippet()));
+            mMap.addMarker(l.makeMarkerOption());
         }
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ATLANTA_LATLNG, ZOOM));
         mMap.setOnInfoWindowClickListener(this);
