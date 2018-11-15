@@ -18,8 +18,6 @@ import nottheory.donationtracker.R;
 
 public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWindowClickListener, OnMapReadyCallback {
 
-    private GoogleMap mMap;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +40,7 @@ public class MapsActivity extends FragmentActivity implements GoogleMap.OnInfoWi
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        GoogleMap mMap;
         final LatLng ATLANTA_LATLNG = new LatLng(33.7490, -84.3880);
         final float ZOOM = 10.0f;
         mMap = googleMap;
