@@ -93,7 +93,7 @@ public class DonationSearchActivity extends AppCompatActivity {
         donationSearchList.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    private void addCategories(ArrayList<String> categoryList) {
+    private void addCategories(List<String> categoryList) {
         categoryList.add("Clothing");
         categoryList.add("Hat");
         categoryList.add("Kitchen");
