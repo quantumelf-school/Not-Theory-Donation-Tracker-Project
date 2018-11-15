@@ -10,7 +10,6 @@ import java.nio.charset.StandardCharsets;
 
 public class CSVReader {
     private LocationCollection data;
-    private final int FILE_LENGTH = 11;
     
     public CSVReader() {
         data = new LocationCollection();
@@ -22,6 +21,7 @@ public class CSVReader {
     //as individual tools, so it wouldn't make sense to combine them. There are also many other
     //cases of using sendRawSQL, so we shouldn't make a specialized method for this case.
     public void readFile(InputStream is) throws IOException {
+        final int FILE_LENGTH = 11;
         BufferedReader reader = new BufferedReader(
                 new InputStreamReader(is, StandardCharsets.UTF_8));
         
