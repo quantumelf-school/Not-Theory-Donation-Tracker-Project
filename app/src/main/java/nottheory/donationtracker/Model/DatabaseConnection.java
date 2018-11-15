@@ -1,5 +1,7 @@
 package nottheory.donationtracker.Model;
 
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -48,9 +50,8 @@ class DatabaseConnection {
 
             return sb.toString();
         } catch (Exception e) {
-            System.out.println(e.getStackTrace());
+            return "";
         }
-        return "";
     }
 }
 

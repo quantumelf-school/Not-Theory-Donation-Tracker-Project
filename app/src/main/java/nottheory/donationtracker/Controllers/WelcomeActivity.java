@@ -41,7 +41,6 @@ public class WelcomeActivity extends AppCompatActivity {
             aReader.readFile(getResources().openRawResource(R.raw.locationdata));
             LoginManager.setLocations(aReader.getLC());
         } catch(IOException e) {
-            System.out.println("IOException, csv file cannot be read");
             return;
         }
 
