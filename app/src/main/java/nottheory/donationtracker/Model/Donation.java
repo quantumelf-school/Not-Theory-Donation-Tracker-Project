@@ -124,4 +124,28 @@ public class Donation implements Parcelable{
         return text;
     }
 
+    @Override
+    public boolean equals(Object o) {
+
+        if (o == this) {
+            return true;
+        }
+
+        if (o == null) {
+            return false;
+        }
+
+        if (!(o instanceof Donation)) {
+            return false;
+        }
+
+        Donation other = (Donation) o;
+
+        if (!other.toString().equals(this.toString())) {
+            return false;
+        }
+
+        return true;
+    }
+
 }
