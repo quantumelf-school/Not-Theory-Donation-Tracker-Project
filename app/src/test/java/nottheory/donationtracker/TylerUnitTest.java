@@ -139,10 +139,10 @@ public class TylerUnitTest {
         assertEquals("End of strings not checked", newCollection.getDonations(),
                 testCollection.getDonationsBySimilarName("aces"));
         DonationCollection newCollection2 = new DonationCollection();
-        newCollection.addDonation(new Donation("TEST", "1234456789z",
+        newCollection2.addDonation(new Donation("TEST", "1234456789z",
                 "TEST","TEST","TEST", "TEST"));
         assertEquals("End of strings not checked", newCollection2.getDonations(),
-                testCollection.getDonationsBySimilarName("aces"));
+                testCollection.getDonationsBySimilarName("z"));
     }
 
     /**
