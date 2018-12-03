@@ -1,6 +1,10 @@
 package nottheory.donationtracker.Controllers;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -25,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         Button loginButton;
         Button cancelButton;
         super.onCreate(savedInstanceState);
@@ -46,7 +51,6 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (LoginManager.checkCredentials(un, pw)) {
                     LoginManager.logAccount(un);
-                    startActivity(new Intent(LoginActivity.this, SuccessfulLoginActivity.class));
                 } else {
                     invalidLoginText.setVisibility(View.VISIBLE);
                     tryAgainText.setVisibility(View.VISIBLE);

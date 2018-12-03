@@ -14,6 +14,7 @@ import android.widget.Spinner;
 //import com.google.firebase.firestore.FirebaseFirestore;
 
 import nottheory.donationtracker.Model.Account;
+import nottheory.donationtracker.Model.AccountFactory;
 import nottheory.donationtracker.Model.AccountType;
 import nottheory.donationtracker.Model.LoginManager;
 import nottheory.donationtracker.R;
@@ -61,7 +62,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
                 if (!"".equals(name) && !"".equals(email) && !"".equals(un) && !"".equals(pw)) {
                     boolean goodCheck = LoginManager.addCredentials(un,
-                            new Account(name, un, pw, email, acctType));
+                            AccountFactory.getAccount(name, un, pw, email, acctType));
                     if (goodCheck) {
                         startActivity(new Intent(RegistrationActivity.this, WelcomeActivity.class));
                     }
