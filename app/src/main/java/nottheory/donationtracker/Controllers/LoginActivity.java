@@ -51,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (LoginManager.checkCredentials(un, pw)) {
                     LoginManager.logAccount(un);
+                    startActivity(new Intent(LoginActivity.this, SuccessfulLoginActivity.class));
                 } else {
                     invalidLoginText.setVisibility(View.VISIBLE);
                     tryAgainText.setVisibility(View.VISIBLE);
