@@ -32,6 +32,7 @@ public final class LoginManager {
                 String sqlAllInfo = acct.sqlAllInfo();
                 if (sqlAllInfo == null) {
                     return false;
+
                 }
                 String sqlCommand = "INSERT INTO Users (name, username, password," +
                         " email, accttype) " + "VALUES (" + sqlAllInfo + ");";
@@ -39,6 +40,7 @@ public final class LoginManager {
             }
             return true;
         } catch (Exception e) {
+            System.out.println(e);
             return false;
         }
     }
@@ -60,6 +62,7 @@ public final class LoginManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("TEST FALSE");
         return false;
     }
 

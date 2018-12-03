@@ -65,6 +65,8 @@ public class RegistrationActivity extends AppCompatActivity {
                             AccountFactory.getAccount(name, un, pw, email, acctType));
                     if (goodCheck) {
                         startActivity(new Intent(RegistrationActivity.this, WelcomeActivity.class));
+                    } else {
+                        System.out.println("Bad Check: " + AccountFactory.getAccount(name, un, pw, email, acctType));
                     }
                 }
             }
